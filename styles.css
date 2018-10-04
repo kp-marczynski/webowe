@@ -1,3 +1,6 @@
+:root{
+    --max-page-width: 1400px;
+}
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -9,4 +12,9 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    max-width: var(--max-page-width);
+    margin: auto;
+}
+img{
+    max-width: var(--max-page-width);
 }
