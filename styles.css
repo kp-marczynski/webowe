@@ -19,10 +19,42 @@ img{
     max-width: var(--max-page-width);
 }
 
-table, th, td {
-    border: 1px solid black;
+table {
     border-collapse: collapse;
 }
+
+.ugly-table, th, td {
+    border: 1px solid black;
+}
+
 th, td {
     padding: 5px;
+}
+
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.pretty-table {
+    width: 100%;
+    border: none;
+}
+
+.pretty-tr > th {
+    background: #4CAF50;
+    border: none;
+    color: #f2f2f2;
+}
+
+.pretty-tr > td {
+    text-align: center;
+    border: none;
+}
+
+.pretty-tr:nth-child(even){background-color: #f2f2f2}
+
+.pretty-table > th {
+    background-color: #4CAF50;
+    color: white;
 }
