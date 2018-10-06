@@ -23,6 +23,7 @@ body {
     background-color: white;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
     padding: 2rem;
+    overflow: hidden;
 }
 
 img {
@@ -57,11 +58,7 @@ nav ul li a {
     text-decoration: none;
 }
 
-li a:hover {
-    background-color: #111111;
-}
-
-header img {
+header img, #spacer-image {
     display: block;
     margin: auto;
 }
@@ -107,13 +104,31 @@ th, td {
     color: white;
 }
 
-#spacer-image {
-    display: block;
-    margin: auto;
-}
-
 footer {
     padding: 2rem;
     text-align: center;
     color: var(--muted-text-color);
+}
+
+.main-content, aside {
+    display: inline-block;
+    float: left;
+}
+
+.main-content {
+    width: 75%;
+}
+
+aside {
+    width: 25%;
+}
+
+#main-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: lighter;
+}
+
+.havier-font {
+    font-weight: 900;
 }
