@@ -1,5 +1,6 @@
 :root {
     --max-page-width: 1200px;
+    --muted-text-color: #6c757d;
 }
 
 @font-face {
@@ -14,6 +15,14 @@ body {
     font-family: 'Roboto', sans-serif;
     max-width: var(--max-page-width);
     margin: auto;
+
+    background-color: whitesmoke;
+}
+
+.page {
+    background-color: white;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    padding: 2rem;
 }
 
 img {
@@ -57,7 +66,6 @@ header img {
     margin: auto;
 }
 
-
 table {
     border-collapse: collapse;
 }
@@ -69,7 +77,6 @@ table {
 th, td {
     padding: 5px;
 }
-
 
 .margin-top-20 {
     margin-top: 20px;
@@ -91,9 +98,22 @@ th, td {
     border: none;
 }
 
-.pretty-tr:nth-child(even){background-color: #f2f2f2}
+.pretty-tr:nth-child(even) {
+    background-color: #f2f2f2
+}
 
 .pretty-table > th {
     background-color: #4CAF50;
     color: white;
+}
+
+#spacer-image {
+    display: block;
+    margin: auto;
+}
+
+footer {
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted-text-color);
 }
