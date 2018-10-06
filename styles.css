@@ -3,6 +3,10 @@
     --muted-text-color: #6c757d;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -24,6 +28,7 @@ body {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
     padding: 2rem;
     overflow: hidden;
+    margin: auto;
 }
 
 img {
@@ -123,7 +128,8 @@ aside {
     width: 25%;
 }
 
-#main-title {
+h1 {
+    margin-top: 0;
     text-align: center;
     font-size: 3rem;
     font-weight: lighter;
@@ -131,4 +137,29 @@ aside {
 
 .havier-font {
     font-weight: 900;
+}
+
+form {
+    line-height: 150%;
+}
+
+fieldset {
+    margin: 1rem;
+}
+
+#register-form {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+}
+
+textarea, .button {
+    margin: auto;
+    display: block;
+}
+
+.button {
+    height: 50px;
+    width: 200px;
+    margin-top: 1.5rem;
 }
