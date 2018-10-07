@@ -31,10 +31,6 @@ body {
     margin: auto;
 }
 
-img {
-    max-width: var(--max-page-width);
-}
-
 nav {
     position: -webkit-sticky;
     position: sticky;
@@ -174,4 +170,22 @@ textarea, .button {
 
 .reset:hover {
     background-color: darkred;
+}
+
+@media (min-width: 1500px) {
+    img {
+        max-width: var(--max-page-width);
+    }
+}
+
+@media (min-width: 300px) {
+    img {
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 600px) {
+    img {
+        max-width: 600px;
+    }
 }
