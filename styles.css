@@ -55,9 +55,9 @@ nav ul {
     padding: 0;
 }
 
-nav ul li {
-    float: left;
-}
+/*nav ul li {*/
+/*float: left;*/
+/*}*/
 
 nav ul li a {
     display: block;
@@ -167,26 +167,54 @@ textarea, .button {
     background-color: darkred;
 }
 
-.dropdown-content {
-    display: none;
+.submenu {
     position: absolute;
-    background-color: whitesmoke;
+    width: 150px;
+    list-style: none;
+    display: none;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
-    z-index: 1;
 }
 
-.dropdown-content a {
+.third-level-menu {
+    top: 0;
+    right: -150px;
+}
+
+.submenu > li {
+    position: relative;
+    height: 50px;
+    background: whitesmoke;
+}
+
+.submenu a {
     color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
 }
 
-.dropdown-content a:hover {
-    background-color: lightgrey;
+.submenu > li:hover {
+    background: lightgrey;
 }
 
-.dropdown:hover .dropdown-content {
+.top-level-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-level-menu > li {
+    position: relative;
+    float: left;
+    width: 150px;
+}
+
+.top-level-menu > li:hover {
+    background: black;
+}
+
+.top-level-menu li:hover > ul {
+    display: inline;
+}
+
+.top-level-menu a {
     display: block;
 }
 
@@ -211,5 +239,43 @@ textarea, .button {
 
     aside {
         width: 25%;
+    }
+}
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    .pretty-table * {
+        display: block;
+    }
+
+    .pretty-table thead tr {
+        display: none;
+    }
+
+    .pretty-table tr {
+        border: 1px solid #ccc;
+    }
+
+    .pretty-table td {
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .pretty-table td:before {
+        position: absolute;
+        left: 0;
+        width: 45%;
+    }
+
+    .pretty-table td:nth-of-type(1):before {
+        content: "Nazwa zespołu";
+    }
+
+    .pretty-table td:nth-of-type(2):before {
+        content: "Liczba obserwujących";
+    }
+
+    .pretty-table td:nth-of-type(3):before {
+        content: "Najpopularniejszy utwór";
     }
 }

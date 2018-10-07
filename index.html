@@ -7,9 +7,9 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="styles.css">
     <style>
-        li a:hover, .dropdown:hover .dropbtn {
-            background-color: black;
-        }
+        /*li a:hover, .dropdown:hover .dropbtn {*/
+        /*background-color: black;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -19,18 +19,27 @@
     </a>
 </header>
 <nav>
-    <ul style="float: left;">
+    <ul class="top-level-menu" style="float: left;">
         <li><a href="index.html">Strona startowa</a></li>
-        <li class="dropdown">
-            <a class="dropbtn">Dropdown</a>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
+        <li>
+            <a href="#">Offices</a>
+            <ul class="second-level-menu submenu">
+                <li><a href="#">Chicago</a></li>
+                <li><a href="#">Los Angeles</a></li>
+                <li>
+                    <a href="#">New York</a>
+                    <ul class="third-level-menu submenu">
+                        <li><a href="#">Information</a></li>
+                        <li><a href="#">Book a Meeting</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Jobs</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Seattle</a></li>
+            </ul>
         </li>
     </ul>
-    <ul style="float: right">
+    <ul class="top-level-menu" style="float: right">
         <li><a href="mailto:muzyka4zycie@gmail.com" target="_blank">Napisz do nas!</a></li>
         <li><a href="register/register.html">Rejestracja</a></li>
     </ul>
