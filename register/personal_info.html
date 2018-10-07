@@ -11,6 +11,37 @@
 <section id="register-form" class="page">
     <h1>Dane osobowe</h1>
     <form>
+        <label>
+            Twoja ulubiona przeglądarka:
+            <select name="browsers">
+                <optgroup label="Rozsądne przeglądarki">
+                    <option value="Chrome">Chrome</option>
+                    <option value="Firefox">Firefox</option>
+                    <option value="Opera">Opera</option>
+                </optgroup>
+                <optgroup label="Inne przeglądarki">
+                    <option value="Internet Explorer">Internet Explorer</option>
+                    <option value="Safari">Safari</option>
+                </optgroup>
+            </select>
+        </label>
+        <fieldset>
+            <legend>Wybierz jakie posiadasz pojazdy</legend>
+            <label>
+                <input type="checkbox" value="Bike">
+                Mam rower
+            </label><br>
+            <label>
+                <input type="checkbox" value="Car">
+                Mam samochód
+            </label><br>
+            <label>
+                <input type="checkbox" value="Kayak" checked>
+                Mam kajak
+            </label><br>
+        </fieldset>
+        <textarea name="message" rows="10" cols="50" placeholder="Napisz coś o sobie..." maxlength="200"></textarea>
+
         <input class="button" type="submit" value="Submit" onclick="alert('Registration form sent')"
                formaction="../index.html">
         <input class="reset button" type="reset" value="Wyzeruj formularz"/>

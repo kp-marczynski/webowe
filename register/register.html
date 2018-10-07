@@ -10,15 +10,41 @@
 <body>
 <section id="register-form" class="page">
     <h1>Formularz rejestracyjny</h1>
-    <form>
+    <form autocomplete="on">
         <label>
-            First name:
-            <input type="text" name="firstname" value="Mickey">
+            <span>Imię</span>
+            <input type="text" name="firstname" autofocus>
         </label><br/>
         <label>
-            Last name:
-            <input type="text" name="lastname" value="Mouse">
+            <span>Nazwisko</span>
+            <input type="text" name="lastname" required>
         </label><br/>
+        <label>
+            <span>Miesiąc urodzin</span>
+            <input list="month">
+            <datalist id="month">
+                <option value="Styczeń"></option>
+                <option value="Luty"></option>
+                <option value="Marzec"></option>
+                <option value="Kwiecień"></option>
+                <option value="Maj"></option>
+                <option value="Czerwiec"></option>
+                <option value="Lipiec"></option>
+                <option value="Sierpień"></option>
+                <option value="Wrzesień"></option>
+                <option value="Październik"></option>
+                <option value="Listopad"></option>
+                <option value="Grudzień"></option>
+            </datalist>
+        </label><br/>
+        <label>
+            <span>Adres mailowy</span>
+            <input type="email" name="email" required>
+        </label><br>
+        <label>
+            <span>Numer telefonu</span>
+            <input type="tel" name="phone" pattern="[0-9]{9}">
+        </label>
         <fieldset>
             <legend>Twoja płeć</legend>
             <label>
@@ -34,40 +60,11 @@
                 Inne
             </label><br/>
         </fieldset>
-        <label>
-            Twoja ulubiona przeglądarka:
-            <select name="browsers">
-                <optgroup label="Rozsądne przeglądarki">
-                    <option value="Chrome">Chrome</option>
-                    <option value="Firefox">Firefox</option>
-                    <option value="Opera">Opera</option>
-                </optgroup>
-                <optgroup label="Inne przeglądarki">
-                    <option value="Internet Explorer">Internet Explorer</option>
-                    <option value="Safari">Safari</option>
-                </optgroup>
-            </select>
-        </label>
-        <fieldset>
-            <legend>Wybierz jakie posiadasz pojazdy</legend>
-            <label>
-                <input type="checkbox" value="Bike">
-                Mam rower
-            </label><br>
-            <label>
-                <input type="checkbox" value="Car">
-                Mam samochód
-            </label><br>
-            <label>
-                <input type="checkbox" value="Kayak" checked>
-                Mam kajak
-            </label><br>
-        </fieldset>
-        <textarea name="message" rows="10" cols="50" placeholder="Napisz coś o sobie..." maxlength="200"></textarea>
-        <input class="button" type="submit" value="Submit" onclick="alert('Registration form sent')"
+        <input class="button" type="submit" value="Submit"
                formaction="personal_info.html">
         <input class="reset button" type="reset" value="Wyzeruj formularz"/>
     </form>
 </section>
+<footer>Created by Krzysztof Marczyński & Jakub Gruda</footer>
 </body>
 </html>
