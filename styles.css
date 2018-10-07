@@ -111,19 +111,6 @@ footer {
     color: var(--muted-text-color);
 }
 
-.main-content, aside {
-    display: inline-block;
-    float: left;
-}
-
-.main-content {
-    width: 75%;
-}
-
-aside {
-    width: 25%;
-}
-
 h1 {
     margin-top: 0;
     text-align: center;
@@ -172,20 +159,21 @@ textarea, .button {
     background-color: darkred;
 }
 
-@media (min-width: 1500px) {
-    img {
-        max-width: var(--max-page-width);
-    }
+img {
+    max-width: 100%;
 }
 
-@media (min-width: 300px) {
-    img {
-        max-width: 300px;
+@media (min-width: 768px) {
+    .main-content, aside {
+        display: inline-block;
+        float: left;
     }
-}
 
-@media (min-width: 600px) {
-    img {
-        max-width: 600px;
+    .main-content {
+        width: 75%;
+    }
+
+    aside {
+        width: 25%;
     }
 }
