@@ -44,7 +44,8 @@ nav {
     top: 0;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    height: 3.2rem;
+    overflow: initial;
     background-color: #333333;
 }
 
@@ -101,6 +102,7 @@ fieldset {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
     padding: 0.5rem;
     overflow: hidden;
+    width: 100%;
     margin: auto;
 }
 
@@ -163,6 +165,29 @@ textarea, .button {
 
 .reset:hover {
     background-color: darkred;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: lightgrey;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 #register-form {

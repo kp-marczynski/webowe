@@ -7,8 +7,8 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="styles.css">
     <style>
-        li a:hover {
-            background-color: #111111;
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: black;
         }
     </style>
 </head>
@@ -21,6 +21,14 @@
 <nav>
     <ul style="float: left;">
         <li><a href="index.html">Strona startowa</a></li>
+        <li class="dropdown">
+            <a class="dropbtn">Dropdown</a>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </li>
     </ul>
     <ul style="float: right">
         <li><a href="mailto:muzyka4zycie@gmail.com" target="_blank">Napisz do nas!</a></li>
