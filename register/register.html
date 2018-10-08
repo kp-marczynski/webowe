@@ -13,11 +13,13 @@
     <form autocomplete="on">
         <label>
             <span>Imię</span>
-            <input type="text" name="firstname" autofocus>
+            <input type="text" name="firstname" pattern="[A-Za-z]+" autofocus>
+            <span class="format-info">Tylko małe i duże litery</span>
         </label><br/>
         <label>
             <span>Nazwisko</span>
-            <input type="text" name="lastname" required>
+            <input type="text" name="lastname" pattern="[A-Za-z\-]+" required>
+            <span class="format-info">Małe, duże litery i "-"</span>
         </label><br/>
         <label>
             <span>Miesiąc urodzin</span>
@@ -36,14 +38,17 @@
                 <option value="Listopad"></option>
                 <option value="Grudzień"></option>
             </datalist>
+            <span class="format-info">Miesiąc wybrany z listy</span>
         </label><br/>
         <label>
             <span>Adres mailowy</span>
             <input type="email" name="email" required>
+            <span class="format-info">nazwa@domena.com</span>
         </label><br>
         <label>
             <span>Numer telefonu</span>
             <input type="tel" name="phone" pattern="[0-9]{9}">
+            <span class="format-info">9 cyfr</span>
         </label>
         <fieldset>
             <legend>Twoja płeć</legend>

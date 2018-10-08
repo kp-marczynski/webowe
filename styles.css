@@ -36,11 +36,15 @@ img {
     max-width: 100%;
 }
 
-label span {
+form > label span, form > label input {
     display: inline-block;
-    width: 10rem;
+    width: 30%;
 }
 
+.format-info {
+    font-size: 75%;
+    color: var(--muted-text-color);
+}
 table {
     display: block;
     overflow-x: auto;
