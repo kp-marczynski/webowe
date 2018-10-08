@@ -129,6 +129,10 @@ header img, #spacer-image {
     margin: auto;
 }
 
+.header-image {
+    border: 1px dashed red;
+}
+
 .ugly-table, th, td {
     border: 1px solid black;
 }
@@ -246,9 +250,14 @@ textarea, .button {
     max-width: 700px;
 }
 
+.text-shadow {
+    text-shadow: 2px 2px lightgray;
+}
+
 @media (min-width: 768px) {
     .page {
         padding: 2rem;
+        border-radius: 10px;
     }
 
     .main-content, aside {
