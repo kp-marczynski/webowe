@@ -3,9 +3,9 @@
     --muted-text-color: #6c757d;
 }
 
-/** {*/
-/*box-sizing: border-box;*/
-/*}*/
+* {
+    box-sizing: border-box;
+}
 
 @font-face {
     font-family: 'Roboto';
