@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-<section id="register-form" class="page">
+<section class="page" id="personal-info-form">
     <h1>Dane osobowe</h1>
     <form>
         <label>
-            Twoja ulubiona przeglądarka:
+            <span>Twoja ulubiona przeglądarka</span>
             <select name="browsers">
                 <optgroup label="Rozsądne przeglądarki">
                     <option value="Chrome">Chrome</option>
@@ -24,28 +24,61 @@
                     <option value="Safari">Safari</option>
                 </optgroup>
             </select>
+        </label><br><br>
+        <label>
+            <span>Twój ulubiony kolor</span>
+            <input type="color" name="favorite-color" value="#ff0000">
+        </label><br><br>
+        <label>
+            <span>Jak głośno słuchasz muzyki</span>
+            <input type="range" list="volume" min="0" max="100">
+
+            <datalist id="volume">
+                <option value="0" label="0%">
+                <option value="10">
+                <option value="20">
+                <option value="30">
+                <option value="40">
+                <option value="50" label="50%">
+                <option value="60">
+                <option value="70">
+                <option value="80">
+                <option value="90">
+                <option value="100" label="100%">
+            </datalist>
+        </label><br><br>
+        <label>
+            <span>Wyszukaj</span><input type="search" placeholder="Wyszukaj....">
+        </label><br><br>
+        <label>
+            <span>Podaj jaki mamy teraz miesiąc</span>
+            <input type="month" name="bdaymonth">
+        </label><br><br>
+        <label>
+            <span>Podaj link do swojego profilu na facebooku</span><input type="url" name="homepage"
+                                                                          placeholder="facebook.com/{profil}">
         </label>
         <fieldset>
             <legend>Wybierz jakie posiadasz pojazdy</legend>
             <label>
                 <input type="checkbox" value="Bike">
                 Mam rower
-            </label><br>
+            </label><br><br>
             <label>
                 <input type="checkbox" value="Car">
                 Mam samochód
-            </label><br>
+            </label><br><br>
             <label>
                 <input type="checkbox" value="Kayak" checked>
                 Mam kajak
-            </label><br>
+            </label><br><br>
         </fieldset>
         <textarea name="message" rows="10" cols="50" placeholder="Napisz coś o sobie..." maxlength="200"></textarea>
 
-        <input class="button" type="submit" value="Submit" onclick="alert('Registration form sent')"
-               formaction="../index.html">
+        <input class="button" type="submit" value="Submit" formaction="../index.html">
         <input class="reset button" type="reset" value="Wyzeruj formularz"/>
     </form>
 </section>
+<footer>Created by Krzysztof Marczyński & Jakub Gruda</footer>
 </body>
 </html>
