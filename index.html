@@ -6,17 +6,12 @@
     <title>Muzyka4Życie</title>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /*li a:hover, .dropdown:hover .dropbtn {*/
-        /*background-color: black;*/
-        /*}*/
-    </style>
 </head>
 <body>
 <header>
-        <a href="assets/images/guitar.jpg" download="guitar.jpg">
-            <img src="assets/images/guitar.jpg" alt="Gitara" title="Click to download" class="header-image"/>
-        </a>
+    <a href="assets/images/guitar.jpg" download="guitar.jpg">
+        <img src="assets/images/guitar.jpg" alt="Gitara" title="Click to download" class="header-image"/>
+    </a>
 </header>
 <nav>
     <ul class="top-level-menu" style="float: left;">
@@ -36,6 +31,15 @@
                     </ul>
                 </li>
                 <li><a href="#">Seattle</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>Szablony</a>
+            <ul class="second-level-menu submenu">
+                <li><a href="dummy_templates/paragraphs.html">Akapity</a></li>
+                <li><a href="dummy_templates/links.html">Linki</a></li>
+                <li><a href="dummy_templates/table.html">Tabela</a></li>
+                <li><a href=register/register.html>Formularz</a></li>
             </ul>
         </li>
     </ul>
@@ -132,30 +136,6 @@
             </tbody>
         </table>
 
-        <table class="ugly-table">
-            <tr>
-                <td>
-                    Tabelka z zagnieżdżeniem
-                </td>
-                <td>Kolumna niewiadomo o czym
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>A</td>
-                            <td>B</td>
-                        </tr>
-                        <tr>
-                            <td>C</td>
-                            <td>D</td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-
 
     </section>
     <aside>
@@ -168,7 +148,9 @@
 
         Aby do nas dołączyć, musisz spełnić następujące warunki:
         <ol>
-            <li>Mieć ukończone 13 lat</li>
+            <li>Mieć ukończone
+                <mark>13 lat</mark>
+            </li>
             <li>Dobry humor i chęci
                 <ul>Humor pomoże Ci być miłym</ul>
                 <ul>Chęci i tak ma każdy</ul>
@@ -177,6 +159,10 @@
         <a href="ftp://ftp.helion.pl/czytaj.txt" download="">Pobierz coś przez FTP</a>
     </aside>
 </section>
-<footer>Created by Krzysztof Marczyński & Jakub Gruda</footer>
+<footer>
+    <details>
+        <summary>&copy 2018</summary>
+        <p>Created by Krzysztof Marczyński & Jakub Gruda</p></details>
+</footer>
 </body>
 </html>

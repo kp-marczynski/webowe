@@ -105,6 +105,7 @@ h1 {
     text-align: center;
     font-size: 2.5rem;
     font-weight: lighter;
+    font-variant: small-caps;
 }
 
 form {
@@ -113,6 +114,11 @@ form {
 
 fieldset {
     margin: 1rem;
+}
+
+meter {
+    width: 100%;
+    margin: auto;
 }
 
 .page {
