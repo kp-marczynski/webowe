@@ -58,7 +58,7 @@ nav {
     top: 0;
     margin: 0;
     padding: 0;
-    height: 3.2rem;
+    height: 3rem;
     overflow: initial;
     background-color: #333333;
 }
@@ -210,7 +210,6 @@ textarea, .button {
 
 .submenu > li {
     position: relative;
-    height: 50px;
     background: whitesmoke;
 }
 
