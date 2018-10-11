@@ -1,0 +1,97 @@
+.interests-wrapper {
+
+}
+
+.interests-wrapper > label {
+    display: block;
+}
+
+.interest:checked {
+    box-shadow: 0 0 0 3px hotpink;;
+}
+
+.list-item:first-child {
+    background: white;
+    padding: 32px;
+    border-radius: 10px;
+}
+
+.send-poll {
+    text-decoration: none;
+}
+
+/* unvisited link */
+.send-poll:link {
+    color: #2ecc71;
+}
+
+/* visited link */
+.send-poll:visited {
+    color: mediumpurple !important;
+}
+
+/* selected link */
+.send-poll:active {
+    text-decoration: underline;
+    color: red;
+}
+
+#submit-eighteen {
+    padding: 10px;
+}
+
+#submit-eighteen:disabled {
+    border: 1px solid red;
+}
+
+#submit-eighteen:enabled {
+    border: 1px solid green;
+}
+
+.empty:empty {
+    height: 1px;
+    width: 100%;
+    background: gray;
+}
+
+.clause :first-of-type {
+    text-decoration: underline;
+}
+
+.clause :first-child {
+    color: red;
+}
+
+.clause :last-child {
+    background: blue;
+}
+
+.clause :last-of-type {
+    border: 3px solid green;
+}
+
+.clause :not(p) {
+    font-weight: 300;
+}
+
+.clause :nth-last-child(2) {
+    font-size: 2em;
+}
+
+input:focus {
+    border: 2px solid blue;
+}
+
+h2:only-child {
+    padding: 16px;
+}
+
+input:required {
+    padding: 6px;
+}
+
+
+/*#id in url*/
+div:target {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}

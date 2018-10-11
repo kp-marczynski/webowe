@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ankieta</title>
+</head>
+<link rel="stylesheet" href="poll.css">
+<link rel="stylesheet" href="../styles.css">
+<body>
+
+<nav>
+    <ul class="top-level-menu" style="float: left;">
+        <li><a href="index.html">Strona startowa</a></li>
+        <li>
+            <a href="#">Zespoły</a>
+            <ul class="second-level-menu submenu">
+                <li><a href="#">Metallica</a>
+                    <ul class="third-level-menu submenu">
+                        <li><a href="#">Metallica</a></li>
+                        <li><a href="#">Master of Puppets</a></li>
+                        <li><a href="#">Kill 'Em All</a></li>
+                        <li><a href="#">Ride the Lightning</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Judas Priest</a>
+                    <ul class="third-level-menu submenu">
+                        <li><a href="#">Painkiller</a></li>
+                        <li><a href="#">Firepower</a></li>
+                        <li><a href="#">British Steel</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Iron Maiden</a>
+                    <ul class="third-level-menu submenu">
+                        <li><a href="#">The Number of the Beast</a></li>
+                        <li><a href="#">Fear of the Dark</a></li>
+                        <li><a href="#">Killers</a></li>
+                        <li><a href="#">Powerslave</a></li>
+                        <li><a href="#">Somewhere in Time</a></li>
+                        <li><a href="#">The Book of Souls</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Seattle</a>
+                    <ul class="third-level-menu submenu">
+                        <li><a href="#">Informacje</a></li>
+                        <li><a href="#">Spotkania</a></li>
+                        <li><a href="#">Kontakt</a></li>
+                        <li><a href="#">Praca</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a>Szablony</a>
+            <ul class="second-level-menu submenu">
+                <li><a href="dummy_templates/paragraphs.html">Akapity</a></li>
+                <li><a href="dummy_templates/links.html">Linki</a></li>
+                <li><a href="dummy_templates/table.html">Tabela</a></li>
+                <li><a href=register/register.html>Formularz</a></li>
+                <li><a href=dummy_templates/poll.html>Ankieta</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="top-level-menu" style="float: right">
+        <li><a href="mailto:muzyka4zycie@gmail.com" target="_blank">Napisz do nas!</a></li>
+        <li><a href="register/register.html">Rejestracja</a></li>
+    </ul>
+</nav>
+
+<div id="poll-top">
+<h2 class="center">Ankieta</h2>
+</div>
+
+<div class="empty"></div>
+
+<ol class="poll-wrapper">
+    <li class="list-item">Wybierz swoje zainteresowania:
+        <div class="interests-wrapper">
+            <label><input type="checkbox" name="interests" value="Muzyka">Muzyka</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Filmy">Filmy</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Podróże">Podróże</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Sport">Sport</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Technologia">Technologia</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Moda">Moda</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Programowanie systemów webowych">Programowanie systemów webowych</label>
+        </div>
+    </li>
+    <li class="list-item">
+        <p>Ile masz lat?</p>
+        <input type="number" title="Ile masz lat" name="age" required>
+    </li>
+    <li class="list-item">
+        <p>Czy masz ukończone 18 lat?</p>
+        <label><input type="radio" name="eighteen" value="tak" >Tak</label>
+        <label><input type="radio" name="eighteen" value="nie">Nie</label>
+    </li>
+    <button id="submit-eighteen">Potwierdź</button>
+</ol>
+
+<a href="#poll-top" class="send-poll">Wyślij wyniki</a>
+
+</body>
+
+<script>
+    const button = document.getElementById('submit-eighteen');
+    [...document.getElementsByName('eighteen')].forEach(rad => {
+        rad.onclick = () => {
+            button.disabled = rad.value === "nie";
+        }
+    });
+</script>
+
+<div class="clause">
+    <h4>Kaluzula</h4>
+    <p>Wyrażam zgodę na przetwarzanie moich danych osobowych.</p>
+    <p>Wiem, jaka kara grozi za przesyłanie danych nieprawdziwych.</p>
+    <p>Zapoznałem się z regulaminem.</p>
+
+    <h6>Jestem świadomy</h6>
+</div>
+
+</html>
