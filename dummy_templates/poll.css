@@ -82,14 +82,13 @@ input:focus {
     border: 2px solid blue;
 }
 
-h2:only-child {
+h3:only-child {
     padding: 16px;
 }
 
 input:required {
     padding: 6px;
 }
-
 
 /*#id in url*/
 div:target {
