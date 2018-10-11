@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ankieta</title>
+</head>
+<link rel="stylesheet" href="poll.css">
+<link rel="stylesheet" href="../styles.css">
+<body>
+
+
+<div id="poll-top">
+<h2 class="center">Ankieta</h2>
+</div>
+
+<div class="empty"></div>
+
+<ol class="poll-wrapper">
+    <li class="list-item">Wybierz swoje zainteresowania:
+        <div class="interests-wrapper">
+            <label><input type="checkbox" name="interests" value="Muzyka">Muzyka</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Filmy">Filmy</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Podróże">Podróże</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Sport">Sport</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Technologia">Technologia</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Moda">Moda</label>
+        <label><input class = "interest" type="checkbox" name="interests" value="Programowanie systemów webowych">Programowanie systemów webowych</label>
+        </div>
+    </li>
+    <li class="list-item">
+        <p>Ile masz lat?</p>
+        <input type="number" title="Ile masz lat" name="age" required>
+    </li>
+    <li class="list-item">
+        <p>Czy masz ukończone 18 lat?</p>
+        <label><input type="radio" name="eighteen" value="tak" >Tak</label>
+        <label><input type="radio" name="eighteen" value="nie">Nie</label>
+    </li>
+    <button id="submit-eighteen">Potwierdź</button>
+</ol>
+
+<a href="#poll-top" class="send-poll">Wyślij wyniki</a>
+
+</body>
+
+<script>
+    const button = document.getElementById('submit-eighteen');
+    [...document.getElementsByName('eighteen')].forEach(rad => {
+        rad.onclick = () => {
+            button.disabled = rad.value === "nie";
+        }
+    });
+</script>
+
+<div class="clause">
+    <h4>Kaluzula</h4>
+    <p>Wyrażam zgodę na przetwarzanie moich danych osobowych.</p>
+    <p>Wiem, jaka kara grozi za przesyłanie danych nieprawdziwych.</p>
+    <p>Zapoznałem się z regulaminem.</p>
+
+    <h6>Jestem świadomy</h6>
+</div>
+
+</html>
