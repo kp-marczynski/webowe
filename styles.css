@@ -348,6 +348,19 @@ textarea, .button {
     }
 }
 
+@media print {
+    .ugly-table, th, td {
+        border: 1pt solid black;
+    }
+
+    .pretty-table tr {
+        border: 1pt solid #ccc;
+    }
+
+    .header-image {
+        border: 1pt dashed red;
+    }
+}
 @keyframes spin {
     from {
         transform: rotate(0deg);
