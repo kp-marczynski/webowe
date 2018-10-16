@@ -285,11 +285,35 @@ textarea, .button {
     animation: fabAnim 1s ease;
 }
 
-
 .fab-email:hover i {
     animation: spin 1s ease;
 }
 
+.letter-image {
+    float: left;
+    width: 4em;
+    height: 6em;
+}
+
+.clear {
+    clear: both;
+}
+
+.first-paragraph {
+    padding-top: 1rem;
+    padding-left: 4.5rem;
+}
+
+/*odkomentować tylko, żeby pokazać jak działa static*/
+/*.main-content > p {*/
+/*position: absolute;*/
+/*left: 10px;*/
+/*top: 20px;*/
+/*}*/
+
+/*.main-content > p:nth-of-type(3) {*/
+/*position: static;*/
+/*}*/
 @media (min-width: 768px) {
     .page {
         padding: 2rem;
@@ -361,6 +385,7 @@ textarea, .button {
         border: 1pt dashed red;
     }
 }
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
