@@ -314,6 +314,19 @@ textarea, .button {
 /*.main-content > p:nth-of-type(3) {*/
 /*position: static;*/
 /*}*/
+
+.paragraphs, .links {
+    background-image: url("assets/images/musical-notes.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+.links {
+    background-repeat: repeat-x;
+    background-attachment: scroll;
+}
+
 @media (min-width: 768px) {
     .page {
         padding: 2rem;
