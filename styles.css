@@ -6,7 +6,7 @@
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box;: border-box;
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -134,7 +134,7 @@ meter {
     margin: auto;
 }
 
-header img, #spacer-image {
+header img, .spacer-image {
     display: block;
     margin: auto;
 }
@@ -251,12 +251,12 @@ textarea, .button {
     display: block;
 }
 
-#register-form {
+.register-form {
     margin-top: 1.5rem;
     max-width: 500px;
 }
 
-#personal-info-form {
+.personal-info-form {
     margin-top: 1.5rem;
     max-width: 700px;
 }
@@ -368,7 +368,7 @@ textarea, .button {
     }
 
     .main-content, aside {
-        display: inline-block;
+        display: block;
         float: left;
     }
 
@@ -466,6 +466,7 @@ textarea, .button {
         -o-transform: scale(1.1);
         transform: scale(1.1);
         bottom: 20px;
+        background: yellow;
         background: rgba(255, 255, 0, 0.7);
     }
     50% {
@@ -475,6 +476,7 @@ textarea, .button {
         -o-transform: scale(1);
         transform: scale(1);
         bottom: 10px;
+        background: royalblue;
         background: hsla(240, 100%, 65%, 1.0);
     }
     75% {
@@ -484,6 +486,7 @@ textarea, .button {
         -o-transform: scale(1.1);
         transform: scale(1.1);
         bottom: 8px;
+        background: green;
         background: hsla(120, 50%, 50%, 1.0);
     }
     100% {
@@ -493,6 +496,7 @@ textarea, .button {
         -o-transform: scale(1);
         transform: scale(1);
         bottom: 16px;
+        background: red;
         background: hsla(0, 100%, 50%, 1.0);
     }
 }
