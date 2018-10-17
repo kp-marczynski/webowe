@@ -7,11 +7,15 @@
 }
 
 .interest:checked {
-    box-shadow: 0 0 0 3px hotpink;;
+    -webkit-box-shadow: 0 0 0 3px hotpink;
+    -moz-box-shadow: 0 0 0 3px hotpink;
+    box-shadow: 0 0 0 3px hotpink;
 }
 
 .list-item:first-child {
     padding: 32px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     border-radius: 10px;
 }
 
@@ -91,5 +95,7 @@ input:required {
 
 /*#id in url*/
 div:target {
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
