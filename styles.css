@@ -315,7 +315,7 @@ textarea, .button {
 /*position: static;*/
 /*}*/
 
-.paragraphs, .links {
+.paragraphs, .links, .poll {
     background-image: url("assets/images/musical-notes.png");
     background-repeat: no-repeat;
     background-position: top;
@@ -325,6 +325,14 @@ textarea, .button {
 .links {
     background-repeat: repeat-x;
     background-attachment: scroll;
+    background-origin: content-box;
+}
+
+.poll {
+    background-repeat: repeat-y;
+    background-attachment: local;
+    background-position: left;
+    background-origin: content-box;
 }
 
 @media (min-width: 768px) {
