@@ -325,7 +325,7 @@ textarea, .button {
 .links {
     background-repeat: repeat-x;
     background-attachment: scroll;
-    background-origin: content-box;
+    background-origin: border-box;
 }
 
 .poll {
