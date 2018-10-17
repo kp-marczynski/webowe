@@ -43,11 +43,6 @@ form > label span, form > label input {
     width: 30%;
 }
 
-.format-info {
-    font-size: 75%;
-    color: var(--muted-text-color);
-}
-
 table {
     display: block;
     overflow-x: auto;
@@ -123,6 +118,11 @@ meter {
     margin: auto;
 }
 
+header img, .spacer-image {
+    display: block;
+    margin: auto;
+}
+
 .page {
     background-color: white;
     -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
@@ -134,9 +134,9 @@ meter {
     margin: auto;
 }
 
-header img, .spacer-image {
-    display: block;
-    margin: auto;
+.format-info {
+    font-size: 75%;
+    color: var(--muted-text-color);
 }
 
 .header-image {
