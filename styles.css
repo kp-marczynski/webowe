@@ -370,6 +370,18 @@ textarea, .button {
     radial-gradient(ellipse at bottom, #4d9f0c, transparent);
 }
 
+.image-border, .image-border-stretch {
+    border: 15px solid transparent;
+    padding: 15px;
+    border-image-source: url(assets/images/border.png);
+    border-image-repeat: round;
+    border-image-slice: 30;
+}
+
+.image-border-stretch {
+    border-image-repeat: stretch;
+}
+
 @media (min-width: 768px) {
     .page {
         padding: 2rem;
