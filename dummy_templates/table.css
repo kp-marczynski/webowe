@@ -1,0 +1,49 @@
+/* spacing */
+
+table {
+    /*takie wielkie są kolumny jak nagłówki*/
+    table-layout: fixed;
+    width: 100%;
+    /*Żeby się bordery nie dublowały*/
+    border-collapse: collapse;
+}
+
+thead th:nth-child(1) {
+    width: 30%;
+}
+
+thead th:nth-child(2) {
+    width: 20%;
+}
+
+thead th:nth-child(3) {
+    width: 15%;
+}
+
+thead th:nth-child(4) {
+    width: 35%;
+}
+
+tbody tr:nth-child(even) {
+    background: lightgray;
+}
+
+th, td {
+    padding: 20px;
+}
+
+th {
+    letter-spacing: 2px;
+}
+
+td {
+    letter-spacing: 1px;
+}
+
+tbody td {
+    text-align: center;
+}
+
+tfoot th {
+    text-align: right;
+}
