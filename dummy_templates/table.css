@@ -47,3 +47,46 @@ tbody td {
 tfoot th {
     text-align: right;
 }
+
+.animate-header {
+    transition: 1s ease-in-out;
+}
+
+.animate-header:hover {
+    transform: translate(3em, 0) rotate(180deg) scale(2);
+    border-radius: 50%;
+}
+
+.animatable {
+    --size: 5rem;
+    padding: 16px;
+    background: #2db34a;
+    width: var(--size);
+    height: var(--size);
+
+    /*cubic-bezier -> sam mówisz, jak ma być ( cubic-bezier(x1,y1,x2,y2) <-  )
+    So there are 4 points, but the function only mentions P1, and P2 with their corresponding X and Y values?
+
+For CSS Bézier Curves, P0 and P3 are always in the same spot. P0 is at (0,0) and P3 is at (1,1).
+An important thing to note is that the points that get passed in the cubic-bezier function can only be between 0 and 1.
+So if you decide to try something like cubic-bezier(2,3,5,2), you’ll be banished to linear easing, the worst of all easing functions.
+That’s like a font-family falling back to Comic Sans.
+
+
+
+    ease-in will start the animation slowly, and finish at full speed.
+    ease-out will start the animation at full speed, then finish slowly.
+    ease-in-out will start slowly, be fastest at the middle of the animation, then finish slowly.
+    ease is like ease-in-out, except it starts slightly faster than it ends.
+    linear uses no easing.
+    */
+
+    transition-timing-function: cubic-bezier(.22, 1.39, .51, -1.04);
+    transition-property: background, border-radius;
+    transition-duration: 1.5s;
+}
+
+.animatable:hover {
+    background: #ff7b29;
+    border-radius: 50%;
+}
