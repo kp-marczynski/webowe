@@ -339,6 +339,8 @@ textarea, .button {
     background-attachment: scroll;
     -webkit-background-origin: border-box;
     background-origin: border-box;
+    -webkit-background-size: 10rem 10rem;
+    background-size: 10rem 10rem;
 }
 
 .poll {
@@ -357,6 +359,15 @@ textarea, .button {
     -moz-column-gap: 50px;
     column-gap: 50px;
     column-rule: 10px double blueviolet;
+}
+
+.linear-gradient {
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+}
+
+.radial-gradient {
+    background: radial-gradient(ellipse at top, #e66465, transparent),
+    radial-gradient(ellipse at bottom, #4d9f0c, transparent);
 }
 
 @media (min-width: 768px) {
