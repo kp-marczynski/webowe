@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: music_shop_mysql
+    build:
+      context: .
+      dockerfile: docker/mysql/Dockerfile
+    ports:
+      - 3306:3308
+    environment:
+      MYSQL_USER: music_shop_admin
+      MYSQL_PASSWORD: music_shop_password
+      MYSQL_DATABASE: music_shop
+      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
+
+  php_app:
+    container_name: music_shop_php
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./Php:/srv/app
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: music_shop
+      DB_USER: music_shop_admin
+      DB_PASSWORD: music_shop_password
