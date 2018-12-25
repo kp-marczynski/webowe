@@ -1,4 +1,4 @@
-<html>
+<html lang="pl">
 <head>
     <link href="index.css" rel="stylesheet"/>
     <title>Sklep muzyczny</title>
