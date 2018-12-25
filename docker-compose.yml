@@ -7,12 +7,12 @@ services:
       context: .
       dockerfile: docker/mysql/Dockerfile
     ports:
-      - 3306:3308
+      - 3306:3306
     environment:
       MYSQL_USER: music_shop_admin
       MYSQL_PASSWORD: music_shop_password
       MYSQL_DATABASE: music_shop
-      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
 
   php_app:
     container_name: music_shop_php
