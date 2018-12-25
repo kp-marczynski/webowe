@@ -30,3 +30,13 @@ services:
       DB_DATABASE: music_shop
       DB_USER: music_shop_admin
       DB_PASSWORD: music_shop_password
+
+  dotnet_app:
+    container_name: music_shop_dotnet
+    build:
+      context: .
+      dockerfile: docker/dotnet/Dockerfile
+    ports:
+      - 8081:80
+    depends_on:
+      - mysql

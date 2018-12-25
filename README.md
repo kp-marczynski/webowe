@@ -22,10 +22,12 @@ docker-compose up -d
 ```
 
 Udostępniony jest serwer php, do którego można się dostać poprzez adres `http://localhost:8080`.
+Udostępniony jest server dotnet, do którego można się dostać poprzez adres `http://localhost:8081`
 Stworzony został też obraz mysql, który jest dostępny pod adresem `jdbc:mysql://localhost:3306`.
 
 UWAGA! Obrazy powstałe dzięki `docker-compose` nie mogą się komunikować poprzez `localhost`, 
-a muszą poprzez nazwę serwisu (sieci) w `docker-compose`, dlatego np. w php do bazy nie łączę się przez `localhost:3306`, a przez `mysql:3306`
+a muszą poprzez nazwę serwisu (sieci) w `docker-compose`, dlatego np. w php do bazy nie łączę się przez `localhost:3306`, a przez `mysql:3306`,
+a do aplikacji .dotnetowej z phpa strzelam pod `http://dotnet_app:8081`.
 
 ## Jak zatrzymać tę karuzelę?
 Jeżeli nie odpalaliśmy w tle (tj. bez flagi `-d`), to wystarczy zwykłe ubicie sesji terminala.
