@@ -27,7 +27,7 @@ $user = $_SESSION['user'];
         <ul class="left-menu">
             <li class="menu-item">
                 <a href="/">
-                    Strona główna
+                    Home
                 </a>
             </li>
             <li class="menu-item">
@@ -40,11 +40,11 @@ $user = $_SESSION['user'];
 
         <ul class="right-menu">
             <?php
-                if (isset($user)) {
-                    echo "<li class='menu-hello menu-item'>Witaj, $user</li><li class='menu-item'><a href='auth/logout'>Wyloguj</a></li>";
-                } else {
-                    echo "<li class='menu-item'><a href='auth/register'>Rejestracja</a></li><li class='menu-item'><a href='auth/login'>Logowanie</a></li>";
-                }
+            if (isset($user)) {
+                echo "<li class='menu-hello menu-item noselect'>Witaj, $user</li><li class='menu-item'><a href='auth/logout'>Wyloguj</a></li>";
+            } else {
+                echo "<li class='menu-item'><a href='auth/register'>Rejestracja</a></li><li class='menu-item'><a href='auth/login'>Logowanie</a></li>";
+            }
             ?>
         </ul>
     </nav>

@@ -1,12 +1,13 @@
 .nav-bar {
     z-index: 10;
+    width: 100%;
     background: var(--primary-color);
     height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all .4s ease-in-out;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .nav-bar.closed {
@@ -24,6 +25,7 @@
 .menu-item {
     height: 25%;
     width: 100%;
+    color: var(--text-color-on-primary);
 }
 
 .menu-item.menu-hello {
@@ -31,8 +33,8 @@
 }
 
 .menu-item a {
+    color: inherit;
     text-decoration: none;
-    color: var(--text-color-on-primary);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 1.5rem;
@@ -41,6 +43,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.menu-item:hover :not(.menu-hello) {
+    transition: all .2s ease-in-out;
+    background: var(--text-color-on-primary);
+    color: var(--primary-color);
 }
 
 .top-right-button {
@@ -58,11 +66,62 @@
 #open-navbar-button {
     background: var(--primary-color);
     border-radius: 50%;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 
 .top-right-button i {
     font-size: 2rem;
     color: var(--text-color-on-primary);
+}
+
+
+@media (min-width: 600px) {
+    .nav-bar.closed {
+        height: 4rem;
+    }
+
+    .nav-bar {
+        flex-direction: row;
+        position: fixed;
+        justify-content: space-between;
+    }
+
+    .top-right-button {
+        display: none;
+    }
+
+    .left-menu, .right-menu {
+        flex-direction: row;
+    }
+
+    .left-menu {
+        justify-content: flex-start;
+    }
+
+    .right-menu {
+        justify-content: flex-end;
+    }
+
+    .menu-item.menu-hello {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-item {
+        height: 100%;
+        width: 20vw;
+    }
+
+    .menu-item a {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .menu-item {
+        height: 100%;
+        width: 12rem;
+    }
 }
