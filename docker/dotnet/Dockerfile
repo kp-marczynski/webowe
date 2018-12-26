@@ -1,4 +1,7 @@
 FROM microsoft/dotnet:sdk AS build-env
+
+MAINTAINER Jakub Gruda & Krzyszfot Marczyński
+
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
