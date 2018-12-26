@@ -2,20 +2,20 @@ version: '3'
 
 services:
   mysql:
-    container_name: music_shop_mysql
+    container_name: muzyka4zycie_mysql
     build:
       context: .
       dockerfile: docker/mysql/Dockerfile
     ports:
       - 3306:3306
     environment:
-      MYSQL_USER: music_shop_admin
-      MYSQL_PASSWORD: music_shop_password
-      MYSQL_DATABASE: music_shop
+      MYSQL_USER: muzyka4zycie_admin
+      MYSQL_PASSWORD: muzyka4zycie_password
+      MYSQL_DATABASE: muzyka4zycie
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
 
   php_app:
-    container_name: music_shop_php
+    container_name: muzyka4zycie_php
     build:
       context: .
       dockerfile: docker/php/Dockerfile
@@ -27,12 +27,12 @@ services:
       - mysql
     environment:
       DB_HOST: mysql
-      DB_DATABASE: music_shop
-      DB_USER: music_shop_admin
-      DB_PASSWORD: music_shop_password
+      DB_DATABASE: muzyka4zycie
+      DB_USER: muzyka4zycie_admin
+      DB_PASSWORD: muzyka4zycie_password
 
   dotnet_app:
-    container_name: music_shop_dotnet
+    container_name: muzyka4zycie_dotnet
     build:
       context: .
       dockerfile: docker/dotnet/Dockerfile

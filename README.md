@@ -51,7 +51,7 @@ docker exec -it music_shop_mysql bash
 # root@{id}:/# mysql -u {MYSQL_USER} -p
 # Enter password: {MYSQL_PASSWORD}
 
-mysql> USE music_shop;
+mysql> USE muzyka4;
 mysql> SELECT * FROM users;
 
 ```

@@ -7,7 +7,7 @@ $user = $_SESSION['user'];
 <html lang="pl">
 <head>
     <link href="index.css" rel="stylesheet"/>
-    <title>Muzyka4życie</title>
+    <title>Muzyka4zycie</title>
 </head>
 <body>
 

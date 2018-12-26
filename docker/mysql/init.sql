@@ -1,4 +1,4 @@
-USE music_shop;
+USE muzyka4;
 
 CREATE TABLE IF NOT EXISTS users
 (

@@ -1,13 +1,13 @@
 <?php
 switch ($_SERVER["SCRIPT_NAME"]) {
     case "/auth/login.php":
-        $PAGE_TITLE = "Sklep muzyczny | Logowanie";
+        $PAGE_TITLE = "Muzyka4zycie | Logowanie";
         break;
     case "/auth/register.php":
-        $PAGE_TITLE = "Sklep muzyczny | Rejestracja";
+        $PAGE_TITLE = "Muzyka4zycie | Rejestracja";
         break;
     default:
-        $PAGE_TITLE = "Sklep muzyczny";
+        $PAGE_TITLE = "Muzyka4zycie";
 }
 ?>
 
