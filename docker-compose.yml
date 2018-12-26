@@ -30,6 +30,7 @@ services:
       DB_DATABASE: muzyka4zycie
       DB_USER: muzyka4zycie_admin
       DB_PASSWORD: muzyka4zycie_password
+      SHOP_URL_FRONT: http://localhost:8081
 
   dotnet_app:
     container_name: muzyka4zycie_dotnet
