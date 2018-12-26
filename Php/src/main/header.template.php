@@ -9,7 +9,9 @@ $user = $_SESSION['user'];
     <link href="/styles/index.css" rel="stylesheet"/>
     <link href="/styles/header.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/res/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
     <title>Muzyka4zycie</title>
 </head>
 <body>
@@ -26,8 +28,9 @@ $user = $_SESSION['user'];
     <nav class="nav-bar closed" id="nav-bar">
         <ul class="left-menu">
             <li class="menu-item">
-                <a href="/">
-                    Home
+                <a href="/" class="logo">
+                    <img src="/res/images/logo.svg"/>
+                    <p>Muzyka4zycie</p>
                 </a>
             </li>
             <li class="menu-item">

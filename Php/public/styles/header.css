@@ -76,6 +76,16 @@
 }
 
 
+.logo img {
+    width: 0;
+    background: var(--primary-color)
+}
+
+.logo p {
+    background: var(--primary-color);
+}
+
+
 @media (min-width: 600px) {
     .nav-bar.closed {
         height: 4rem;
@@ -115,7 +125,19 @@
     }
 
     .menu-item a {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+
+    .under-nav {
+        padding-top: 4rem;
+    }
+
+    .logo img {
+        width: 30px;
+    }
+
+    .logo p {
+        display: none;
     }
 }
 
@@ -123,5 +145,13 @@
     .menu-item {
         height: 100%;
         width: 12rem;
+    }
+
+    .logo p {
+        display: block;
+        letter-spacing: initial;
+        text-transform: none;
+        font-family: 'Charm', cursive;
+        padding-left: 1rem;
     }
 }
