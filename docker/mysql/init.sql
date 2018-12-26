@@ -1,4 +1,4 @@
-USE muzyka4;
+USE muzyka4zycie;
 
 CREATE TABLE IF NOT EXISTS users
 (

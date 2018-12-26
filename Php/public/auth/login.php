@@ -1,9 +1,9 @@
 <?php
-include('../../src/auth/LoginController.php');
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/LoginController.php';
 ?>
 
 <?php
-include('../../src/auth/auth-header.template.php')
+include dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/auth-header.template.php';
 ?>
 
     <article class="auth-form-page">
@@ -40,5 +40,5 @@ include('../../src/auth/auth-header.template.php')
     </article>
 
 <?php
-include('../../src/auth/auth-footer.template.php')
+include dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/auth-footer.template.php';
 ?>

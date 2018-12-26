@@ -2,8 +2,8 @@
 
 if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm-password'])) {
 
-    include('../../src/auth/AuthService.php');
-    include('../../src/auth/AuthDao.php');
+    include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/AuthService.php';
+    include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/AuthDao.php';
 
     $service = new AuthService(new AuthDao());
 
