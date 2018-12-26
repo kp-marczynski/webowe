@@ -1,25 +1,15 @@
 <?php
-session_start();
-
-$user = $_SESSION['user'];
-?>
-
-<html lang="pl">
-<head>
-    <link href="index.css" rel="stylesheet"/>
-    <title>Sklep muzyczny</title>
-</head>
-<body>
-<h1>Połączyłeś się z serwerem, brawo ty!</h1>
+include_once '../src/main/header.template.php';
 
 
-<?php
 if (isset($user)) {
     echo "Zalogowany jako $user";
 } else {
     echo "Niezalgoowany";
 }
 
+include_once '../src/main/header.template.php';
+
 ?>
-</body>
-</html>
+
+<h1>Połączyłeś się z serwerem, brawo ty!</h1>
