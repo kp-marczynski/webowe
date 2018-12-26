@@ -20,6 +20,7 @@ class AuthDao
         $statement->execute() or die(mysqli_error($this->connection));
     }
 
+
     public function loginUser($email, $password) {
         $statement = $this->connection->prepare("SELECT email, password FROM users WHERE email = ?");
         $statement->bind_param('s', $email);
@@ -40,6 +41,12 @@ class AuthDao
         }
 
         return $username;
+    }
 
+    public function insertToken($email, $token) {
+        $statement = $this->connection->prepare("UPDATE users SET token = ? WHERE email = ?");
+        $statement->bind_param('ss', $token, $email);
+
+        $statement->execute() or die(mysqli_error($this->connection));
     }
 }

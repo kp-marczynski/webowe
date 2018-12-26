@@ -25,4 +25,12 @@ class AuthService
         }
     }
 
+    function createTokenForUser($username) {
+        return md5(uniqid($username, true));
+    }
+
+    function insertToken($username, $token) {
+        $this->authDao->insertToken($username, $token);
+    }
+
 }

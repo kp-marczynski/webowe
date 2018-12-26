@@ -10,7 +10,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         session_start();
 
         $user = $service->loginUser($_POST['email'], $_POST['password']);
+        $token = $service->createTokenForUser($user);
+        $service->insertToken($user, $token);
+
         $_SESSION['user'] = $user;
+        setcookie('token', $token, time() + (60 * 60 * 24), "/");
 
         header("Location: /index");
         die();
