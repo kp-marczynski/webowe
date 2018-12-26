@@ -1,34 +1,34 @@
-<html lang="pl">
-<head>
-    <link href="../index.css" rel="stylesheet"/>
-    <link href="login.css" rel="stylesheet"/>
-    <title>Sklep muzyczny - Zaloguj się</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+<?php
+include('../../src/auth/auth-header.template.php')
+?>
 
-<article class="form-page">
+<?php
+include('../../src/auth/LoginController.php');
+?>
 
-    <form class="form-wrapper">
+<article class="auth-form-page">
 
-        <div class="form-input-wrapper">
+    <form class="auth-form-wrapper" method="post" action="login">
+
+        <div class="auth-form-input-wrapper">
             <input
                     name="email"
                     type="email"
-                    class="form-input"
+                    class="auth-form-input"
                     placeholder="Podaj swój email">
 
             <input
                     name="password"
                     type="password"
-                    class="form-input"
+                    class="auth-form-input"
                     placeholder="Podaj swoje hasło">
         </div>
 
-        <button type="submit" class="form-button">Zaloguj się</button>
+        <button type="submit" class="auth-form-button">Zaloguj się</button>
 
     </form>
 </article>
 
-</body>
-</html>
+<?php
+include('../../src/auth/auth-footer.template.php')
+?>

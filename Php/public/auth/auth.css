@@ -1,9 +1,9 @@
-.form-page {
+.auth-form-page {
     background: var(--background);
     height: 100vh;
 }
 
-.form-wrapper {
+.auth-form-wrapper {
     background: var(--card-background);
     position: absolute;
     width: 100%;
@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-.form-input-wrapper {
+.auth-form-input-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,7 +25,7 @@
     margin-bottom: 2rem;
 }
 
-.form-input {
+.auth-form-input {
     padding: 1rem 1.5rem;
     border: 1px solid var(--primary-color);
     border-radius: 36px;
@@ -35,7 +35,7 @@
 }
 
 
-.form-button {
+.auth-form-button {
     padding: 1rem;
     background: var(--primary-color);
     color: var(--text-color-on-primary);
@@ -47,8 +47,8 @@
 }
 
 @media (min-width: 600px) {
-    .form-wrapper {
-        height: 300px;
+    .auth-form-wrapper {
+        height: 400px;
         width: 90%;
         top: 50%;
         left: 50%;
@@ -56,13 +56,13 @@
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
 
-    .form-input-wrapper {
+    .auth-form-input-wrapper {
         margin-top: 0;
     }
 }
 
 @media (min-width: 900px) {
-    .form-wrapper {
+    .auth-form-wrapper {
         width: 50%;
     }
 }
