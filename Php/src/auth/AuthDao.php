@@ -12,14 +12,34 @@ class AuthDao
 
     public function createUser($email, $password)
     {
-        $escaped_email = mysqli_real_escape_string($this->connection, $email);
-        $escaped_password = mysqli_real_escape_string($this->connection, $password);
-
-        $hash = password_hash($escaped_password, PASSWORD_BCRYPT);
+        $hash = password_hash($password, PASSWORD_BCRYPT);
 
         $statement = $this->connection->prepare("INSERT INTO users(email, password, role) VALUES (?, ?, 'USER')");
-        $statement->bind_param('ss', $escaped_email, $hash);
+        $statement->bind_param('ss', $email, $hash);
 
         $statement->execute() or die(mysqli_error($this->connection));
+    }
+
+    public function loginUser($email, $password) {
+        $statement = $this->connection->prepare("SELECT email, password FROM users WHERE email = ?");
+        $statement->bind_param('s', $email);
+
+        $statement->execute() or die(mysqli_error($this->connection));
+
+        $result = $statement->get_result();
+
+        if (!$row = $result->fetch_row()) {
+            return null;
+        }
+
+        $username = $row[0];
+        $password_hash = $row[1];
+
+        if (!password_verify($password, $password_hash)) {
+            return null;
+        }
+
+        return $username;
+
     }
 }

@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$user = $_SESSION['user'];
+?>
+
 <html lang="pl">
 <head>
     <link href="index.css" rel="stylesheet"/>
@@ -8,11 +14,11 @@
 
 
 <?php
-
-echo "Elo";
-include('../src/config/dbCredentials.php');
-
-$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE);
+if (isset($user)) {
+    echo "Zalogowany jako $user";
+} else {
+    echo "Niezalgoowany";
+}
 
 ?>
 </body>

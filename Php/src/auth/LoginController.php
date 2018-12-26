@@ -1,11 +1,21 @@
 <?php
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
-    echo "Podali emaij, super!";
-    echo "";
-    echo $_POST['email'];
-}
+    include('../../src/auth/AuthService.php');
+    include('../../src/auth/AuthDao.php');
 
-else {
-    echo "Nie podali nic :///";
+    $service = new AuthService(new AuthDao());
+
+    try {
+        session_start();
+
+        $user = $service->loginUser($_POST['email'], $_POST['password']);
+        $_SESSION['user'] = $user;
+
+        header("Location: /index");
+        die();
+
+    } catch (Exception $e) {
+        $error = "Invalid username or password";
+    }
 }
