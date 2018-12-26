@@ -31,6 +31,7 @@ include('../../src/auth/auth-header.template.php')
             </div>
 
             <button type="submit" class="auth-form-button">Stwórz konto</button>
+            <a href="login" class="auth-toggle-link">Masz już konto? Zaloguj się</a>
 
         </form>
     </article>

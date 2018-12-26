@@ -3,7 +3,10 @@
     --muted-text-color: #6c757d;
     --card-background: #ffffff;
     --background: #f2f2f2;
-    --primary-color: #7b68ee;
+    --primary-color: #4f8f5f;
+    --secondary-color: #c98e75;
+    --error-color: #e74c3c;
+    --error-background: bisque;
     --text-color-on-primary: #fff;
 }
 
@@ -26,5 +29,5 @@
 }
 
 input, label {
-    display:block;
+    display: block;
 }

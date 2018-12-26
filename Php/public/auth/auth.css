@@ -50,14 +50,20 @@
     position: absolute;
     top: 1rem;
     padding: 1rem;
-    background: bisque;
-    color: red;
+    background: var(--error-background);
+    color: var(--error-color);
     width: 90%;
     border-radius: 1rem;
-    border: 1px solid red;
+    border: 1px solid var(--error-color);
     text-align: center;
 }
 
+
+.auth-toggle-link {
+    margin-top: 1rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
 
 @media (min-width: 600px) {
     .auth-form-wrapper {
