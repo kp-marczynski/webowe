@@ -60,7 +60,7 @@ if ($isRestrictedUrl && !isset($user)) {
         <ul class="right-menu">
             <?php
             if (isset($user)) {
-                echo "<li class='menu-hello menu-item noselect'>Witaj, $user</li><li class='menu-item'><a href='auth/logout'>Wyloguj</a></li>";
+                echo "<li class='menu-hello menu-item noselect'>$user</li><li class='menu-item'><a href='auth/logout'>Wyloguj</a></li>";
             } else {
                 echo "<li class='menu-item'><a href='auth/register'>Rejestracja</a></li><li class='menu-item'><a href='auth/login'>Logowanie</a></li>";
             }
