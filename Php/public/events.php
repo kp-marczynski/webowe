@@ -3,7 +3,7 @@ include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php
 ?>
 
 <?php
-include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/EventsController.php';
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/events/EventsController.php';
 $controller = new EventsController();
 ?>
     <main class="under-nav">

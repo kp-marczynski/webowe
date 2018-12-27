@@ -8,6 +8,8 @@ services:
       dockerfile: docker/mysql/Dockerfile
     ports:
       - 3306:3306
+    volumes:
+      -  ./docker/mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf
     environment:
       MYSQL_USER: muzyka4zycie_admin
       MYSQL_PASSWORD: muzyka4zycie_password

@@ -11,8 +11,9 @@ class EventsController
      */
     public function __construct()
     {
-        include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/EventsService.php';
-        $this->service = new EventsService(null);
+        include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/events/EventsService.php';
+        include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/events/EventsDao.php';
+        $this->service = new EventsService(new EventsDao());
     }
 
 
