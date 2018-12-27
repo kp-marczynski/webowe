@@ -54,6 +54,8 @@
     text-transform: uppercase;
     width: 90%;
     border-radius: 36px;
+    transition: .3s all ease-in-out;
+    cursor: pointer;
 }
 
 .auth-form-error {
@@ -73,11 +75,40 @@
     margin-top: 1rem;
     color: var(--secondary-color);
     text-decoration: none;
+
+    position: relative;
+}
+
+.auth-toggle-link:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--secondary-color);
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.auth-toggle-link:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 .auth-form-image-wrapper {
     display: none;
 }
+
+.auth-form-button:hover {
+    transform: scale(.98);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 
 @media (min-width: 600px) {
     .auth-form-card {
