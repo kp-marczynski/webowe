@@ -65,7 +65,7 @@ function startValidatingRegistrationForm() {
             message: "Gratulacje! Twoje konto zostało stworzone z sukcesem. Możesz już zacząć wyszukiwać i tworzyć ciekawe wydarzenia!",
             okMessage: "Super",
             cancelMessage: "Cofnij",
-            onOk: () => window.location.href = "/",
+            onOk: () => window.location.href = "/events",
         });
 
         dialog.open();

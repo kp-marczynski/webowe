@@ -1,7 +1,21 @@
 <?php
 session_start();
-
 $user = $_SESSION['user'];
+
+$url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+$restrictedUrls = ['events'];
+
+$isRestrictedUrl = !empty(array_filter($restrictedUrls, function ($restrictedUrl) use($url) {
+    return strpos($url, $restrictedUrl) !== false;
+}));
+
+if ($isRestrictedUrl && !isset($user)) {
+    header('Location: /auth/login');
+    die();
+}
+
+
 ?>
 
 <html lang="pl">
@@ -34,10 +48,10 @@ $user = $_SESSION['user'];
                     <p>Muzyka4zycie</p>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"'?>>
                 <a href="/events">Wydarzenia</a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"'?>>
                 <a href=<?php echo $_ENV['SHOP_URL_FRONT']?>>
                     Koszyk</a>
             </li>

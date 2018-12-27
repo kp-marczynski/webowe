@@ -12,7 +12,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $user = $authService->loginUser($_POST['email'], $_POST['password']);
         $sessionService->saveSession($user);
 
-        header("Location: /index");
+        header("Location: /events");
         die();
 
     } catch (Exception $e) {
