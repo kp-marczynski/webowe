@@ -8,6 +8,7 @@ $user = $_SESSION['user'];
 <head>
     <link href="/styles/index.css" rel="stylesheet"/>
     <link href="/styles/header.css" rel="stylesheet"/>
+    <link href="/styles/events.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/res/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

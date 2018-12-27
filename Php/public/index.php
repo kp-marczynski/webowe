@@ -2,9 +2,38 @@
 include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php';
 ?>
 
+<?php
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/EventsController.php';
+$controller = new EventsController();
+?>
     <main class="under-nav">
-        <h1>Połączyłeś się z serwerem, brawo ty!</h1>
+
+        <article class="all-events">
+
+            <?php
+            $events = $controller->findAllEvents();
+            foreach ($events as $event) {
+
+                $html = "
+<section class='event'>
+    <img class='event-img' alt='$event->name' src='$event->imageUrl'/>
+    <h4 class='event-name'> $event->name </h4>
+    <h6 class='event-meta'>{$event->getMeta()}</h6>
+    <p class='event-short-info'>$event->shortInfo</p>
+            
+
+</section>
+            ";
+
+                echo $html;
+            }
+
+            ?>
+
+        </article>
     </main>
+
+
 <?php
 include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/footer.template.php';
 ?>
