@@ -19,6 +19,15 @@ include dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/auth-header.template.php
 
             <div class="auth-form-wrapper">
 
+                <?php
+
+                if (isset($error)) {
+                    echo "<div class='auth-form-error'>
+                $error
+            </div>";
+                }
+                ?>
+
                 <div class="auth-form-input-wrapper">
                     <input
                             name="email"

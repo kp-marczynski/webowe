@@ -50,4 +50,13 @@ class AuthDao
 
         $statement->execute() or die(mysqli_error($this->connection));
     }
+
+    public function emailExists($email) {
+        $statement = $this->connection->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
+        $statement->bind_param('s', $email);
+        $statement->execute() or die(mysqli_error($this->connection));
+
+        $row = $statement->get_result()->fetch_row();
+        return $row[0] > 0;
+    }
 }

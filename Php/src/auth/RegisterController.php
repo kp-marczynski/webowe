@@ -7,8 +7,18 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm
 
     $service = new AuthService(new AuthDao());
 
-    $service->createUser($_POST['email'], $_POST['password']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $confirmPassword = trim($_POST['confirm-password']);
 
-    header("Location: /index");
-    die();
+    $errors = $service->validateRegistration($email, $password, $confirmPassword);
+
+    if (!empty($errors)) {
+        $error = implode("|", $errors);
+    } else {
+        $service->createUser($email, $password);
+
+        header("Location: /index");
+        die();
+    }
 }
