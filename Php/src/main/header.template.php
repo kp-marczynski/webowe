@@ -35,7 +35,7 @@ $user = $_SESSION['user'];
                 </a>
             </li>
             <li class="menu-item">
-                <a href="#">Wydarzenia</a>
+                <a href="/events">Wydarzenia</a>
             </li>
             <li class="menu-item">
                 <a href=<?php echo $_ENV['SHOP_URL_FRONT']?>>
