@@ -52,8 +52,23 @@ function startValidatingRegistrationForm() {
 }
 
 (function () {
-    if (window.location.href.includes("register"))
+    if (window.location.href.includes("register")) {
         startValidatingRegistrationForm();
+    }
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const isSuccess = !!urlParams.get('success');
+
+    if (isSuccess) {
+        const dialog = createActionDialog({
+            title: "Stworzono konto",
+            message: "Gratulacje! Twoje konto zostało stworzone z sukcesem. Możesz już zacząć wyszukiwać i tworzyć ciekawe wydarzenia!",
+            okMessage: "Super",
+            cancelMessage: "Cofnij",
+            onOk: () => window.location.href = "/",
+        });
+
+        dialog.open();
+    }
 
 })();

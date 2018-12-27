@@ -18,7 +18,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm
     } else {
         $service->createUser($email, $password);
 
-        header("Location: /index");
+        header("Location: /auth/register?success=true");
         die();
     }
 }

@@ -13,6 +13,11 @@
     --card-meta-text: #757575;
     --disabled-background: #dddddd;
     --disabled-color: #9b9b9b;
+
+    --dialog-background: #ffffff;
+    --dialog-title-color: rgba(0, 0, 0, .87);
+    --dialog-text-color: rgba(0, 0, 0, .6);
+    --dialog-button-hover-background: rgba(79, 143, 95, .08);
 }
 
 * {
@@ -55,6 +60,7 @@ li {
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                     supported by Chrome and Opera */
 }
