@@ -104,11 +104,21 @@
     display: none;
 }
 
-.auth-form-button:hover {
+.auth-form-button:hover:enabled {
     transform: scale(.98);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.auth-form-button:disabled {
+    color: var(--disabled-color);
+    background: var(--disabled-background);
+    cursor: not-allowed;
+}
+
+.auth-form-input.error {
+    border-color: red;
+    animation: shake .4s;
+}
 
 @media (min-width: 600px) {
     .auth-form-card {
@@ -159,4 +169,12 @@
     .auth-form-error {
         width: 90%;
     }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
 }

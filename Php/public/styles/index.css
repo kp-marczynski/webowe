@@ -11,6 +11,8 @@
     --text-color-on-primary: #fff;
     --card-text: #232F34;
     --card-meta-text: #757575;
+    --disabled-background: #dddddd;
+    --disabled-color: #9b9b9b;
 }
 
 * {

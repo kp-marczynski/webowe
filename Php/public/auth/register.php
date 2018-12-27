@@ -48,7 +48,7 @@ include dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/auth-header.template.php
                             placeholder="Potwierdź swoje hasło">
                 </div>
 
-                <button type="submit" class="auth-form-button">Stwórz konto</button>
+                <button type="submit" class="auth-form-button" disabled>Stwórz konto</button>
                 <a href="login" class="auth-toggle-link">Masz już konto? Zaloguj się</a>
             </div>
 
