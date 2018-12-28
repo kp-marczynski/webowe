@@ -11,6 +11,7 @@
     border-radius: 2px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
+    position: relative;
     display: flex;
     flex-direction: column;
 
@@ -21,9 +22,6 @@
     transition: .3s ease-in-out;
 }
 
-.event:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
 
 .event-name {
     color: var(--card-text);
@@ -51,6 +49,27 @@
 .event-short-info {
     padding: 16px;
     color: var(--card-text);
+}
+
+.event-actions {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    user-select: none;
+}
+
+i.add-shopping-cart {
+    color: var(--primary-color);
+    padding: .8rem;
+    border-radius: 50%;
+    transition: all .2s ease-in-out;
+}
+
+i.add-shopping-cart:hover {
+    background: var(--dialog-button-hover-background);
+    transform: scale(.9);
 }
 
 @media (min-width: 600px) {

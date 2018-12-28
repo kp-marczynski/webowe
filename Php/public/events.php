@@ -20,6 +20,9 @@ $controller = new EventsController();
     <h4 class='event-name'> $event->name </h4>
     <h6 class='event-meta'>{$event->getMeta()}</h6>
     <p class='event-short-info'>$event->shortInfo</p>
+    <div class='event-actions'>
+     <i class='material-icons add-shopping-cart' onclick='addToCard(" . $event->id . ")'>add_shopping_cart</i>
+</div>
             
 
 </section>

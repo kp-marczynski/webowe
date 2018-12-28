@@ -1,21 +1,15 @@
 <?php
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/cart/CartService.php';
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/auth/ProtectedResourcesGuard.php';
 session_start();
+ProtectedResourcesGuard::verifyAccess();
+
 $user = $_SESSION['user'];
 
-$url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-
-$restrictedUrls = ['events'];
-
-$isRestrictedUrl = !empty(array_filter($restrictedUrls, function ($restrictedUrl) use($url) {
-    return strpos($url, $restrictedUrl) !== false;
-}));
-
-if ($isRestrictedUrl && !isset($user)) {
-    header('Location: /auth/login');
-    die();
+$eventsInCart = CartService::countEventsInCart();
+if ($eventsInCart > 0) {
+    $eventsInCartToDisplay = $eventsInCart;
 }
-
-
 ?>
 
 <html lang="pl">
@@ -49,11 +43,13 @@ if ($isRestrictedUrl && !isset($user)) {
                     <p>Muzyka4zycie</p>
                 </a>
             </li>
-            <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"'?>>
+            <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"' ?>>
                 <a href="/events">Wydarzenia</a>
             </li>
-            <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"'?>>
-                <a href=<?php echo $_ENV['SHOP_URL_FRONT']?>>
+            <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"' ?>>
+                <span class="cart-items"
+                      id="cart-items" <?php echo isset($eventsInCartToDisplay) ? "" : "style='display: none'" ?>><?php echo $eventsInCartToDisplay ?></span>
+                <a href=<?php echo $_ENV['SHOP_URL_FRONT'] ?>>
                     Koszyk</a>
             </li>
         </ul>
