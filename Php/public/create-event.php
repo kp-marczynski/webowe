@@ -1,0 +1,143 @@
+<?php
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php';
+?>
+
+<?php
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/events/EventsController.php';
+$controller = new EventsController();
+?>
+
+<main class="under-nav">
+
+    <form class="add-event-form" action="create-event.php">
+        <h2 class="add-event-title">Dodaj nowe wydarzenie</h2>
+
+        <div class="add-event-image-wrapper">
+            <h5 class="add-event-image-title">Dodaj zdjęcie</h5>
+            <img    class="add-event-image"
+                    src="/res/images/placeholder.png">
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-image-url">
+                    Wklej adres zdjęcia
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">cloud_queue</i>
+                    <input
+                            name="event-image-url"
+                            id="event-image-url"
+                            type="url"
+                            class="add-event-form-input"
+                            placeholder="URL">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="add-event-all-inputs">
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-name">
+                    Nazwa wydarzenia
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">star</i>
+                    <input
+                            name="event-name"
+                            id="event-name"
+                            type="text"
+                            class="add-event-form-input"
+                            placeholder="Nazwa">
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-date">
+                    Data wydarzenia
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">date_range</i>
+                    <input
+                            name="event-date"
+                            id="event-date"
+                            type="date"
+                            class="add-event-form-input"
+                            placeholder="Data">
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-price">
+                    Cena
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">attach_money</i>
+                    <input
+                            name="event-price"
+                            id="event-price"
+                            type="number"
+                            class="add-event-form-input"
+                            placeholder="Cena">
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Miasto
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <select name="event-place" id="event-place" class="add-event-form-input">
+                        <option>Wrocław</option>
+                        <option>Warszawa</option>
+                        <option>Kalisz</option>
+                        <option>Leszno</option>
+                        <option>Zduńska Wola</option>
+                        <option>Kraków</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-tickets">
+                    Liczba dostępnych biletów
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">aspect_ratio</i>
+                    <input
+                            name="event-tickets"
+                            id="event-tickets"
+                            type="number"
+                            class="add-event-form-input"
+                            placeholder="Bilety">
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-description">
+                    Opis wydarzenia
+                </label>
+
+                <textarea
+                        name="event-tickets"
+                        id="event-tickets"
+                        class="add-event-form-text-area"
+                        placeholder="Dodaj opis wydarzenia"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="add-event-form-button" disabled>Utwórz wydarzenie</button>
+    </form>
+
+</main>
+
+<?php
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/footer.template.php';
+?>

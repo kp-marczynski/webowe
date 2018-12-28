@@ -36,6 +36,10 @@ $controller = new EventsController();
         </article>
     </main>
 
+    <a class="fab" href="/create-event">
+        <i class="material-icons">add</i>
+    </a>
+
 
 <?php
 include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/footer.template.php';
