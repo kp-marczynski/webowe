@@ -15,6 +15,7 @@ if ($eventsInCart > 0) {
 <html lang="pl">
 <head>
     <link href="/styles/index.css" rel="stylesheet"/>
+    <link href="/styles/utils.css" rel="stylesheet"/>
     <link href="/styles/header.css" rel="stylesheet"/>
     <link href="/styles/events.css" rel="stylesheet"/>
     <link href="/styles/add-event.css" rel="stylesheet"/>

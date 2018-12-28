@@ -7,5 +7,6 @@
 <script src="/scripts/dialogs.js"></script>
 <script src="/scripts/index.js"></script>
 <script src="/scripts/events.js"></script>
+<script src="/scripts/add-event.js"></script>
 </body>
 </html>

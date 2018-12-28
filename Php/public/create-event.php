@@ -15,6 +15,7 @@ $controller = new EventsController();
         <div class="add-event-image-wrapper">
             <h5 class="add-event-image-title">Dodaj zdjęcie</h5>
             <img    class="add-event-image"
+                    id="add-event-image"
                     src="/res/images/placeholder.png">
 
             <div class="add-event-row-wrapper">
@@ -32,6 +33,38 @@ $controller = new EventsController();
                             placeholder="URL">
                 </div>
             </div>
+
+            <section class="add-event-row-wrapper">
+                <h5 class="add-event-row-title">Zaznacz dodatkowe informacje o wydarzeniu</h5>
+               <label class="checkbox-wrapper">
+                   <input type="checkbox" name="additional-info" value="DOGS">
+                   <span>Można przyjść ze zwierzętami</span>
+               </label>
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" name="additional-info" value="DANGER">
+                    <span>Impreza o podwyższonym ryzyku</span>
+                </label>
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" name="additional-info" value="VIP">
+                    <span>Wydzielona strefa dla VIPów</span>
+                </label>
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" name="additional-info" value="ALCOHOL">
+                    <span>Możliwy zakup alkoholu</span>
+                </label>
+            </section>
+
+            <section class="add-event-row-wrapper">
+                <h5 class="add-event-row-title">Zaznacz przedział wiekowy</h5>
+                <div class="radio-wrapper">
+                    <input type="radio" name="age" value="ALL" id="add-event-radio-all">
+                    <label for="add-event-radio-all">Impreza dozwolona dla wszystkich</label>
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="age" value="ADULTS" id="add-event-radio-adults">
+                    <label for="add-event-radio-adults">Tylko dla dorosłych</label>
+                </div>
+            </section>
 
         </div>
 
@@ -126,14 +159,14 @@ $controller = new EventsController();
                 </label>
 
                 <textarea
-                        name="event-tickets"
-                        id="event-tickets"
+                        name="event-description"
+                        id="event-description"
                         class="add-event-form-text-area"
                         placeholder="Dodaj opis wydarzenia"></textarea>
             </div>
         </div>
 
-        <button type="submit" class="add-event-form-button" disabled>Utwórz wydarzenie</button>
+        <button type="submit" class="add-event-form-button" id="add-event-form-button" disabled>Utwórz wydarzenie</button>
     </form>
 
 </main>
