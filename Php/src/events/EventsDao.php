@@ -32,10 +32,10 @@ class EventsDao
      */
     public function createEvent($event)
     {
-        $statement = $this->connection->prepare("INSERT INTO events(name, price, place, date, short_info, description, image_url, number_of_available_tickets, created_by) 
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $statement = $this->connection->prepare("INSERT INTO events(name, price, place, date, short_info, description, image_url, number_of_available_tickets, created_by, age_range, additional_info) 
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $statement->bind_param('sdsssssii',
+        $statement->bind_param('sdsssssiiss',
             $event->name,
             $event->price,
             $event->place,
@@ -44,7 +44,9 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $event->description,
             $event->imageUrl,
             $event->availableTickets,
-            $event->createdBy);
+            $event->createdBy,
+            $event->ageRange,
+            $event->additionalInfo);
 
         $statement->execute() or die(mysqli_error($this->connection));
         return $statement->insert_id;

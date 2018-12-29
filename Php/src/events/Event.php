@@ -12,6 +12,8 @@ class Event
     public $imageUrl;
     public $availableTickets;
     public $createdBy;
+    public $ageRange;
+    public $additionalInfo;
 
     /**
      * Event constructor.
@@ -25,8 +27,10 @@ class Event
      * @param $imageUrl
      * @param $availableTickets
      * @param $createdBy
+     * @param $ageRange
+     * @param $additionalInfo
      */
-    public function __construct($id, $name, $price, $place, $date, $shortInfo, $description, $imageUrl, $availableTickets, $createdBy)
+    public function __construct($id, $name, $price, $place, $date, $shortInfo, $description, $imageUrl, $availableTickets, $createdBy, $ageRange, $additionalInfo)
     {
         $this->id = $id;
         $this->name = $name;
@@ -38,6 +42,8 @@ class Event
         $this->imageUrl = $imageUrl;
         $this->availableTickets = $availableTickets;
         $this->createdBy = $createdBy;
+        $this->ageRange = $ageRange;
+        $this->additionalInfo = $additionalInfo;
     }
 
 
@@ -53,7 +59,9 @@ class Event
             $result['description'],
             $result['image_url'],
             $result['number_of_available_tickets'],
-            $result['created_by']
+            $result['created_by'],
+            $result['age_range'],
+            $result['additional_info']
         );
     }
 

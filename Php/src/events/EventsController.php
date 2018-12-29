@@ -81,7 +81,9 @@ class EventsController
             $description,
             empty($imageUrl) ? "/res/images/placeholder.png" : $imageUrl,
             $tickets,
-            $userId
+            $userId,
+            $age,
+            implode("|", $additionalInfo)
         );
 
         return $this->service->createEvent($event);

@@ -73,7 +73,7 @@ include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php
                     <label for="add-event-radio-all">Impreza dozwolona dla wszystkich</label>
                 </div>
                 <div class="radio-wrapper">
-                    <input type="radio" name="age" value="ADULTS" id="add-event-radio-adults">
+                    <input type="radio" name="age" value="ADULTS_ONLY" id="add-event-radio-adults">
                     <label for="add-event-radio-adults">Tylko dla dorosłych</label>
                 </div>
             </section>
