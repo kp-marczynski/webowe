@@ -26,7 +26,7 @@
 
 .add-event-row-wrapper {
     width: 100%;
-    margin-bottom: 1.3rem;
+    margin-bottom: 1.4rem;
     display: flex;
     flex-direction: column;
 }
@@ -34,6 +34,13 @@
 .add-event-img-input-wrapper {
     position: relative;
     width: 100% ;
+}
+
+.add-event-img-input-wrapper.error .add-event-form-input {
+    border-color: var(--error-color);
+}
+.add-event-img-input-wrapper.error i.add-event-input-img {
+    color: var(--error-color);
 }
 
 i.add-event-input-img {
@@ -102,6 +109,20 @@ i.add-event-input-img {
     margin-bottom: 1rem;
 }
 
+.add-event-buttons-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: -8.5rem;
+    width: 90%;
+}
+
+button[type=reset].add-event-form-button {
+    background: var(--error-color);
+}
+
 .add-event-form-button {
     padding: 1rem;
     background: var(--primary-color);
@@ -112,10 +133,8 @@ i.add-event-input-img {
     border-radius: 36px;
     transition: .3s all ease-in-out;
     cursor: pointer;
-    position: absolute;
-    bottom: -4rem;
-    right: 1rem;
-    width: 90%;
+    width: 100%;
+    margin-bottom: .7rem;
 }
 
 .add-event-form-button:hover:enabled {
@@ -136,6 +155,13 @@ i.add-event-input-img {
     width: 100%;
 }
 
+.add-event-input-error {
+    color: var(--error-color);
+    position: absolute;
+    left: 2rem;
+    font-size: .8rem;
+}
+
 select.add-event-form-input {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -148,7 +174,6 @@ select.add-event-form-input {
         align-items: baseline;
         padding: 2rem;
         margin-top: 11rem;
-
     }
 
     .add-event-form-button {
@@ -159,7 +184,13 @@ select.add-event-form-input {
         width: 80%;
         flex: 1;
         padding: 0 3rem;
+    }
 
+    .add-event-buttons-wrapper {
+        width: 100%;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        bottom: -5rem;
     }
 
     .add-event-image-wrapper .add-event-row-wrapper {

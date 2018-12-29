@@ -88,9 +88,10 @@
     opacity: 0.04;
 }
 
-.checkbox-wrapper > input:focus {
-    opacity: 0.12;
-}
+/*done in js*/
+/*.checkbox-wrapper > input:focus {*/
+    /*opacity: 0.12;*/
+/*}*/
 
 .checkbox-wrapper:hover > input:focus {
     opacity: 0.16;

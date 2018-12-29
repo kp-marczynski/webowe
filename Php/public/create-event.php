@@ -9,13 +9,14 @@ $controller = new EventsController();
 
 <main class="under-nav">
 
-    <form class="add-event-form" action="create-event.php">
+    <form class="add-event-form" action="create-event.php" method="post">
         <h2 class="add-event-title">Dodaj nowe wydarzenie</h2>
 
         <div class="add-event-image-wrapper">
             <h5 class="add-event-image-title">Dodaj zdjęcie</h5>
             <img    class="add-event-image"
                     id="add-event-image"
+                    onerror="alert('Nie można załadować zdjęcia')"
                     src="/res/images/placeholder.png">
 
             <div class="add-event-row-wrapper">
@@ -57,7 +58,7 @@ $controller = new EventsController();
             <section class="add-event-row-wrapper">
                 <h5 class="add-event-row-title">Zaznacz przedział wiekowy</h5>
                 <div class="radio-wrapper">
-                    <input type="radio" name="age" value="ALL" id="add-event-radio-all">
+                    <input type="radio" name="age" value="ALL" id="add-event-radio-all" checked>
                     <label for="add-event-radio-all">Impreza dozwolona dla wszystkich</label>
                 </div>
                 <div class="radio-wrapper">
@@ -166,7 +167,10 @@ $controller = new EventsController();
             </div>
         </div>
 
+        <div class="add-event-buttons-wrapper">
         <button type="submit" class="add-event-form-button" id="add-event-form-button" disabled>Utwórz wydarzenie</button>
+        <button type="reset" class="add-event-form-button" id="add-event-form-reset-button">Zresetuj ustawienia</button>
+        </div>
     </form>
 
 </main>
