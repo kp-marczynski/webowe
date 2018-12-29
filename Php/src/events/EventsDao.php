@@ -6,9 +6,9 @@ class EventsDao
 
     public function __construct()
     {
-        include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/config/dbCredentials.php';
+        include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/config/dbConfig.php';
 
-        $this->connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE) or die("Cannot connect to db");
+        $this->connection = createDatabaseConnection();
     }
 
     public function findAllEvents()
@@ -50,5 +50,51 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         $statement->execute() or die(mysqli_error($this->connection));
         return $statement->insert_id;
+    }
+
+    public function updateEvent($event)
+    {
+        $statement = $this->connection->prepare("UPDATE events
+SET name                        = ?,
+    price                       = ?,
+    place                       = ?,
+    date                        = ?,
+    short_info                  = ?,
+    description                 = ?,
+    image_url                   = ?,
+    number_of_available_tickets = ?,
+    age_range                   = ?,
+    additional_info             = ?
+WHERE id = ?");
+
+        $statement->bind_param('sdsssssissi',
+            $event->name,
+            $event->price,
+            $event->place,
+            $event->date,
+            $event->shortInfo,
+            $event->description,
+            $event->imageUrl,
+            $event->availableTickets,
+            $event->ageRange,
+            $event->additionalInfo,
+            $event->id);
+
+        $statement->execute() or die(mysqli_error($this->connection));
+        return $event->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Event
+     */
+    public function findEvent($id)
+    {
+        $statement = $this->connection->prepare("SELECT * FROM events where id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute() or die(mysqli_error($this->connection));
+
+        $row = $statement->get_result()->fetch_array();
+        return Event::fromDbResult($row);
     }
 }

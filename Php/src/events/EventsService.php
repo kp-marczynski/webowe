@@ -34,4 +34,18 @@ class EventsService
         return $this->eventDao->createEvent($event);
     }
 
+    /**
+     * @param int $id
+     * @return Event
+     */
+    public function findEvent($id)
+    {
+        return $this->eventDao->findEvent($id);
+    }
+
+    public function updateEvent($event)
+    {
+        return $this->eventDao->updateEvent($event);
+    }
+
 }

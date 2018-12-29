@@ -47,8 +47,9 @@ function getTomorrowDate() {
         imageDom.src = imageUrlInput.value || '/res/images/placeholder.png';
     });
 
-
-    document.getElementById('event-date').valueAsDate = getTomorrowDate();
+    if (!document.getElementById('event-date').value.length) {
+        document.getElementById('event-date').valueAsDate = getTomorrowDate();
+    }
 
     const inputsToValidate = inputs.map((inp) => ({...inp, dom: document.getElementById(inp.id)}));
 

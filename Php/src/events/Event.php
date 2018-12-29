@@ -65,9 +65,20 @@ class Event
         );
     }
 
+    public function hasImageToDisplay() {
+        return !empty($this->imageUrl) && $this->imageUrl != '/res/images/placeholder.png';
+    }
+
+    public function hasAdditionalInfo($info) {
+        return strpos($this->additionalInfo, $info) !== false;
+    }
+
+    public function dateToJsFormat() {
+        return date("Y-m-d", $this->date);
+    }
 
     public function getMeta()
     {
-        return date("m/d/y g:i", $this->date) . ", " . $this->place;
+        return date("d/m/Y g:i", $this->date) . ", " . $this->place;
     }
 }

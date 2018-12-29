@@ -6,9 +6,9 @@ class AuthDao
 
     public function __construct()
     {
-        include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/config/dbCredentials.php';
+        include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/config/dbConfig.php';
 
-        $this->connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE) or die("Cannot connect to db");
+        $this->connection = createDatabaseConnection();
     }
 
     public function createUser($email, $password)

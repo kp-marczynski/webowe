@@ -91,6 +91,10 @@
     transform: scale(.9);
 }
 
+.event-anchor {
+    text-decoration: none;
+}
+
 i.add-shopping-cart {
     color: var(--primary-color);
     padding: .8rem;
