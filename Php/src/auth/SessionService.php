@@ -20,6 +20,7 @@ class SessionService
         $this->authService->insertToken($email, $token);
 
         $_SESSION['user'] = $email;
+        $_SESSION['userId'] = $this->authService->getIdByEmail($email);
         setcookie('token', $token, time() + (60 * 60 * 24), "/");
     }
 

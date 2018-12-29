@@ -1,11 +1,22 @@
 <?php
-include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php';
+session_start();
+
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/events/EventsController.php';
+$controller = new EventsController();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userId = $_SESSION['userId'];
+
+    $controller->createFromPost($_POST, $userId);
+    header("Location: /events");
+    die();
+}
 ?>
 
 <?php
-include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/events/EventsController.php';
-$controller = new EventsController();
+include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php';
 ?>
+
 
 <main class="under-nav">
 
@@ -14,10 +25,10 @@ $controller = new EventsController();
 
         <div class="add-event-image-wrapper">
             <h5 class="add-event-image-title">Dodaj zdjęcie</h5>
-            <img    class="add-event-image"
-                    id="add-event-image"
-                    onerror="alert('Nie można załadować zdjęcia')"
-                    src="/res/images/placeholder.png">
+            <img class="add-event-image"
+                 id="add-event-image"
+                 onerror="alert('Nie można załadować zdjęcia')"
+                 src="/res/images/placeholder.png">
 
             <div class="add-event-row-wrapper">
                 <label class="add-event-input-label" for="event-image-url">
@@ -37,20 +48,20 @@ $controller = new EventsController();
 
             <section class="add-event-row-wrapper">
                 <h5 class="add-event-row-title">Zaznacz dodatkowe informacje o wydarzeniu</h5>
-               <label class="checkbox-wrapper">
-                   <input type="checkbox" name="additional-info" value="DOGS">
-                   <span>Można przyjść ze zwierzętami</span>
-               </label>
                 <label class="checkbox-wrapper">
-                    <input type="checkbox" name="additional-info" value="DANGER">
+                    <input type="checkbox" name="additional-info[]" value="DOGS">
+                    <span>Można przyjść ze zwierzętami</span>
+                </label>
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" name="additional-info[]" value="DANGER">
                     <span>Impreza o podwyższonym ryzyku</span>
                 </label>
                 <label class="checkbox-wrapper">
-                    <input type="checkbox" name="additional-info" value="VIP">
+                    <input type="checkbox" name="additional-info[]" value="VIP">
                     <span>Wydzielona strefa dla VIPów</span>
                 </label>
                 <label class="checkbox-wrapper">
-                    <input type="checkbox" name="additional-info" value="ALCOHOL">
+                    <input type="checkbox" name="additional-info[]" value="ALCOHOL">
                     <span>Możliwy zakup alkoholu</span>
                 </label>
             </section>
@@ -115,7 +126,8 @@ $controller = new EventsController();
                             id="event-price"
                             type="number"
                             class="add-event-form-input"
-                            placeholder="Cena">
+                            placeholder="Cena"
+                            value="100">
                 </div>
             </div>
 
@@ -131,7 +143,7 @@ $controller = new EventsController();
                         <option>Warszawa</option>
                         <option>Kalisz</option>
                         <option>Leszno</option>
-                        <option>Zduńska Wola</option>
+                        <option selected>Zduńska Wola</option>
                         <option>Kraków</option>
 
                     </select>
@@ -150,7 +162,8 @@ $controller = new EventsController();
                             id="event-tickets"
                             type="number"
                             class="add-event-form-input"
-                            placeholder="Bilety">
+                            placeholder="Bilety"
+                            value="100">
                 </div>
             </div>
 
@@ -168,8 +181,10 @@ $controller = new EventsController();
         </div>
 
         <div class="add-event-buttons-wrapper">
-        <button type="submit" class="add-event-form-button" id="add-event-form-button" disabled>Utwórz wydarzenie</button>
-        <button type="reset" class="add-event-form-button" id="add-event-form-reset-button">Zresetuj ustawienia</button>
+            <button type="submit" class="add-event-form-button" id="add-event-form-button" disabled>Utwórz wydarzenie
+            </button>
+            <button type="reset" class="add-event-form-button" id="add-event-form-reset-button">Zresetuj ustawienia
+            </button>
         </div>
     </form>
 

@@ -25,4 +25,13 @@ class EventsService
        return $this->eventDao->findAllEvents();
     }
 
+
+    /**
+     * @param Event $event
+     * @return int
+     */
+    public function createEvent($event) {
+        return $this->eventDao->createEvent($event);
+    }
+
 }

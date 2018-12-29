@@ -30,6 +30,12 @@ const inputs = [
     }
 ];
 
+function getTomorrowDate() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow;
+}
+
 (function () {
 
     const imageDom = document.getElementById('add-event-image');
@@ -40,6 +46,9 @@ const inputs = [
     imageUrlInput.addEventListener('keyup', () => {
         imageDom.src = imageUrlInput.value || '/res/images/placeholder.png';
     });
+
+
+    document.getElementById('event-date').valueAsDate = getTomorrowDate();
 
     const inputsToValidate = inputs.map((inp) => ({...inp, dom: document.getElementById(inp.id)}));
 

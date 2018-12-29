@@ -21,6 +21,15 @@ class AuthDao
         $statement->execute() or die(mysqli_error($this->connection));
     }
 
+    public function getIdByEmail($email) {
+        $statement = $this->connection->prepare("SELECT id FROM users WHERE email = ?");
+        $statement->bind_param('s', $email);
+        $statement->execute() or die(mysqli_error($this->connection));
+
+        $row = $statement->get_result()->fetch_row();
+        return $row[0];
+    }
+
 
     public function loginUser($email, $password) {
         $statement = $this->connection->prepare("SELECT email, password FROM users WHERE email = ?");

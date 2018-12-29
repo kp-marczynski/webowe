@@ -6,6 +6,10 @@ class AuthService
     private $authDao;
     private static $EMAIL_PATTERN = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
 
+    /**
+     * AuthService constructor.
+     * @param AuthDao $authDao
+     */
     public function __construct($authDao)
     {
         $this->authDao = $authDao;
@@ -34,6 +38,9 @@ class AuthService
         $this->authDao->insertToken($username, $token);
     }
 
+    function getIdByEmail($email) {
+        return $this->authDao->getIdByEmail($email);
+    }
 
     /**
      * @param String $email
