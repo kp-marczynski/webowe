@@ -44,6 +44,10 @@ class EventsController
         return $d && $d->format($format) === $date && $d >= new DateTime();
     }
 
+    function deleteEvent($eventId) {
+        $this->service->deleteEvent($eventId);
+    }
+
 
     /**
      * @param String[] $POST

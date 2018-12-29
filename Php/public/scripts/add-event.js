@@ -97,3 +97,17 @@ function getTomorrowDate() {
         })
 
 })();
+
+
+async function removeEvent(eventId, eventName) {
+    const userAnswer = prompt(`Zamierzasz usunąć wydarzenie ${eventName}. Aby potwierdzić, wpisz nazwę wydarzenia`);
+
+    if (userAnswer.trim().toLocaleLowerCase() === eventName.trim().toLocaleLowerCase()) {
+
+        await fetch(`${window.BACKEND_URL}/delete-event?eventId=${eventId}`, {
+            method: 'DELETE'
+        });
+        window.location.href = "/events";
+
+    }
+}

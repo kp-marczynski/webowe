@@ -97,4 +97,11 @@ WHERE id = ?");
         $row = $statement->get_result()->fetch_array();
         return Event::fromDbResult($row);
     }
+
+    public function deleteEvent($eventId)
+    {
+        $statement = $this->connection->prepare("DELETE FROM events where id = ?");
+        $statement->bind_param("i", $eventId);
+        $statement->execute() or die(mysqli_error($this->connection));
+    }
 }

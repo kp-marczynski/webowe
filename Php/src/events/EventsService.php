@@ -48,4 +48,9 @@ class EventsService
         return $this->eventDao->updateEvent($event);
     }
 
+    public function deleteEvent($eventId)
+    {
+        $this->eventDao->deleteEvent($eventId);
+    }
+
 }

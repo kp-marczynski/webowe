@@ -1,11 +1,13 @@
 <?php
 session_start();
 
-function isUpdatingExistingEvent() {
+function isUpdatingExistingEvent()
+{
     return isset($_GET['eventId']) && $_SERVER['REQUEST_METHOD'] === 'POST';
 }
 
-function isCreatingNewEvent() {
+function isCreatingNewEvent()
+{
     return $_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET['eventId']);
 }
 
@@ -16,9 +18,7 @@ $eventId = $_GET['eventId'];
 
 if (isUpdatingExistingEvent()) {
     $controller->updateFromPost($_POST, $eventId);
-}
-// Creating new event
-else if (isCreatingNewEvent()) {
+} else if (isCreatingNewEvent()) {
     $userId = $_SESSION['userId'];
 
     $controller->createFromPost($_POST, $userId);
@@ -35,7 +35,6 @@ if (isset($eventId)) {
 <?php
 include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php';
 ?>
-
 
 <main class="under-nav">
     <form class="add-event-form"
@@ -232,6 +231,12 @@ include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php
             </button>
             <button type="reset" class="add-event-form-button" id="add-event-form-reset-button">Zresetuj ustawienia
             </button>
+            <?php echo "
+            <button type='button' class='add-event-form-button' id='add-event-form-remove-button'
+                    onclick='removeEvent($event->id, \"$event->name\")'
+            >USUŃ WYDARZENIE
+            </button>"
+            ?>
         </div>
     </form>
 
