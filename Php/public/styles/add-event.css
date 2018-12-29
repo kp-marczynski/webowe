@@ -15,6 +15,14 @@
     top: 5rem;
 }
 
+.add-event-form input,
+.add-event-form select,
+.add-event-form textarea
+{
+    background: var(--dialog-background);
+    color: var(--card-text);
+}
+
 .add-event-all-inputs {
     display: flex;
     flex-direction: column;

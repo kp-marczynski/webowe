@@ -20,6 +20,7 @@ if ($eventsInCart > 0) {
     <link href="/styles/events.css" rel="stylesheet"/>
     <link href="/styles/add-event.css" rel="stylesheet"/>
     <link href="/styles/landing.css" rel="stylesheet"/>
+    <link href="/styles/user.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/res/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -59,7 +60,7 @@ if ($eventsInCart > 0) {
         <ul class="right-menu">
             <?php
             if (isset($user)) {
-                echo "<li class='menu-hello menu-item noselect'>$user</li><li class='menu-item'><a href='auth/logout'>Wyloguj</a></li>";
+                echo "<li class='menu-item'><a href='user'>$user</a></li><li class='menu-item'><a href='auth/logout'>Wyloguj</a></li>";
             } else {
                 echo "<li class='menu-item'><a href='auth/register'>Rejestracja</a></li><li class='menu-item'><a href='auth/login'>Logowanie</a></li>";
             }

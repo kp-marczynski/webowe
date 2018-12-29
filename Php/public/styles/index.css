@@ -18,13 +18,15 @@
     --dialog-title-color: rgba(0, 0, 0, .87);
     --dialog-text-color: rgba(0, 0, 0, .6);
     --dialog-button-hover-background: rgba(79, 143, 95, .08);
+
+    --font-family: 'Roboto', sans-serif;
 }
 
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family);
     border: none;
     margin: 0;
     padding: 0;
@@ -32,6 +34,7 @@
 
 body {
     background: var(--background);
+    color: var(--not-black-color);
 }
 
 @font-face {

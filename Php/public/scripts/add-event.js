@@ -37,6 +37,9 @@ function getTomorrowDate() {
 }
 
 (function () {
+    if (!window.location.href.includes("create-event")) {
+        return;
+    }
 
     const imageDom = document.getElementById('add-event-image');
     const imageUrlInput = document.getElementById('event-image-url');
