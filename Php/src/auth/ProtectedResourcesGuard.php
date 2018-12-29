@@ -9,7 +9,7 @@ class ProtectedResourcesGuard
 
         $user = $_SESSION['user'];
         $url = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-        $restrictedUrls = ['events'];
+        $restrictedUrls = ['events', 'create-event'];
 
         $isRestrictedUrl = !empty(array_filter($restrictedUrls, function ($restrictedUrl) use ($url) {
             return strpos($url, $restrictedUrl) !== false;
