@@ -49,6 +49,8 @@ class Event
 
     public static function fromDbResult($result)
     {
+
+        // tablice asocjacyjne,
         return new Event(
             $result['id'],
             $result['name'],

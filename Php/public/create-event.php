@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+/*
+ * Skrypt powinien wykrywać, czy jest to rejestracja nowego użytkownika, czy wpisane dane są poprawne
+ *  (walidacja na podstawie wyrażeń regularnych) i jeśli tak, zapisać je do bazy oraz wyświetlić stosowny komunikat.
+ *  Innymi słowy, skrypt w zależności od kontekstu powinien generować formularz (pusty lub wypełniony) lub dokonywać
+ * zapisu danych do bazy
+ * */
+
+/// window.alert()
+
 function isUpdatingExistingEvent()
 {
     return isset($_GET['eventId']) && $_SERVER['REQUEST_METHOD'] === 'POST';
@@ -8,6 +17,7 @@ function isUpdatingExistingEvent()
 
 function isCreatingNewEvent()
 {
+    // inne tablice superglobalne
     return $_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET['eventId']);
 }
 
@@ -231,6 +241,8 @@ include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php
             </button>
             <button type="reset" class="add-event-form-button" id="add-event-form-reset-button">Zresetuj ustawienia
             </button>
+<!--            znaki specjalne w łańcuchach (rola
+odwrotnego ukośnika-->
             <?php echo "
             <button type='button' class='add-event-form-button' id='add-event-form-remove-button'
                     onclick='removeEvent($event->id, \"$event->name\")'

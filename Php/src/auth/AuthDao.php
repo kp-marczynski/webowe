@@ -24,8 +24,10 @@ class AuthDao
     public function getIdByEmail($email) {
         $statement = $this->connection->prepare("SELECT id FROM users WHERE email = ?");
         $statement->bind_param('s', $email);
+//        mysqli_error
         $statement->execute() or die(mysqli_error($this->connection));
 
+//        mysqli_fetch_row()
         $row = $statement->get_result()->fetch_row();
         return $row[0];
     }
@@ -39,6 +41,7 @@ class AuthDao
 
         $result = $statement->get_result();
 
+        // tablice indeksowane numerycznie
         if (!$row = $result->fetch_row()) {
             return null;
         }

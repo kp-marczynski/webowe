@@ -8,6 +8,7 @@ async function addToCard(eventId) {
     });
 
     const itemsCountDom = document.getElementById('cart-items');
+    //parseInt
     const items = parseInt(itemsCountDom.innerText || 0, 10);
     itemsCountDom.style.display = 'flex';
     itemsCountDom.innerText = items + 1;

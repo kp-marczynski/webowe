@@ -3,6 +3,21 @@ session_start();
 $userId = $_SESSION['userId'];
 $user = $_SESSION['user'];
 
+/*
+ * Witrynę należy wyposażyć w mechanizm umożliwiający zmianę i zapamiętanie jej wyglądu (krój i kolor czcionki, kolor tła itp.).
+ *  Można np. przygotować kilka garniturów stylów, które użytkownik będzie mógł wybierać w zależności od swoich preferencji.
+ * Preferencje użytkownika serwer ma przechowywać w ciastku. Na podstawie zapisanych w ciastku danych, serwer ma odpowiednio
+ * modyfikować strony witryny i przesyłać je do przeglądarki*/
+
+/*
+ * Należy skorzystać z następujących elementów języka PHP:
+funkcja setcookie() – inicjuje ciastko,
+funkcja time() – podaje aktualny znacznik czasu (przydaje się do wyznaczani terminu
+ważności ciastka),
+tablica $_COOKIE – przechowuje wartości ciastek.
+
+ * */
+
 if (isset($_POST['theme'])) {
     setcookie('theme', $_POST['theme'], time() + (60 * 60 * 24), "/");
     $_COOKIE['theme'] = $_POST['theme'];

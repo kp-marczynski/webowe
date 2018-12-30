@@ -31,7 +31,8 @@ function createActionDialog({title, message, okMessage, cancelMessage, onOk, onC
     dialogSection.style.boxShadow = '0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12)';
 
 
-    titleDom.innerText = title;
+    //właściwość innerHTML
+    titleDom.innerHTML = `<span>${title}</span>`;
     titleDom.style.fontSize = '1.25rem';
     titleDom.style.fontWeight = '500';
     titleDom.style.lineHeight = '1.6';

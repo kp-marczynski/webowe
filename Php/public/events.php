@@ -15,8 +15,10 @@ $controller = new EventsController();
 
             <?php
             $events = $controller->findAllEvents();
-            foreach ($events as $event) {
 
+            // instrukcje sterujące for oraz funkcje count,
+            for ($i = 0; $i < count($events); $i++) {
+                $event = $events[$i];
                 $html = "
 <section class='event'>
     <img class='event-img' alt='$event->name' src='$event->imageUrl'/>
@@ -24,7 +26,7 @@ $controller = new EventsController();
     <h6 class='event-meta'>{$event->getMeta()}</h6>
     <p class='event-short-info'>$event->shortInfo</p>
     <div class='event-actions'>" . ($event->createdBy == $userId
-                        ? "<a href='create-event?eventId=" .  $event->id ."' class='event-anchor'><i class='material-icons add-shopping-cart'>edit</i></a>"
+                        ? "<a href='create-event?eventId=" . $event->id . "' class='event-anchor'><i class='material-icons add-shopping-cart'>edit</i></a>"
                         : "") .
                     "<i class='material-icons add-shopping-cart' onclick='addToCard(" . $event->id . ")'>add_shopping_cart</i>
 </div>

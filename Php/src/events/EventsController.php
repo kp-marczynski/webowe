@@ -40,6 +40,7 @@ class EventsController
 
     private static function isDateValid($date, $format = 'Y-m-d')
     {
+        //  operatory przypisania, operatory porównania, pierwszeństwo operatorów
         $d = DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) === $date && $d >= new DateTime();
     }
@@ -71,6 +72,7 @@ class EventsController
         if (!empty($errors))
             throw new RuntimeException(implode("|", $errors));
 
+        // rzutowanie
         $event = new Event((int)$eventId,
             $name,
             $price,
@@ -140,6 +142,7 @@ class EventsController
 
     private function validateEvent($name, $date, $price, $place, $tickets)
     {
+        // typowanie dynamiczne
         $errors = [];
         if (empty($name) || empty($date) || empty($price) || empty($place) || empty($tickets)) {
             $errors[] = "Wymagane pola nie są uzupełnione";

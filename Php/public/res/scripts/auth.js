@@ -32,6 +32,7 @@ function startValidatingRegistrationForm() {
 
     const formInputs = [emailInput, passwordInput, confirmPasswordInput];
 
+    //button.addEventListener()
     formInputs.forEach(dom =>
         dom.addEventListener('keyup', () =>
             validateForm(errors => confirmButton.disabled = errors.length !== 0)));

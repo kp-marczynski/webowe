@@ -9,6 +9,7 @@ function closeNav() {
 }
 
 function openNav() {
+    // document.getElementById()
     ['remove-navbar-button', 'nav-bar']
         .map(id => document.getElementById(id))
         .forEach(dom => dom.classList.remove('closed'));

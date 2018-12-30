@@ -13,15 +13,16 @@ class EventsDao
 
     public function findAllEvents()
     {
-        $statement = $this->connection->prepare("SELECT * FROM events");
-        $statement->execute() or die(mysqli_error($this->connection));
+//       mysqli_query
+        $result  = $this->connection->query("SELECT * FROM events");
 
-        $result = $statement->get_result();
         $events = [];
 
         while ($row = $result->fetch_array()) {
             $events[] = Event::fromDbResult($row);
         }
+
+        $result->close();
 
         return $events;
     }

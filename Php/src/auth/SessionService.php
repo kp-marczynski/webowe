@@ -21,6 +21,8 @@ class SessionService
 
         $_SESSION['user'] = $email;
         $_SESSION['userId'] = $this->authService->getIdByEmail($email);
+
+        // operatory arytmetyczne
         setcookie('token', $token, time() + (60 * 60 * 24), "/");
     }
 

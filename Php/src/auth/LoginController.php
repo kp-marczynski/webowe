@@ -13,6 +13,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $sessionService->saveSession($user);
 
         header("Location: /events");
+        // funkcja die.
         die();
 
     } catch (Exception $e) {

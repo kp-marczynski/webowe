@@ -1,10 +1,11 @@
 <?php
 
+// stałe
+define('EMAIL_PATTERN', "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i");
 class AuthService
 {
 
     private $authDao;
-    private static $EMAIL_PATTERN = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
 
     /**
      * AuthService constructor.
@@ -12,6 +13,7 @@ class AuthService
      */
     public function __construct($authDao)
     {
+        //operatory przypisania
         $this->authDao = $authDao;
     }
 
@@ -56,7 +58,7 @@ class AuthService
             return $errors;
         }
 
-        if (!preg_match(AuthService::$EMAIL_PATTERN, $email)) {
+        if (!preg_match(EMAIL_PATTERN, $email)) {
             $errors[] = "Niepoprawny email";
         }
 

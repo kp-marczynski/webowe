@@ -3,8 +3,14 @@
 class ProtectedResourcesGuard
 {
 
+    /*
+     *  funkcja session_start() – inicjuje mechanizm sesji,
+        tablica $_SESSION – przechowuje wartości zmiennych sesji,
+        funkcja isset($_SESSION[’zmienna’]) – sprawdza status zmiennej sesji.
+     * */
 
-    public static function verifyAccess() {
+    public static function verifyAccess()
+    {
         session_start();
 
         $user = $_SESSION['user'];
