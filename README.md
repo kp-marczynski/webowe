@@ -341,3 +341,69 @@ to trzeba konfigurować w kliencie (js) i jest trudnij to zrobić
 `session_start` tworzy albo kontynuuje wcześniej stworzoną sesja (patrzy na wartość cookie PHPSESSID albo query stringa).
 Tworzy to tymczasowy plik na serwerze (w odróżnieniu od ciastka, który jest zapisany w przeglądarce), w którym są
 zapisane parametry jakie sobie zdefiniujemy.
+
+### PHP 3.17
+#### Omów funkcje realizujące dostęp i operacje na bazie i tablicy danych. Co określa format otrzymanych danych?
+Jest 2,75 opcji dostępu do bazy (MySQL)
+Kiedyś był pakiet mysql*, ale był słaby (nie było transakcji ani prepared_statement itp) i go wycofali,
+w zamian za to dali mysqli* (mysql improved xD), który ma mniej więcej to samo, ale lepiej + dużo więcej.
+Jest jeszcze nowe API - PDO, ale nie było na listach to olewamy xD.
+
+Łączymy się z bazą `mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_DATABASE)`.
+Na listach oczekują, że będziemy używali `mysqli->query(SELECT * FROM USERS WHERE ID = $_POST['ID'])` jak zwierzęta
+i musimy ręcznie escapować (o ile ogarniemy) parametry żeby nam nikt nie zrobił sql injection itp.
+
+U nas w kodzie jest robimy
+```php
+<?
+$statement = $connection->prepare("SELECT * FROM USERS WHERE ID = ?");
+$statement->bind_param("i", $_POST['id']);
+```
+i się nie musimy martwić (btw. strasznie słabe API tu jest, gdzie w 1. parametrze `bind_param` musimy
+przepazywać jaki parametr jaki ma tym, tj dla 2 stringów i inta musimy przekazać `ssi`).
+Potem robimy `$statement->execute()` żeby się wywołało, ale żeby dobrać się do wyników to 
+trzeba się bawić w 
+`$statement->get_result()->fetch_all();` żeby nam zwróciło tablicę (indeksowaną lub asocjacyjną) z wynikami.
+
+Wszystko jest stringiem. Problemy później tylko są z datą, którą sobie ręcznie mapujemy na datę phpa
+
+#### Jak realizuje się obsługę błędów dla funkcji operacji na bazie danych?
+Jak ktoś zrealizuje tak ma xD Nie ma reguły.
+Można zrobić
+```php
+<?
+ $statement->execute() or die(mysqli_error($this->connection));
+```
+
+`die` kończy skrypt i się printuje error.
+Można wyjątki rzucać i łapać, co kto lubi
+
+#### Jak należy postępować ze znakami specjalnymi PHP (takimi jak np. nawiasy w numerze telefonu) przy formułowaniu zapytań SQL?
+Jak kto używa `prepared_statement` to się nie musi tym martwić.
+Jak ktoś sam skleja query ze stringa to musi dać coś typu `quotemeta()`, które
+dodaje slashe przed znakami specjalnymi, albo lepiej - `mysql_real_escape_string`
+
+
+#### Omów mechanizm tworzenia formularza z już wprowadzonymi danymi.
+Można na kilka sposobów. U nas robimy tak, że najpierw sprawdzamy czy tworzony nowy czy edytowany
+istniejący (po parametrze w urlu). Jeżeli edytujemy istniejące, to do inputów
+itp dodajemy atrybut `value` z wartością równą tej z bazy.
+Żeby jak najmniej duplikować kod to mamy coś typu:
+```php
+<?php 
+if (cośtam) cośtam;
+
+$event = getFromDb($_GET['eventId']);
+?>
+
+...
+<input
+    name="event-name"
+    id="event-name"
+    type="text"
+    class="add-event-form-input"
+    placeholder="Nazwa"
+<?php echo isset($event) ? "value='" . $event->name . "'" : '' ?>
+...
+
+```
