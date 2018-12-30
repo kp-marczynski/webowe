@@ -293,3 +293,51 @@ echo $_POST['hehe'];
 #### Jak realizuje się walidację danych z formularza? 
 Jak się chce xD Sprawdzasz w `$_POST` regexem czy jak tam potrzebujesz, wykorzystujesz metody
 `preg_match` do sprawdzania regexa
+
+### Php 2.13
+
+#### Opisz sekwencję wymiany wiadomości, gdy klient i serwer korzystają z ciastek. W którym miejscu wiadomości HTTP przesyłane są ciastka?
+Cookie są zapisywane w przeglądarce użytkownika i są wysyłane w każdym requeście (o ile w ścieżce nie podaliśmy inaczej) jako nagłówek HTTP.
+Wymiana wygląda następująco
+1) Przeglądarka wysyła żądanie HTTP
+2) Serwer odpowiada dodając nagłówek `Set-Cookie: $nazwa=$wartosc`
+3) Przeglądarka wysyła requesty już z dodatkowyn nagłówkiem `Cookie: $nazwa=$wartosc`
+4) Serwer odpowiada normalnie i wszyscy są szczęśliwi
+
+#### Omów działanie funkcji setcookie().
+`setcookie` definiuje wartość ciastka, jakie będzie wysłane jako nagłówek w odpowiedzi serwera.
+UWAGA! Wywołanie musi nastąpić przed tagiem `<html>` (zanim cokolwiek wyślemy do klienta).
+Funkcję ma sygnaturę `setcookie(nazwaCiastka, wartosc, czas w którym ma wygasnąć, ścieżka na której ma być wysyłane ciastko);`
+Rozważmy następujący przypadek:
+```php
+<?php 
+setcookie("nazwa", "wartosc", time() + (60 * 60 * 24), "/");
+?>
+<html>
+<body>
+<?php echo $_COOKIE['nazwa']; ?>
+</body>
+</html>
+```
+Przy pierwszym załadowaniu strony serwer oprócz htmla zwróci header mówiący o potrzebie utworzenia ciasteczka przez przeglądarkę.
+UWAGA! W tym momencie w tablicy `$_COOKIE` nic jeszcze nie ma!
+Dopiero w ponownym żądaniu (kiedy przeglądarka wyśle nagłówek Cookie) będzie tam wartość.
+#### Zastanów się nad funkcjonalnością stron w przypadku wyłączenia zapisu ciastek w przeglądarce. Czy jest jakieś alternatywne rozwiązanie?
+Ogarnięcie czy są wyłaczone cookiesy można na 2 sposoby - w jsie jest easy, albo w phpie można ustawić ciastko, 
+odświeżyć i sprawdzić, czy jest ustawione.
+Ale co tu zrobić?
+
+1) Można wysyłać id sesji w urlu (tak se bezpiecznie, ale zawsze działa). Można to easy zrobić w php
+```php
+<?
+     ini_set("session.use_cookies", 0);
+     ini_set("session.use_only_cookies", 0);
+     ini_set("session.use_trans_sid", 1);
+```
+2) Można id sesji (lub jakiś jwt token) przesyłać w każdym żądaniu po stronie jsa, ale
+to trzeba konfigurować w kliencie (js) i jest trudnij to zrobić
+
+#### Opisz zasadę działania mechanizmu sesji. Omów działanie funkcji session_start().
+`session_start` tworzy albo kontynuuje wcześniej stworzoną sesja (patrzy na wartość cookie PHPSESSID albo query stringa).
+Tworzy to tymczasowy plik na serwerze (w odróżnieniu od ciastka, który jest zapisany w przeglądarce), w którym są
+zapisane parametry jakie sobie zdefiniujemy.
