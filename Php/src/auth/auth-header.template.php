@@ -13,8 +13,8 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 
 <html lang="pl">
 <head>
-    <link href="/styles/index.css" rel="stylesheet"/>
-    <link href="/auth/auth.css" rel="stylesheet"/>
+    <link href="/res/styles/index.css" rel="stylesheet"/>
+    <link href="/res/styles/auth.css" rel="stylesheet"/>
     <link rel="icon" href="/res/images/favicon.ico" type="image/x-icon"/>
     <title><?php echo $PAGE_TITLE ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
