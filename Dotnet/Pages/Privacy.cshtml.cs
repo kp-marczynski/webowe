@@ -7,10 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Sklep.Pages
 {
-    public class PrivacyModel : PageModel
+    public class PrivacyModel : LayoutModel
     {
-        public void OnGet()
-        {
-        }
+
     }
 }

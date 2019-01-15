@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Sklep.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel : LayoutModel
     {
-        public void OnGet()
-        {
-
-        }
+//        public void OnGet()
+//        {
+//            base.OnGet();
+//        }
     }
 }

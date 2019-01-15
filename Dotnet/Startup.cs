@@ -31,7 +31,7 @@ namespace Sklep
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.ConfigureMySqlContext(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
