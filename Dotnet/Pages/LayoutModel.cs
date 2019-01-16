@@ -7,6 +7,7 @@ namespace Sklep.Pages
     public abstract class LayoutModel : PageModel
     {
         public string UserToken { get; set; }
+        public string Theme { get; set; }
         public List<string> ItemsInCart { get; set; }
         public int ItemsInCartCount { get; set; }
         public readonly string PhpAddress = "http://localhost:8080"; 
@@ -15,8 +16,14 @@ namespace Sklep.Pages
 
         public void OnGet()
         {
-            UserToken = Request.Cookies["token"];
+            Theme = Request.Cookies["theme"];
+            if (string.IsNullOrEmpty(Theme))
+            {
+                Theme = "LIGHT_THEME";
+            }
 
+            UserToken = Request.Cookies["token"];
+            
             var itemsJson = Request.Cookies["items-in-cart"];
             if (!string.IsNullOrEmpty(itemsJson))
             {
