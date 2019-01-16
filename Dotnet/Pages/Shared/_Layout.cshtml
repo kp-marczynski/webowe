@@ -1,87 +1,98 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Sklep</title>
 
-    <link href="http://localhost:8080/res/styles/index.css" rel="stylesheet"/>
-    <link href="http://localhost:8080/res/styles/utils.css" rel="stylesheet"/>
-    <link href="http://localhost:8080/res/styles/header.css" rel="stylesheet"/>
-    <link href="http://localhost:8080/res/styles/events.css" rel="stylesheet"/>
-    <link href="http://localhost:8080/res/styles/add-event.css" rel="stylesheet"/>
-    <link href="http://localhost:8080/res/styles/landing.css" rel="stylesheet"/>
-    <link href="http://localhost:8080/res/styles/user.css" rel="stylesheet"/>
+    <link href="@Model.PhpAddress/res/styles/index.css" rel="stylesheet"/>
+    <link href="@Model.PhpAddress/res/styles/utils.css" rel="stylesheet"/>
+    <link href="@Model.PhpAddress/res/styles/header.css" rel="stylesheet"/>
+    <link href="@Model.PhpAddress/res/styles/events.css" rel="stylesheet"/>
+    <link href="@Model.PhpAddress/res/styles/add-event.css" rel="stylesheet"/>
+    <link href="@Model.PhpAddress/res/styles/landing.css" rel="stylesheet"/>
+    <link href="@Model.PhpAddress/res/styles/user.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="http://localhost:8080/res/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="@Model.PhpAddress/res/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
     <span class="top-right-button closed" id="remove-navbar-button" onclick="closeNav()">
-            <i class="material-icons">close</i>
-        </span>
+        <i class="material-icons">close</i>
+    </span>
 
-        <span class="top-right-button" id="open-navbar-button" onclick="openNav()">
-            <i class="material-icons">menu</i>
-        </span>
+    <span class="top-right-button" id="open-navbar-button" onclick="openNav()">
+        <i class="material-icons">menu</i>
+    </span>
 
-        <nav class="nav-bar closed" id="nav-bar">
-            <ul class="left-menu">
+    <nav class="nav-bar closed" id="nav-bar">
+        <ul class="left-menu">
+            <li class="menu-item">
+                <a href="@Model.PhpAddress" class="logo">
+                    <img src="@Model.PhpAddress/res/images/logo.svg"/>
+                    <p>Muzyka4zycie</p>
+                </a>
+            </li>
+            @if (Model.ShowUserToken)
+            {
                 <li class="menu-item">
-                    <a href="http://localhost:8080" class="logo">
-                        <img src="http://localhost:8080/res/images/logo.svg"/>
-                        <p>Muzyka4zycie</p>
+                    <a href="@Model.PhpAddress/events">Wydarzenia</a>
+                </li>
+                <li class="menu-item">
+                    @if (Model.ItemsInCartCount != null && Model.ItemsInCartCount != 0)
+                    {
+                        <span class="cart-items" id="cart-items">
+                            <code>@Model.ItemsInCartCount</code>
+                        </span>
+                    }
+                    <a href="http://localhost:8081">
+                        Koszyk
                     </a>
                 </li>
-                @if (Model.ShowUserToken)
-                {
-                    <li class="menu-item">
-                        <a href="http://localhost:8080/events">Wydarzenia</a>
-                    </li>
-                    <li class="menu-item">
-                        @if (Model.ItemsInCartCount != null && Model.ItemsInCartCount != 0)
-                        {
-                            <span class="cart-items" id="cart-items">
-                                <code>@Model.ItemsInCartCount</code>
-                            </span>
-                        }
-                        <a href="http://localhost:8081">
-                            Koszyk</a>
-                    </li>
-                }
-            </ul>
+            }
+        </ul>
 
-            <ul class="right-menu">
-                @if (Model.ShowUserToken)
-                {
-                    <li class='menu-item'><a href='http://localhost:8080/user'><code>@Model.UserToken</code></a></li>
-                    <li class='menu-item'><a href='http://localhost:8080/auth/logout'>Wyloguj</a></li>      
-                }
-                else
-                {
-                    <li class='menu-item'><a href='http://localhost:8080/auth/register'>Rejestracja</a></li>
-                    <li class='menu-item'><a href='http://localhost:8080/auth/login'>Logowanie</a></li>
-                }
-            </ul>
-        </nav>
+        <ul class="right-menu">
+            @if (Model.ShowUserToken)
+            {
+                <li class='menu-item'>
+                    <a href='@Model.PhpAddress/user'>
+                        <code>@Model.UserToken</code>
+                    </a>
+                </li>
+                <li class='menu-item'>
+                    <a href='@Model.PhpAddress/auth/logout'>Wyloguj</a>
+                </li>
+            }
+            else
+            {
+                <li class='menu-item'>
+                    <a href='@Model.PhpAddress/auth/register'>Rejestracja</a>
+                </li>
+                <li class='menu-item'>
+                    <a href='@Model.PhpAddress/auth/login'>Logowanie</a>
+                </li>
+            }
+        </ul>
+    </nav>
 
-    </header>
-    <div class="container under-nav">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+</header>
+<div class="container under-nav">
+    <partial name="_CookieConsentPartial"/>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2019 - Sklep - <a asp-area="" asp-page="/Privacy">Privacy</a>
     </div>
+</footer>
+<script src="~/js/site.js" asp-append-version="true"></script>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - Sklep - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @RenderSection("Scripts", required: false)
+@RenderSection("Scripts", required: false)
 </body>
 </html>
