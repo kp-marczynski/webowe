@@ -78,13 +78,13 @@ class EventsController
             $price,
             $place,
             $date,
-            substr($description, 0, 20),
+            $this->createShortDescription($description),
             $description,
-            empty($imageUrl) ? "/res/images/placeholder.png" : $imageUrl,
+            $this->createImageUrl($imageUrl),
             $tickets,
             null,
             $age,
-            implode("|", $additionalInfo)
+            $this->createAdditionalInfoArray($additionalInfo)
         );
 
         return $this->service->updateEvent($event);
@@ -119,13 +119,13 @@ class EventsController
             $price,
             $place,
             $date,
-            substr($description, 0, 20),
+            $this->createShortDescription($description),
             $description,
-            empty($imageUrl) ? "/res/images/placeholder.png" : $imageUrl,
+            $this->createImageUrl($imageUrl),
             $tickets,
             $userId,
             $age,
-            implode("|", $additionalInfo)
+            $this->createAdditionalInfoArray($additionalInfo)
         );
 
         return $this->service->createEvent($event);
@@ -160,5 +160,29 @@ class EventsController
             $errors[] = "Podana data jest niepoprawna (musi być w przyszłości)";
         }
         return $errors;
+    }
+
+    private function createShortDescription($description)
+    {
+        $descriptionLength = strlen($description);
+        $maxLength = 50;
+        if ($descriptionLength <= $maxLength) {
+            return $description;
+        } else {
+            return substr($description, 0, $maxLength) . "...";
+        }
+    }
+
+    private function createAdditionalInfoArray($additionalInfo)
+    {
+        if ($additionalInfo) {
+            return implode("|", $additionalInfo);
+        } else {
+            return "";
+        }
+    }
+
+    private function createImageUrl($imageUrl){
+        return empty($imageUrl) ? "/res/images/placeholder.png" : $imageUrl;
     }
 }
