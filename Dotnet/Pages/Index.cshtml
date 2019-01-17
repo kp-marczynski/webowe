@@ -6,11 +6,17 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    @if (Model.ShowUserToken)
+    <p>Zawartość koszyka:</p>
+    @{
+        var counter = 1;
+    }
+    @if (Model.events.Count != 0)
     {
-        <p>
-            <strong>User token:</strong> <code>@Model.UserToken</code>
-        </p>
+        foreach (var item in Model.events)
+        {
+            <code>@counter ) <strong>@item.Name</strong>, @item.ShortInfo</code>
+            <br/>
+            counter++;
+        }
     }
 </div>

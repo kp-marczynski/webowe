@@ -10,7 +10,7 @@ namespace Sklep
             IConfiguration config)
         {
             var connectionString = config["mysqlconnection:connectionString"];
-            services.AddDbContext<DbContext>(o => o.UseMySQL(connectionString));
+            services.AddDbContext<MuzykaDbContext>(o => o.UseMySQL(connectionString));
         }
     }
 }

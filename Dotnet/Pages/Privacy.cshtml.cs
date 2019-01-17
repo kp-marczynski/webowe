@@ -2,5 +2,8 @@
 {
     public class PrivacyModel : LayoutModel
     {
+        public PrivacyModel(MuzykaDbContext muzykaDbContext) : base(muzykaDbContext)
+        {
+        }
     }
 }
