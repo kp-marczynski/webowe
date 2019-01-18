@@ -10,10 +10,10 @@ RUN dotnet restore
 
 # Copy everything else and build
 COPY ./Dotnet/ ./
-RUN dotnet publish -c Release -o out Sklep.csproj
+RUN dotnet publish -c Release -o out Shop.csproj
 
 # Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "Sklep.dll"]
+ENTRYPOINT ["dotnet", "Shop.dll"]

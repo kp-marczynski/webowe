@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Sklep.Entities
+namespace Shop.Entities
 {
     [Table("orders_events")]
     public class OrderEvent

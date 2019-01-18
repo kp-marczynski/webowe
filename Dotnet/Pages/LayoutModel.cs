@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
-using Sklep.Entities;
+using Shop.Entities;
 
-namespace Sklep.Pages
+namespace Shop.Pages
 {
     public abstract class LayoutModel : PageModel
     {
-        public LayoutModel(MuzykaDbContext muzykaDbContext)
+        public LayoutModel(ShopDbContext ShopDbContext)
         {
-            _dbContext = muzykaDbContext;
+            _dbContext = ShopDbContext;
         }
 
         public string UserToken { get; set; }
@@ -22,7 +22,7 @@ namespace Sklep.Pages
 
         public bool ShowUserToken => !string.IsNullOrEmpty(CurrentUserEmail);
 
-        private MuzykaDbContext _dbContext;
+        private ShopDbContext _dbContext;
         public string CurrentUserEmail { get; set; }
 
         public void OnGetBase()

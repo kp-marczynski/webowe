@@ -1,8 +1,8 @@
-﻿namespace Sklep.Pages
+﻿namespace Shop.Pages
 {
     public class PrivacyModel : LayoutModel
     {
-        public PrivacyModel(MuzykaDbContext muzykaDbContext) : base(muzykaDbContext)
+        public PrivacyModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
         {
         }
 

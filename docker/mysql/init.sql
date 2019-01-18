@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS events
 
 CREATE TABLE IF NOT EXISTS orders
 (
-  order_id          BIGINT        PRIMARY KEY AUTO_INCREMENT,
+  id                BIGINT        PRIMARY KEY AUTO_INCREMENT,
   user_id           BIGINT        NOT NULL UNIQUE,
   city              VARCHAR(255)  NOT NULL,
   postal_address    VARCHAR(255)  NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS orders_events
   event_price       REAL          NOT NULL,
   event_place       VARCHAR(255)  NOT NULL,
   quantity          INTEGER       NOT NULL,
-  CONSTRAINT orders_events_to_users FOREIGN KEY (user_id) REFERENCES users (id),
+  CONSTRAINT orders_events_to_orders FOREIGN KEY (order_id) REFERENCES orders (id),
   CONSTRAINT orders_events_to_events FOREIGN KEY (event_id) REFERENCES events (id),
   PRIMARY KEY (order_id, event_id)
 );

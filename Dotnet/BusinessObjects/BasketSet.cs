@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sklep.Entities;
+using Shop.Entities;
 
-namespace Sklep.BusinessObjects
+namespace Shop.BusinessObjects
 {
     public class BasketSet
     {

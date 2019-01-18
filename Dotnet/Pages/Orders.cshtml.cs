@@ -1,9 +1,9 @@
-namespace Sklep.Pages
+namespace Shop.Pages
 
 {
     public class OrdersModel: LayoutModel
     {
-        public OrdersModel(MuzykaDbContext muzykaDbContext) : base(muzykaDbContext)
+        public OrdersModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
         {
         }
     }

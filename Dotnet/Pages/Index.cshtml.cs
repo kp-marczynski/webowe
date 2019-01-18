@@ -1,12 +1,12 @@
-﻿using Sklep.BusinessObjects;
+﻿using Shop.BusinessObjects;
 
-namespace Sklep.Pages
+namespace Shop.Pages
 {
     public class IndexModel : LayoutModel
     {
         public BasketSet BasketSet = new BasketSet();
 
-        public IndexModel(MuzykaDbContext muzykaDbContext) : base(muzykaDbContext)
+        public IndexModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
         {
         }
 

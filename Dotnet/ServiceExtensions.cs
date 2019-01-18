@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Sklep
+namespace Shop
 {
     public static class ServiceExtensions
     {
@@ -10,7 +10,7 @@ namespace Sklep
             IConfiguration config)
         {
             var connectionString = config["mysqlconnection:connectionString"];
-            services.AddDbContext<MuzykaDbContext>(o => o.UseMySQL(connectionString));
+            services.AddDbContext<ShopDbContext>(o => o.UseMySQL(connectionString));
         }
     }
 }

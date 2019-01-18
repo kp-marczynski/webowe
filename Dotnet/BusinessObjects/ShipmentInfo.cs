@@ -1,6 +1,6 @@
-using Sklep.Entities;
+using Shop.Entities;
 
-namespace Sklep.BusinessObjects
+namespace Shop.BusinessObjects
 {
     public class ShipmentInfo
     {

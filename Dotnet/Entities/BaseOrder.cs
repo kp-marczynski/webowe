@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Sklep.BusinessObjects;
+using Shop.BusinessObjects;
 
-namespace Sklep.Entities
+namespace Shop.Entities
 {
     [Table("orders")]
     public class BaseOrder
