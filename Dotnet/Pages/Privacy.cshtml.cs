@@ -5,5 +5,10 @@
         public PrivacyModel(MuzykaDbContext muzykaDbContext) : base(muzykaDbContext)
         {
         }
+
+        public void OnGet()
+        {
+            OnGetBase();
+        }
     }
 }

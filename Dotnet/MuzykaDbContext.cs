@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Sklep.Entities;
 
 namespace Sklep
 {
@@ -13,5 +14,9 @@ namespace Sklep
         public DbSet<User> users { get; set; }
 
         public DbSet<Event> events { get; set; }
+        
+        public DbSet<BaseOrder> baseOrders { get; set; }
+        
+        public DbSet<OrderEvent> OrderEvents { get; set; }
     }
 }

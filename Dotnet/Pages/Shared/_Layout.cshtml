@@ -51,6 +51,9 @@
                         Koszyk
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a asp-area="" asp-page="/Orders">Zamówienia</a>
+                </li>
             }
         </ul>
 
@@ -68,9 +71,9 @@
             }
             else
             {
-                <script>
-                    window.location.href = "@Model.PhpAddress/auth/login";
-                </script>
+@*                 <script> *@
+@*                     window.location.href = "@Model.PhpAddress/auth/login"; *@
+@*                 </script> *@
                 <li class='menu-item'>
                     <a href='@Model.PhpAddress/auth/register'>Rejestracja</a>
                 </li>

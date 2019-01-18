@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using Sklep.Entities;
 
 namespace Sklep.Pages
 {
@@ -26,7 +25,7 @@ namespace Sklep.Pages
         private MuzykaDbContext _dbContext;
         public string CurrentUserEmail { get; set; }
 
-        public void OnGet()
+        public void OnGetBase()
         {
             Theme = Request.Cookies["theme"];
             if (string.IsNullOrEmpty(Theme))
@@ -48,7 +47,7 @@ namespace Sklep.Pages
 //            {
 //                Redirect("http://localhost:8080");    
 //            }
-            
+
             var itemsJson = Request.Cookies["items-in-cart"];
             if (!string.IsNullOrEmpty(itemsJson))
             {
@@ -57,6 +56,7 @@ namespace Sklep.Pages
                 foreach (var item in ItemsInCart)
                 {
                     var temp = _dbContext.events.Where(x => x.Id.ToString() == item).ToList();
+//                    var first = _dbContext.events.Where(x => x.Id == 1).OrderByDescending(x => x.AdditionalInfo).First();
                     if (temp.Count == 1)
                     {
                         events.Add(temp[0]);

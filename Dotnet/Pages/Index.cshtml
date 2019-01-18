@@ -12,9 +12,9 @@
     }
     @if (Model.events.Count != 0)
     {
-        foreach (var item in Model.events)
+        foreach (var item in Model.BasketSet.BasketPositions)
         {
-            <code>@counter ) <strong>@item.Name</strong>, @item.ShortInfo</code>
+            <code>@counter ) <strong>@item.Event.Name</strong>, @item.Quantity</code>
             <br/>
             counter++;
         }

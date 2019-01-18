@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Sklep
+namespace Sklep.Entities
 {
     [Table("events")]
     public class Event
@@ -19,7 +19,7 @@ namespace Sklep
         [Column("number_of_available_tickets")]
         public int NumberOfAvailableTickets { get; set; }
 
-//      [StringLength(50)] public string CreatedBy { get; set; }
+//      [Column("created_by")][StringLength(50)] public string CreatedBy { get; set; }
         [Column("age_range")]
         [StringLength(50)]
         public string AgeRange { get; set; }

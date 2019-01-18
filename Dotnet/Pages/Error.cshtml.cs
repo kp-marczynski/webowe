@@ -15,9 +15,9 @@ namespace Sklep.Pages
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-        new public void OnGet()
+        public void OnGet()
         {
-            base.OnGet();
+            OnGetBase();
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }
