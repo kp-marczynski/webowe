@@ -47,7 +47,7 @@ include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php
 ?>
 
 <main class="under-nav">
-    <form class="add-event-form"
+    <form class="add-event-form-card add-event-form"
           action="<?php echo isset($event) ? "create-event?eventId=$event->id" : "create-event" ?>" method="post">
         <h2 class="add-event-title">Dodaj nowe wydarzenie</h2>
 
