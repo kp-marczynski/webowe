@@ -1,16 +1,17 @@
 ﻿using Shop.Pages.Shared;
+using Shop.Services;
 
 namespace Shop.Pages
 {
     public class PrivacyModel : LayoutModel
     {
-        public PrivacyModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
+        public PrivacyModel(ILayoutService layoutService) : base(layoutService)
         {
         }
 
         public void OnGet()
         {
-            OnGetBase();
+            initializeLayout();
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace Shop.Services
 {
-    public class BasketService
+    public interface IOrderService
     {
         
     }

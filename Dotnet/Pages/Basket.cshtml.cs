@@ -1,5 +1,6 @@
 ﻿using Shop.BusinessObjects;
 using Shop.Pages.Shared;
+using Shop.Services;
 
 namespace Shop.Pages
 {
@@ -7,17 +8,16 @@ namespace Shop.Pages
     {
         public BasketSet BasketSet = new BasketSet();
 
-        public BasketModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
+        private IBasketService _basketService;
+        public BasketModel(ILayoutService layoutService, IBasketService basketService) : base(layoutService)
         {
+            _basketService = basketService;
         }
 
         public void OnGet()
         {
-            OnGetBase();
-            foreach (var ev in events)
-            {
-                BasketSet.addToBasket(ev);
-            }
+            initializeLayout();
+            BasketSet = _basketService.GetItemsInBasket();
         }
     }
 }

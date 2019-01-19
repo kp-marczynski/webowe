@@ -9,6 +9,17 @@ namespace Shop.BusinessObjects
     {
         public HashSet<BasketPosition> BasketPositions = new HashSet<BasketPosition>();
 
+        public int GetBasketCount()
+        {
+            var count = 0;
+            foreach (var basketPosition in BasketPositions)
+            {
+                count += basketPosition.Quantity;
+            }
+
+            return count;
+        }
+        
         public void addToBasket(Event Event)
         {
             addFewToBasket(Event, 1);
