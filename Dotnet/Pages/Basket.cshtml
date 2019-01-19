@@ -5,10 +5,10 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="add-event-form">
+<div class="add-event-form-card">
     @if (Model.ItemsInCartCount != 0)
     {
-@*         <p>Zawartość koszyka:</p> *@
+        <h1>Koszyk</h1>
         <form method="post">
             <div asp-validation-summary="All"></div>
             <ul>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="column-price">
                             <span>
-                            * @Model.BasketSet.BasketPositions[i].Event.Price PLN
+                                * @Model.BasketSet.BasketPositions[i].Event.Price PLN
                             </span>
                         </div>
                     </li>

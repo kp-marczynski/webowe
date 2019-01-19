@@ -86,6 +86,10 @@ form li {
     margin: 1rem;
 }
 
-.add-event-form {
+.add-event-form-card {
     max-width: 850px;
+}
+
+.add-event-form-card h1{
+    text-align: center;
 }
