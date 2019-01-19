@@ -6,18 +6,45 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Zawartość koszyka:</p>
-    @{
-        var counter = 1;
-    }
     @if (Model.ItemsInCartCount != 0)
     {
-        foreach (var item in Model.BasketSet.BasketPositions)
-        {
-            <code>@counter ) <strong>@item.Event.Name</strong>, @item.Quantity</code>
-            <br/>
-            counter++;
-        }
-        <a asp-page="/ShipmentInfo">Zamów!</a>
+        <p>Zawartość koszyka:</p>
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+            <ul>
+                @*             @{ *@
+                @*                 var counter = 1; *@
+                @*             } *@
+                @* <li><input asp-for="BasketSet.template"/><span asp-validation-for="BasketSet.template"></span></li> *@
+                @for (var i = 0; i < Model.BasketSet.BasketPositions.Count; ++i)
+                {
+                    <li>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Id" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Name" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Price" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Place" type="hidden"/>
+                        @* <input asp-for="BasketSet.BasketPositions[i].Event.Date" type="hidden"/> *@
+                        <input asp-for="BasketSet.BasketPositions[i].Event.ShortInfo" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.ImageUrl" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
+                        @* <input asp-for="BasketSet.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
+                        <input asp-for="BasketSet.BasketPositions[i].Event.AgeRange" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
+                        
+                        <input asp-for="BasketSet.BasketPositions[i].isChecked">@i ) 
+                        <strong>@Model.BasketSet.BasketPositions[i].Event.Name</strong>, @Model.BasketSet.BasketPositions[i].Event.Price
+                        <input asp-for="BasketSet.BasketPositions[i].Quantity">
+                        <span asp-validation-for="@Model.BasketSet.BasketPositions[i].Quantity"></span>
+                    </li>
+                }
+            </ul>
+            <button type="submit">Zamów!</button>
+        </form>
+@*         <a asp-page="/ShipmentInfo">Zamów!</a> *@
+    }
+    else
+    {
+        <h2>Koszyk jest pusty :(</h2>
     }
 </div>

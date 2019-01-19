@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Shop.Entities;
@@ -7,7 +6,7 @@ namespace Shop.BusinessObjects
 {
     public class BasketSet
     {
-        public HashSet<BasketPosition> BasketPositions = new HashSet<BasketPosition>();
+        public List<BasketPosition> BasketPositions { get; set; } = new List<BasketPosition>();
 
         public int GetBasketCount()
         {
@@ -19,7 +18,7 @@ namespace Shop.BusinessObjects
 
             return count;
         }
-        
+
         public void addToBasket(Event Event)
         {
             addFewToBasket(Event, 1);
@@ -61,17 +60,32 @@ namespace Shop.BusinessObjects
 
         public void addFewToBasket(Event Event, int quantity)
         {
-            Console.WriteLine("Addfewtobasket");
             bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == Event.Id);
             if (!doesContainEvent)
             {
-                BasketPositions.Add(new BasketPosition(Event, quantity));
+                BasketPositions.Add(BasketPosition.Create(Event, quantity));
             }
             else
             {
                 BasketPosition bp = BasketPositions.First(item => item.Event.Id == Event.Id);
                 bp.Quantity += quantity;
             }
+        }
+
+        public List<string> GetEventsIdList()
+        {
+            var result = new List<string>();
+            foreach (var basketPosition in BasketPositions)
+            {
+                if (basketPosition.isChecked)
+                {
+                    for (var i = 0; i < basketPosition.Quantity; ++i)
+                    {
+                        result.Add(basketPosition.Event.Id.ToString());
+                    }
+                }
+            }
+            return result;
         }
     }
 }
