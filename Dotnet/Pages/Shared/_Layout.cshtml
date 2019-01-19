@@ -16,6 +16,7 @@
     <link rel="icon" href="@Model.PhpAddress/res/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
 <header>
@@ -85,12 +86,12 @@
     </nav>
 
 </header>
-<div class="container under-nav">
-    <partial name="_CookieConsentPartial"/>
-    <main role="main" class="pb-3">
+@* <div class="container under-nav"> *@
+    @* <partial name="_CookieConsentPartial"/> *@
+    <main role="main" class="under-nav">
         @RenderBody()
     </main>
-</div>
+@* </div> *@
 
 @* <footer class="border-top footer text-muted"> *@
 @*     <div class="container"> *@

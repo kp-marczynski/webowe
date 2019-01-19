@@ -1,24 +1,20 @@
 ﻿@page
+@using Shop.BusinessObjects
 @model BasketModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<div class="add-event-form">
     @if (Model.ItemsInCartCount != 0)
     {
-        <p>Zawartość koszyka:</p>
+@*         <p>Zawartość koszyka:</p> *@
         <form method="post">
             <div asp-validation-summary="All"></div>
             <ul>
-                @*             @{ *@
-                @*                 var counter = 1; *@
-                @*             } *@
-                @* <li><input asp-for="BasketSet.template"/><span asp-validation-for="BasketSet.template"></span></li> *@
                 @for (var i = 0; i < Model.BasketSet.BasketPositions.Count; ++i)
                 {
-                    <li>
+                    <li class="add-event-form-text-area">
                         <input asp-for="BasketSet.BasketPositions[i].Event.Id" type="hidden"/>
                         <input asp-for="BasketSet.BasketPositions[i].Event.Name" type="hidden"/>
                         <input asp-for="BasketSet.BasketPositions[i].Event.Price" type="hidden"/>
@@ -31,17 +27,41 @@
                         <input asp-for="BasketSet.BasketPositions[i].Event.AgeRange" type="hidden"/>
                         <input asp-for="BasketSet.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
                         <input asp-for="BasketSet.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
-                        
-                        <input asp-for="BasketSet.BasketPositions[i].isChecked">@i ) 
-                        <strong>@Model.BasketSet.BasketPositions[i].Event.Name</strong>, @Model.BasketSet.BasketPositions[i].Event.Price
-                        <input asp-for="BasketSet.BasketPositions[i].Quantity">
-                        <span asp-validation-for="@Model.BasketSet.BasketPositions[i].Quantity"></span>
+
+                        <div class="column">
+                            <label class="checkbox-wrapper">
+                                <input asp-for="BasketSet.BasketPositions[i].isChecked">
+                                <span>
+                                    <strong>@Model.BasketSet.BasketPositions[i].Event.Name</strong>
+                                    <br/>
+                                    @Model.BasketSet.BasketPositions[i].Event.Place
+                                </span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            @* <input asp-for="BasketSet.BasketPositions[i].Quantity"> *@
+                            <div class="add-event-row-wrapper">
+                                <label class="add-event-input-label" for="event-tickets">
+                                    Liczba biletów: (max. @Model.BasketSet.BasketPositions[i].Event.NumberOfAvailableTickets)
+                                </label>
+
+                                <div class="add-event-img-input-wrapper">
+                                    <i class="material-icons add-event-input-img">aspect_ratio</i>
+                                    <input asp-for="BasketSet.BasketPositions[i].Quantity" class="add-event-form-input" min="0" max="@Model.BasketSet.BasketPositions[i].Event.NumberOfAvailableTickets">
+                                </div>
+                            </div>
+                            <span asp-validation-for="@Model.BasketSet.BasketPositions[i].Quantity"></span>
+                        </div>
+                        <div class="column-price">
+                            <span>
+                            * @Model.BasketSet.BasketPositions[i].Event.Price PLN
+                            </span>
+                        </div>
                     </li>
                 }
             </ul>
-            <button type="submit">Zamów!</button>
+            <button type="submit" class="add-event-form-button">Zamów!</button>
         </form>
-@*         <a asp-page="/ShipmentInfo">Zamów!</a> *@
     }
     else
     {
