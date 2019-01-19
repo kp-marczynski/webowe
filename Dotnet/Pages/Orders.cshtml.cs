@@ -1,3 +1,6 @@
+using Shop.Pages;
+using Shop.Pages.Shared;
+
 namespace Shop.Pages
 
 {
@@ -5,6 +8,11 @@ namespace Shop.Pages
     {
         public OrdersModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
         {
+        }
+
+        public void OnGet()
+        {
+            OnGetBase();
         }
     }
 }

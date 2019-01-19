@@ -1,4 +1,6 @@
-﻿namespace Shop.Pages
+﻿using Shop.Pages.Shared;
+
+namespace Shop.Pages
 {
     public class PrivacyModel : LayoutModel
     {

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using Shop.Entities;
 
-namespace Shop.Pages
+namespace Shop.Pages.Shared
 {
     public abstract class LayoutModel : PageModel
     {

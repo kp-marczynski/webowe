@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Shop.Pages.Shared;
 
 namespace Shop.Pages
 {

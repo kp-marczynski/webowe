@@ -1,12 +1,13 @@
 ﻿using Shop.BusinessObjects;
+using Shop.Pages.Shared;
 
 namespace Shop.Pages
 {
-    public class IndexModel : LayoutModel
+    public class BasketModel : LayoutModel
     {
         public BasketSet BasketSet = new BasketSet();
 
-        public IndexModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
+        public BasketModel(ShopDbContext ShopDbContext) : base(ShopDbContext)
         {
         }
 
