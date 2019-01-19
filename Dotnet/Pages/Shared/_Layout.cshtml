@@ -41,13 +41,13 @@
                     <a href="@Model.PhpAddress/events">Wydarzenia</a>
                 </li>
                 <li class="menu-item">
-                    @if (Model.ItemsInCartCount != null && Model.ItemsInCartCount != 0)
+                    <a href="http://localhost:8081">
+                    @if (Model.ShowCartCount)
                     {
                         <span class="cart-items" id="cart-items">
                             <code>@Model.ItemsInCartCount</code>
                         </span>
                     }
-                    <a href="http://localhost:8081">
                         Koszyk
                     </a>
                 </li>

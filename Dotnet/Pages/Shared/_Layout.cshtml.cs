@@ -17,38 +17,30 @@ namespace Shop.Pages.Shared
         public string UserToken { get; set; }
         public string Theme { get; set; }
         public List<string> ItemsInCart { get; set; }
-        public int ItemsInCartCount { get; set; }
+        [TempData] public int ItemsInCartCount { get; set; }
         public readonly string PhpAddress = "http://localhost:8080";
         public List<Event> events = new List<Event>();
 
         public bool ShowUserToken => !string.IsNullOrEmpty(CurrentUserEmail);
+        public bool ShowCartCount => ItemsInCartCount != null && ItemsInCartCount != 0;
 
         private ShopDbContext _dbContext;
-        public string CurrentUserEmail { get; set; }
+        [TempData] public string CurrentUserEmail { get; set; }
 
         public void OnGetBase()
         {
-            Theme = Request.Cookies["theme"];
-            if (string.IsNullOrEmpty(Theme))
-            {
-                Theme = "LIGHT_THEME";
-            }
+            initializeCookies();
+        }
 
-            UserToken = Request.Cookies["token"];
-            if (!string.IsNullOrEmpty(UserToken))
-            {
-                List<User> users = _dbContext.users.Where(x => x.Token == UserToken).ToList();
-                if (users.Count == 1)
-                {
-                    CurrentUserEmail = users[0].Email;
-                }
-            }
+        public void initializeCookies()
+        {
+            processUserCookie();
+            processThemeCookie();
+            processCartCookie();
+        }
 
-//            if (string.IsNullOrEmpty(CurrentUserEmail))
-//            {
-//                Redirect("http://localhost:8080");    
-//            }
-
+        public void processCartCookie()
+        {
             var itemsJson = Request.Cookies["items-in-cart"];
             if (!string.IsNullOrEmpty(itemsJson))
             {
@@ -63,6 +55,28 @@ namespace Shop.Pages.Shared
                         events.Add(temp[0]);
                     }
                 }
+            }
+        }
+
+        public void processUserCookie()
+        {
+            UserToken = Request.Cookies["token"];
+            if (!string.IsNullOrEmpty(UserToken))
+            {
+                List<User> users = _dbContext.users.Where(x => x.Token == UserToken).ToList();
+                if (users.Count == 1)
+                {
+                    CurrentUserEmail = users[0].Email;
+                }
+            }
+        }
+
+        public void processThemeCookie()
+        {
+            Theme = Request.Cookies["theme"];
+            if (string.IsNullOrEmpty(Theme))
+            {
+                Theme = "LIGHT_THEME";
             }
         }
     }
