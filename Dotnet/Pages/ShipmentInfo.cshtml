@@ -2,7 +2,79 @@
 @model ShipmentInfoModel
 
 @{
-    ViewData["Title"] = "Shipment";
+    ViewData["Title"] = "ShipmentInfo";
 }
 
-<h2>title</h2>
+
+<div class="add-event-form-card">
+    @if (Model.ItemsInCartCount != 0)
+    {
+        <h1>Dane Dostawy</h1>
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Miasto
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.City"/>
+                </div>
+            </div>
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Kod Pocztowy
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress"/>
+                </div>
+            </div>
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Ulica
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.Street"/>
+                </div>
+            </div>
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Numer Domu
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber"/>
+                </div>
+            </div>
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Numer Mieszkania
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.ApartmentNumber"/>
+                </div>
+            </div>
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Numer Telefonu
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber"/>
+                </div>
+            </div>
+            <button type="submit" class="add-event-form-button">Zamów!</button>
+        </form>
+    }
+
+</div>
