@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Shop.BusinessObjects;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Internal;
 using Shop.Entities;
 
 namespace Shop.Services.Impl
@@ -53,48 +54,74 @@ namespace Shop.Services.Impl
         }
 
 
-        private void SaveEventsIdInCookie(BasketSet basketSet)
+        private void SaveEventsIdInCookie(BasketSet basketSet, string cookieName)
         {
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete(ItemsCookieName);
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete(cookieName);
             var itemsInCart = JsonConvert.SerializeObject(basketSet.GetEventsIdList());
             CookieOptions option = new CookieOptions();
             option.Expires = DateTime.Now.AddMilliseconds(60 * 60 * 24 * 30);
-            _httpContextAccessor.HttpContext.Response.Cookies.Append(ItemsCookieName, itemsInCart, option);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append(cookieName, itemsInCart, option);
         }
 
         public void SaveBasketInCookie(BasketSet basketSet)
         {
-            _httpContextAccessor.HttpContext.Response.Cookies.Delete(BasketCookieName);
-            var itemsInCart = JsonConvert.SerializeObject(basketSet.GetBasketWithCheckedPositions());
-            CookieOptions option = new CookieOptions();
-            option.Expires = DateTime.Now.AddHours(1);
-            _httpContextAccessor.HttpContext.Response.Cookies.Append(BasketCookieName, itemsInCart, option);
+            SaveEventsIdInCookie(basketSet,ItemsCookieName);
+            SaveEventsIdInCookie(basketSet.GetBasketWithCheckedPositions(),BasketCookieName);
+//            Console.WriteLine(itemsInCart);
+//            CookieOptions option = new CookieOptions();
+//            option.Expires = DateTime.Now.AddHours(1);
+//            _httpContextAccessor.HttpContext.Response.Cookies.Append(BasketCookieName, itemsInCart, option);
         }
 
         public void RemoveOrderedItemsFromCookie()
         {
-            var oldBasket = GetItemsInBasket();
-
+            var itemsJson = _httpContextAccessor.HttpContext.Request.Cookies[ItemsCookieName];
             var basketJson = _httpContextAccessor.HttpContext.Request.Cookies[BasketCookieName];
-            BasketSet ordered = new BasketSet();
-            if (!string.IsNullOrEmpty(basketJson))
-            {
-                ordered = JsonConvert.DeserializeObject<BasketSet>(basketJson);
-            }
 
-            if (oldBasket != null && ordered != null)
+            if (!string.IsNullOrEmpty(itemsJson) && !string.IsNullOrEmpty(basketJson))
             {
-                foreach (var item in oldBasket.BasketPositions)
+                List<string> itemsList = JsonConvert.DeserializeObject<List<string>>(itemsJson);
+                List<string> basketList = JsonConvert.DeserializeObject<List<string>>(basketJson);
+                itemsList.Sort();
+                basketList.Sort();
+                List<string> result = new List<string>();
+                foreach (var distinctItem in itemsList.Distinct())
                 {
-                    BasketPosition found = ordered.BasketPositions.Find(x => x.Event.Id == item.Event.Id);
-                    if (found != null)
+                    for (var i = 0;
+                        i < itemsList.Count(x => x == distinctItem) - basketList.Count(x => x == distinctItem);
+                        ++i)
                     {
-                        item.Quantity -= found.Quantity;
-                    }
+                        result.Add(distinctItem);
+                    }   
                 }
-
-                SaveEventsIdInCookie(oldBasket);
+                var itemsInCart = JsonConvert.SerializeObject(result);
+                CookieOptions option = new CookieOptions();
+                option.Expires = DateTime.Now.AddMilliseconds(60 * 60 * 24 * 30);
+                _httpContextAccessor.HttpContext.Response.Cookies.Append(ItemsCookieName, itemsInCart, option);
+                _httpContextAccessor.HttpContext.Response.Cookies.Delete(BasketCookieName);
             }
+//            var oldBasket = GetItemsInBasket(ItemsCookieName);
+//
+//            var basketJson = _httpContextAccessor.HttpContext.Request.Cookies[BasketCookieName];
+//            BasketSet ordered = new BasketSet();
+//            if (!string.IsNullOrEmpty(basketJson))
+//            {
+//                ordered = JsonConvert.DeserializeObject<BasketSet>(basketJson);
+//            }
+//
+//            if (oldBasket != null && ordered != null)
+//            {
+//                foreach (var item in oldBasket.BasketPositions)
+//                {
+//                    BasketPosition found = ordered.BasketPositions.Find(x => x.Event.Id == item.Event.Id);
+//                    if (found != null)
+//                    {
+//                        item.Quantity -= found.Quantity;
+//                    }
+//                }
+//
+//                SaveEventsIdInCookie(oldBasket, ItemsCookieName);
+//            }
         }
     }
 }

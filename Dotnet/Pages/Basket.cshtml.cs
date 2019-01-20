@@ -48,6 +48,7 @@ namespace Shop.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+            Console.WriteLine("Modelstate:");
             foreach (var item in ModelState)
             {
                 Console.WriteLine(item.ToString());
@@ -60,6 +61,11 @@ namespace Shop.Pages
                 return Page();
             }
 
+            Console.WriteLine("Hello from postasync");
+            foreach (var item in BasketSet.BasketPositions)
+            {
+                Console.WriteLine(item.Event.Name+": "+item.Quantity);
+            }
             _basketService.SaveBasketInCookie(BasketSet);
             _orderService.SetCurrentOrderState(OrderState.Shipment);
             return RedirectToPage("ShipmentInfo");

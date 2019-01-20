@@ -11,6 +11,7 @@ namespace Shop
         {
             var connectionString = config["mysqlconnection:connectionString"];
             services.AddDbContext<ShopDbContext>(o => o.UseMySQL(connectionString));
+            services.AddTransient<ShopDbContext>();
         }
     }
 }

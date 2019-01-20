@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Shop.Entities;
@@ -69,6 +70,7 @@ namespace Shop.BusinessObjects
             {
                 BasketPosition bp = BasketPositions.First(item => item.Event.Id == Event.Id);
                 bp.Quantity += quantity;
+//                Console.WriteLine(bp.Event.Name +": " +bp.Quantity);
             }
         }
 
@@ -77,12 +79,9 @@ namespace Shop.BusinessObjects
             var result = new List<string>();
             foreach (var basketPosition in BasketPositions)
             {
-                if (basketPosition.isChecked && basketPosition.Quantity > 0)
+                for (var i = 0; i < basketPosition.Quantity; ++i)
                 {
-                    for (var i = 0; i < basketPosition.Quantity; ++i)
-                    {
-                        result.Add(basketPosition.Event.Id.ToString());
-                    }
+                    result.Add(basketPosition.Event.Id.ToString());
                 }
             }
 
@@ -94,12 +93,9 @@ namespace Shop.BusinessObjects
             var result = new BasketSet();
             foreach (var basketPosition in BasketPositions)
             {
-                if (basketPosition.isChecked)
+                if (basketPosition.isChecked && basketPosition.Quantity > 0)
                 {
-                    for (var i = 0; i < basketPosition.Quantity; ++i)
-                    {
-                        result.BasketPositions.Add(basketPosition);
-                    }
+                    result.BasketPositions.Add(basketPosition);
                 }
             }
 
