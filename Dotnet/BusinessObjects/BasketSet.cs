@@ -77,7 +77,7 @@ namespace Shop.BusinessObjects
             var result = new List<string>();
             foreach (var basketPosition in BasketPositions)
             {
-                if (basketPosition.isChecked)
+                if (basketPosition.isChecked && basketPosition.Quantity > 0)
                 {
                     for (var i = 0; i < basketPosition.Quantity; ++i)
                     {
@@ -85,6 +85,24 @@ namespace Shop.BusinessObjects
                     }
                 }
             }
+
+            return result;
+        }
+
+        public BasketSet GetBasketWithCheckedPositions()
+        {
+            var result = new BasketSet();
+            foreach (var basketPosition in BasketPositions)
+            {
+                if (basketPosition.isChecked)
+                {
+                    for (var i = 0; i < basketPosition.Quantity; ++i)
+                    {
+                        result.BasketPositions.Add(basketPosition);
+                    }
+                }
+            }
+
             return result;
         }
     }

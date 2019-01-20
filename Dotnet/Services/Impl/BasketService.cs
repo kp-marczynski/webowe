@@ -13,6 +13,7 @@ namespace Shop.Services.Impl
         private readonly IHttpContextAccessor _httpContextAccessor;
         private ShopDbContext _shopDbContext;
         private static readonly string ItemsCookieName = "items-in-cart";
+        private static readonly string BasketCookieName = "basket-items";
 
         public BasketService(IHttpContextAccessor httpContextAccessor, ShopDbContext shopDbContext)
         {
@@ -51,7 +52,8 @@ namespace Shop.Services.Impl
             return basketSet;
         }
 
-        public void SaveBasketInCookie(BasketSet basketSet)
+
+        private void SaveEventsIdInCookie(BasketSet basketSet)
         {
             _httpContextAccessor.HttpContext.Response.Cookies.Delete(ItemsCookieName);
             var itemsInCart = JsonConvert.SerializeObject(basketSet.GetEventsIdList());
@@ -60,5 +62,39 @@ namespace Shop.Services.Impl
             _httpContextAccessor.HttpContext.Response.Cookies.Append(ItemsCookieName, itemsInCart, option);
         }
 
+        public void SaveBasketInCookie(BasketSet basketSet)
+        {
+            _httpContextAccessor.HttpContext.Response.Cookies.Delete(BasketCookieName);
+            var itemsInCart = JsonConvert.SerializeObject(basketSet.GetBasketWithCheckedPositions());
+            CookieOptions option = new CookieOptions();
+            option.Expires = DateTime.Now.AddHours(1);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append(BasketCookieName, itemsInCart, option);
+        }
+
+        public void RemoveOrderedItemsFromCookie()
+        {
+            var oldBasket = GetItemsInBasket();
+
+            var basketJson = _httpContextAccessor.HttpContext.Request.Cookies[BasketCookieName];
+            BasketSet ordered = new BasketSet();
+            if (!string.IsNullOrEmpty(basketJson))
+            {
+                ordered = JsonConvert.DeserializeObject<BasketSet>(basketJson);
+            }
+
+            if (oldBasket != null && ordered != null)
+            {
+                foreach (var item in oldBasket.BasketPositions)
+                {
+                    BasketPosition found = ordered.BasketPositions.Find(x => x.Event.Id == item.Event.Id);
+                    if (found != null)
+                    {
+                        item.Quantity -= found.Quantity;
+                    }
+                }
+
+                SaveEventsIdInCookie(oldBasket);
+            }
+        }
     }
 }

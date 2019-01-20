@@ -12,16 +12,38 @@ namespace Shop.Pages
         [BindProperty] public BasketSet BasketSet { get; set; } = new BasketSet();
 
         private IBasketService _basketService;
+        private IOrderService _orderService;
 
-        public BasketModel(ILayoutService layoutService, IBasketService basketService) : base(layoutService)
+        public BasketModel(ILayoutService layoutService, IBasketService basketService, IOrderService orderService) :
+            base(layoutService)
         {
             _basketService = basketService;
+            _orderService = orderService;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var currentOrderState = _orderService.CurrentOrderState();
+            if (currentOrderState != null)
+            {
+                switch (currentOrderState)
+                {
+                    case OrderState.Basket:
+                        break;
+                    case OrderState.Shipment:
+                        return RedirectToPage("ShipmentInfo");
+                    case OrderState.Summary:
+                        return RedirectToPage("OrderSummary");
+                }
+            }
+            else
+            {
+                _orderService.SetCurrentOrderState(OrderState.Basket);
+            }
+
             initializeLayout();
             BasketSet = _basketService.GetItemsInBasket();
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -30,6 +52,7 @@ namespace Shop.Pages
             {
                 Console.WriteLine(item.ToString());
             }
+
             if (!ModelState.IsValid)
             {
                 Console.WriteLine("Model is not valid");
@@ -38,6 +61,7 @@ namespace Shop.Pages
             }
 
             _basketService.SaveBasketInCookie(BasketSet);
+            _orderService.SetCurrentOrderState(OrderState.Shipment);
             return RedirectToPage("ShipmentInfo");
         }
     }

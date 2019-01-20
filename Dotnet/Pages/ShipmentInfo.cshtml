@@ -22,7 +22,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">phone</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="name" required/>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.FullName" autocomplete="name" required/>
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -90,7 +90,7 @@
             @* </div> *@
             
             </fieldset>
-            <button type="submit" class="add-event-form-button">Zamów!</button>
+            <button id="add-event-form-button" type="submit" class="add-event-form-button" disabled>Zamów!</button>
         </form>
     }
 

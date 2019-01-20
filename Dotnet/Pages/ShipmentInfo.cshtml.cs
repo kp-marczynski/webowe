@@ -7,20 +7,39 @@ using Shop.Services;
 
 namespace Shop.Pages
 {
-    public class ShipmentInfoModel: LayoutModel
+    public class ShipmentInfoModel : LayoutModel
     {
-        public ShipmentInfoModel(ILayoutService layoutService) : base(layoutService)
+        private IOrderService _orderService;
+        public ShipmentInfoModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {
+            _orderService = orderService;
         }
 
-        [BindProperty]
-        public ShipmentInfo ShipmentInfo { get; set; }
-        
-        public void OnGet()
+        [BindProperty] public ShipmentInfo ShipmentInfo { get; set; }
+
+        public IActionResult OnGet()
         {
+            var currentOrderState = _orderService.CurrentOrderState();
+            if (currentOrderState != null)
+            {
+                switch (currentOrderState)
+                {
+                    case OrderState.Basket:
+                        return RedirectToPage("Basket");
+                    case OrderState.Shipment:
+                        break;
+                    case OrderState.Summary:
+                        return RedirectToPage("OrderSummary");
+                }
+            }
+            else
+            {
+                _orderService.SetCurrentOrderState(OrderState.Basket);
+            }
             initializeLayout();
+            return Page();
         }
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -30,8 +49,10 @@ namespace Shop.Pages
                 return Page();
             }
 
-            //todo save somewhere address
+            _orderService.SetCurrentOrderState(OrderState.Summary);
+            _orderService.SaveShipmentInfoInSession(ShipmentInfo);
             return RedirectToPage("OrderSummary");
+//            return RedirectToPage("OrderSummary", "SingleOrder", ShipmentInfo);
         }
     }
 }
