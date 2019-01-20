@@ -57,6 +57,9 @@
 /*height: 60px;*/
 /*line-height: 60px; !* Vertically center the text there *!*/
 /*}*/
+:root {
+    --info-color: #6c757d;
+}
 
 .column {
     flex: 3;
@@ -65,7 +68,7 @@
 .column-price {
     flex: 1;
     text-align: right;
-    padding-top: 2rem;
+    /*padding-top: 2rem;*/
 }
 
 .column-price span {
@@ -78,7 +81,7 @@ form {
     width: 100%;
 }
 
-form li {
+form li, .flex-wrapper {
     display: flex;
 }
 
@@ -95,4 +98,33 @@ form li {
     text-align: center;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
+}
+
+.info-area {
+    border-color: var(--info-color);
+    margin-bottom: 1rem;
+}
+
+.btn-info {
+    background-color: var(--info-color);
+}
+
+.btn-error {
+    background-color: var(--error-color);
+}
+
+.summary-total-cost {
+    text-align: right;
+    padding: 1.5rem;
+}
+
+.price-wrapper {
+    width: 100px;
+    display: inline-block;
+}
+
+.total-price-wrapper {
+    border-top: 1px solid var(--info-color);
+    padding-top: 0.25rem;
+    margin-top: 0.25rem;
 }

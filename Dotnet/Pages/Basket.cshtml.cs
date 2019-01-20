@@ -23,22 +23,17 @@ namespace Shop.Pages
 
         public IActionResult OnGet()
         {
-            var currentOrderState = _orderService.CurrentOrderState();
-            if (currentOrderState != null)
+            switch (_orderService.CurrentOrderState())
             {
-                switch (currentOrderState)
-                {
-                    case OrderState.Basket:
-                        break;
-                    case OrderState.Shipment:
-                        return RedirectToPage("ShipmentInfo");
-                    case OrderState.Summary:
-                        return RedirectToPage("OrderSummary");
-                }
-            }
-            else
-            {
-                _orderService.SetCurrentOrderState(OrderState.Basket);
+                case OrderState.Basket:
+                    break;
+                case OrderState.Shipment:
+                    return RedirectToPage("ShipmentInfo");
+                case OrderState.Summary:
+                    return RedirectToPage("OrderSummary");
+                default:
+                    _orderService.SetCurrentOrderState(OrderState.Basket);
+                    return RedirectToPage("Basket");
             }
 
             initializeLayout();

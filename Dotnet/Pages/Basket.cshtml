@@ -8,7 +8,7 @@
 <div class="add-event-form-card">
     @if (Model.ItemsInCartCount != 0.ToString())
     {
-        <h1>Koszyk</h1>
+        <h2 class="add-event-title">Koszyk</h2>
         <form method="post">
             <div asp-validation-summary="All"></div>
             <ul>
@@ -54,13 +54,15 @@
                         </div>
                         <div class="column-price">
                             <span>
-                                * @Model.BasketSet.BasketPositions[i].Event.Price PLN
+                                * @Model.BasketSet.BasketPositions[i].Event.Price.ToString("0.00") PLN
                             </span>
                         </div>
                     </li>
                 }
             </ul>
-            <button type="submit" class="add-event-form-button">Zamów!</button>
+            <div class="add-event-buttons-wrapper">
+                <button type="submit" class="add-event-form-button">Zamów!</button>
+            </div>
         </form>
     }
     else

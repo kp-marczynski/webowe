@@ -3,11 +3,99 @@
 
 @{
     ViewData["Title"] = "Podsumowanie zamówienia";
+    Model.price = new List<float>();
+    var shiping = 15.5;
 }
 
-<h2>Podsumowanie zamówienia</h2>
-@Model.ShipmentInfo.FullName
-<br/>
-@Model.ShipmentInfo.City
-<br/>
-@Model.ShipmentInfo.PaymentMethod
+@* @Model.ShipmentInfo.FullName *@
+@* <br/> *@
+@* @Model.ShipmentInfo.City *@
+<div class="add-event-form-card">
+    <h2 class="add-event-title">Podsumowanie zamówienia</h2>
+    @if (Model.ItemsInCartCount != 0.ToString())
+    {
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+
+            <h2>Dane do dostawy:</h2>
+            <div class="add-event-form-text-area flex-wrapper info-area">
+                <input asp-for="ShipmentInfo.FullName" type="hidden"/>
+                <input asp-for="ShipmentInfo.PhoneNumber" type="hidden"/>
+                <input asp-for="ShipmentInfo.City" type="hidden"/>
+                <input asp-for="ShipmentInfo.PostalAddress" type="hidden"/>
+                <input asp-for="ShipmentInfo.Street" type="hidden"/>
+                <input asp-for="ShipmentInfo.HouseNumber" type="hidden"/>
+                <div class="column">
+                    <div>@Model.ShipmentInfo.FullName</div>
+                    <div>@Model.ShipmentInfo.PhoneNumber</div>
+                    <div>@Model.CurrentUserEmail</div>
+                </div>
+                <div class="column">
+                    <div>@Model.ShipmentInfo.City</div>
+                    <div>@Model.ShipmentInfo.PostalAddress</div>
+                    <div>@Model.ShipmentInfo.Street @Model.ShipmentInfo.HouseNumber</div>
+                </div>
+            </div>
+            <h2>Zamawiane bilety:</h2>
+            <ul>
+                @for (var i = 0; i < Model.BasketSet.BasketPositions.Count; ++i)
+                {
+                    <li class="add-event-form-text-area">
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Id" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Name" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Price" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.Place" type="hidden"/>
+                        @* <input asp-for="BasketSet.BasketPositions[i].Event.Date" type="hidden"/> *@
+                        <input asp-for="BasketSet.BasketPositions[i].Event.ShortInfo" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.ImageUrl" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
+                        @* <input asp-for="BasketSet.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
+                        <input asp-for="BasketSet.BasketPositions[i].Event.AgeRange" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
+                        <input asp-for="BasketSet.BasketPositions[i].Quantity" type="hidden"/>
+
+                        <div class="column">
+                            <span>
+                                <strong>@Model.BasketSet.BasketPositions[i].Event.Name</strong>
+                                <br/>
+                                @Model.BasketSet.BasketPositions[i].Event.Place
+                            </span>
+                        </div>
+                        <div class="column">
+                            @Model.BasketSet.BasketPositions[i].Quantity * @Model.BasketSet.BasketPositions[i].Event.Price.ToString("0.00") PLN
+                        </div>
+                        <div class="column-price">
+                            @* <span> *@
+                            @{
+                                Model.price.Add(Model.BasketSet.BasketPositions[i].Event.Price * Model.BasketSet.BasketPositions[i].Quantity);
+                            }
+                            @Model.price[i].ToString("0.00") PLN
+                            @* </span> *@
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div class="summary-total-cost">
+                <div>
+                    Koszt dostawy: <span class="price-wrapper">@shiping.ToString("0.00") PLN</span>
+                </div>
+                @{
+                    var sum = Model.price.Sum() + shiping;
+                }
+                <div>
+                    Całkowity koszt: <span class="price-wrapper total-price-wrapper">@sum.ToString("0.00") PLN</span>
+                </div>
+            </div>
+            <div class="add-event-buttons-wrapper">
+                <button type="submit" class="add-event-form-button">Potwierdź zamówienie!</button>
+                <button type="submit" class="add-event-form-button btn-info" asp-page-handler="back">Cofnij</button>
+                <button type="submit" class="add-event-form-button btn-error" asp-page-handler="cancel">Anuluj</button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <h2>Koszyk jest pusty :(</h2>
+    }
+</div>

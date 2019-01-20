@@ -7,5 +7,6 @@ namespace Shop.Services
         BasketSet GetItemsInBasket();
         void SaveBasketInCookie(BasketSet basketSet);
         void RemoveOrderedItemsFromCookie();
+        BasketSet GetOrderItems();
     }
 }

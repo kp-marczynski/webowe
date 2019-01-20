@@ -10,7 +10,7 @@
 <div class="add-event-form-card">
     @if (Model.ItemsInCartCount != 0.ToString())
     {
-        <h1>Dane Dostawy</h1>
+        <h2 class="add-event-title">Dane Dostawy</h2>
         <form method="post">
             <div asp-validation-summary="All"></div>
 
@@ -23,7 +23,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">phone</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.FullName" autocomplete="name" required/>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.FullName" autocomplete="name" />
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -33,7 +33,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">person</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="tel" required/>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="tel" />
                     </div>
                 </div>
             </fieldset>
@@ -46,7 +46,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">location_city</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality" required/>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality" />
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -56,7 +56,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">local_post_office</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code" required/>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code" />
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -66,7 +66,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">location_on</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1" required/>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1" />
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -76,11 +76,14 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">home</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber" autocomplete="shipping address-line2" required/>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber" autocomplete="shipping address-line2"/>
                     </div>
                 </div>
             </fieldset>
-            <button id="add-event-form-button" type="submit" class="add-event-form-button" disabled>Zamów!</button>
+            <div class="add-event-buttons-wrapper">
+                <button id="add-event-form-button" type="submit" class="add-event-form-button" disabled>Zamów!</button>
+                <button type="submit" class="add-event-form-button btn-info" asp-page-handler="back">Cofnij do koszyka</button>
+            </div>
         </form>
     }
 

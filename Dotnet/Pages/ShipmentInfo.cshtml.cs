@@ -21,23 +21,20 @@ namespace Shop.Pages
 
         public IActionResult OnGet()
         {
-            var currentOrderState = _orderService.CurrentOrderState();
-            if (currentOrderState != null)
+
+            switch (_orderService.CurrentOrderState())
             {
-                switch (currentOrderState)
-                {
-                    case OrderState.Basket:
-                        return RedirectToPage("Basket");
-                    case OrderState.Shipment:
-                        break;
-                    case OrderState.Summary:
-                        return RedirectToPage("OrderSummary");
-                }
+                case OrderState.Basket:
+                    return RedirectToPage("Basket");
+                case OrderState.Shipment:
+                    break;
+                case OrderState.Summary:
+                    return RedirectToPage("OrderSummary");
+                default:
+                    _orderService.SetCurrentOrderState(OrderState.Basket);
+                    return RedirectToPage("Basket");
             }
-            else
-            {
-                _orderService.SetCurrentOrderState(OrderState.Basket);
-            }
+
             initializeLayout();
             return Page();
         }
@@ -55,6 +52,11 @@ namespace Shop.Pages
             _orderService.SaveShipmentInfoInSession(ShipmentInfo);
             return RedirectToPage("OrderSummary");
 //            return RedirectToPage("OrderSummary", "SingleOrder", ShipmentInfo);
+        }
+
+        public IActionResult OnPostBack()
+        {
+            return RedirectToPage("Basket");
         }
     }
 }
