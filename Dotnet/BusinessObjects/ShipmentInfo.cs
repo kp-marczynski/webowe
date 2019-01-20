@@ -11,8 +11,7 @@ namespace Shop.BusinessObjects
         [Required] public string PostalAddress { get; set; }
         [Required] public string Street { get; set; }
         [Required] public string HouseNumber { get; set; }
-//        public string ApartmentNumber { get; set; }
-        
+//        [Required] public string PaymentMethod { get; set; }        
 
         public static ShipmentInfo createShipmentInfo(BaseOrder baseOrder)
         {

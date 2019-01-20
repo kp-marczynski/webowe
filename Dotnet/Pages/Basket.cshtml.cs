@@ -58,6 +58,7 @@ namespace Shop.Pages
             {
                 Console.WriteLine("Model is not valid");
                 initializeLayout();
+                ItemsInCartCount = "?";
                 return Page();
             }
 

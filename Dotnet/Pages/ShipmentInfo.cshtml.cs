@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
@@ -9,6 +10,7 @@ namespace Shop.Pages
 {
     public class ShipmentInfoModel : LayoutModel
     {
+//        public List<string> PaymentMethodsList = new List<string>{"gotówką", "przelewem"};
         private IOrderService _orderService;
         public ShipmentInfoModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {

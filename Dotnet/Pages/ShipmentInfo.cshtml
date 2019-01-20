@@ -1,4 +1,5 @@
 @page
+@using Shop.BusinessObjects
 @model ShipmentInfoModel
 
 @{
@@ -7,7 +8,7 @@
 
 
 <div class="add-event-form-card">
-    @if (Model.ItemsInCartCount != 0)
+    @if (Model.ItemsInCartCount != 0.ToString())
     {
         <h1>Dane Dostawy</h1>
         <form method="post">
@@ -37,58 +38,47 @@
                 </div>
             </fieldset>
             <fieldset class="add-event-form-text-area">
-            <legend>Adres wysyłki:</legend>
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-place">
-                    Miasto
-                </label>
+                <legend>Adres wysyłki:</legend>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Miasto
+                    </label>
 
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">location_city</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality" required/>
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">location_city</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality" required/>
+                    </div>
                 </div>
-            </div>
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-place">
-                    Kod Pocztowy
-                </label>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Kod Pocztowy
+                    </label>
 
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">local_post_office</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code" required/>
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">local_post_office</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code" required/>
+                    </div>
                 </div>
-            </div>
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-place">
-                    Ulica
-                </label>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Ulica
+                    </label>
 
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">location_on</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1" required/>
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">location_on</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1" required/>
+                    </div>
                 </div>
-            </div>
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-place">
-                    Numer Domu
-                </label>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Numer Domu
+                    </label>
 
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">home</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber" autocomplete="shipping address-line2" required/>
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">home</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber" autocomplete="shipping address-line2" required/>
+                    </div>
                 </div>
-            </div>
-            @* <div class="add-event-row-wrapper"> *@
-            @*     <label class="add-event-input-label" for="event-place"> *@
-            @*         Numer Mieszkania *@
-            @*     </label> *@
-            @* *@
-            @*     <div class="add-event-img-input-wrapper"> *@
-            @*         <i class="material-icons add-event-input-img">view_module</i> *@
-            @*         <input class="add-event-form-input" asp-for="ShipmentInfo.ApartmentNumber"/> *@
-            @*     </div> *@
-            @* </div> *@
-            
             </fieldset>
             <button id="add-event-form-button" type="submit" class="add-event-form-button" disabled>Zamów!</button>
         </form>
