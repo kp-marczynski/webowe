@@ -10,7 +10,7 @@
 @* @Model.ShipmentInfo.FullName *@
 @* <br/> *@
 @* @Model.ShipmentInfo.City *@
-<div class="add-event-form-card">
+<div class="add-event-form">
     <h2 class="add-event-title">Podsumowanie zamówienia</h2>
     @if (Model.ItemsInCartCount != 0.ToString())
     {
@@ -63,14 +63,14 @@
                             </span>
                         </div>
                         <div class="column">
-                            @Model.BasketSet.BasketPositions[i].Quantity * @Model.BasketSet.BasketPositions[i].Event.Price.ToString("0.00") PLN
+                            @Model.BasketSet.BasketPositions[i].Quantity * @string.Format("{0:N2}", Model.BasketSet.BasketPositions[i].Event.Price) PLN
                         </div>
                         <div class="column-price">
                             @* <span> *@
                             @{
                                 Model.price.Add(Model.BasketSet.BasketPositions[i].Event.Price * Model.BasketSet.BasketPositions[i].Quantity);
                             }
-                            @Model.price[i].ToString("0.00") PLN
+                        @string.Format("{0:N2}", Model.price[i]) PLN
                             @* </span> *@
                         </div>
                     </li>
@@ -78,13 +78,13 @@
             </ul>
             <div class="summary-total-cost">
                 <div>
-                    Koszt dostawy: <span class="price-wrapper">@shiping.ToString("0.00") PLN</span>
+                    Koszt dostawy: <span class="price-wrapper">@string.Format("{0:N2}", shiping) PLN</span>
                 </div>
                 @{
                     var sum = Model.price.Sum() + shiping;
                 }
                 <div>
-                    Całkowity koszt: <span class="price-wrapper total-price-wrapper">@sum.ToString("0.00") PLN</span>
+                    Całkowity koszt: <span class="price-wrapper total-price-wrapper">@string.Format("{0:N2}", sum) PLN</span>
                 </div>
             </div>
             <div class="add-event-buttons-wrapper">

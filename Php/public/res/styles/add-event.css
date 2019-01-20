@@ -1,4 +1,4 @@
-.add-event-form-card{
+.add-event-form{
     width: 90%;
     background: var(--card-background);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -205,6 +205,7 @@ select.add-event-form-input {
         flex-direction: row-reverse;
         justify-content: flex-start;
         bottom: -5rem;
+        left: 0;
     }
 
     .add-event-image-wrapper .add-event-row-wrapper {

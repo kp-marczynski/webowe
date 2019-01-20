@@ -5,7 +5,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="add-event-form-card">
+<div class="add-event-form">
     @if (Model.ItemsInCartCount != 0.ToString())
     {
         <h2 class="add-event-title">Koszyk</h2>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="column-price">
                             <span>
-                                * @Model.BasketSet.BasketPositions[i].Event.Price.ToString("0.00") PLN
+                                * @string.Format("{0:N2}", Model.BasketSet.BasketPositions[i].Event.Price) PLN
                             </span>
                         </div>
                     </li>

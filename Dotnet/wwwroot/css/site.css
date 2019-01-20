@@ -90,11 +90,11 @@ form li, .flex-wrapper {
     margin: 1rem;
 }
 
-.add-event-form-card {
+.add-event-form {
     max-width: 850px;
 }
 
-.add-event-form-card h1 {
+.add-event-form h1 {
     text-align: center;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
@@ -119,7 +119,7 @@ form li, .flex-wrapper {
 }
 
 .price-wrapper {
-    width: 100px;
+    width: 200px;
     display: inline-block;
 }
 
