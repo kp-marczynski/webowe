@@ -13,6 +13,31 @@
         <form method="post">
             <div asp-validation-summary="All"></div>
 
+            <fieldset class="add-event-form-text-area">
+                <legend>Dane Osobowe:</legend>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Imię i Nazwisko
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">phone</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="name" required/>
+                    </div>
+                </div>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Numer Telefonu
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">person</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="tel" required/>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="add-event-form-text-area">
+            <legend>Adres wysyłki:</legend>
             <div class="add-event-row-wrapper">
                 <label class="add-event-input-label" for="event-place">
                     Miasto
@@ -20,7 +45,7 @@
 
                 <div class="add-event-img-input-wrapper">
                     <i class="material-icons add-event-input-img">location_city</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.City"/>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality" required/>
                 </div>
             </div>
             <div class="add-event-row-wrapper">
@@ -30,7 +55,7 @@
 
                 <div class="add-event-img-input-wrapper">
                     <i class="material-icons add-event-input-img">local_post_office</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress"/>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code" required/>
                 </div>
             </div>
             <div class="add-event-row-wrapper">
@@ -40,7 +65,7 @@
 
                 <div class="add-event-img-input-wrapper">
                     <i class="material-icons add-event-input-img">location_on</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.Street"/>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1" required/>
                 </div>
             </div>
             <div class="add-event-row-wrapper">
@@ -50,29 +75,21 @@
 
                 <div class="add-event-img-input-wrapper">
                     <i class="material-icons add-event-input-img">home</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber"/>
+                    <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber" autocomplete="shipping address-line2" required/>
                 </div>
             </div>
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-place">
-                    Numer Mieszkania
-                </label>
-
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">view_module</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.ApartmentNumber"/>
-                </div>
-            </div>
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-place">
-                    Numer Telefonu
-                </label>
-
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">phone</i>
-                    <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber"/>
-                </div>
-            </div>
+            @* <div class="add-event-row-wrapper"> *@
+            @*     <label class="add-event-input-label" for="event-place"> *@
+            @*         Numer Mieszkania *@
+            @*     </label> *@
+            @* *@
+            @*     <div class="add-event-img-input-wrapper"> *@
+            @*         <i class="material-icons add-event-input-img">view_module</i> *@
+            @*         <input class="add-event-form-input" asp-for="ShipmentInfo.ApartmentNumber"/> *@
+            @*     </div> *@
+            @* </div> *@
+            
+            </fieldset>
             <button type="submit" class="add-event-form-button">Zamów!</button>
         </form>
     }
