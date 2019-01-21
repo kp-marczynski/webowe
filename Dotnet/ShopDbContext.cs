@@ -15,8 +15,8 @@ namespace Shop
 
         public DbSet<Event> events { get; set; }
 
-//        public DbSet<BaseOrder> baseOrders { get; set; }
-//
-//        public DbSet<OrderEvent> OrderEvents { get; set; }
+        public DbSet<BaseOrder> baseOrders { get; set; }
+
+        public DbSet<OrderEvent> OrderEvents { get; set; }
     }
 }

@@ -17,13 +17,12 @@ namespace Shop.BusinessObjects
         {
             return new ShipmentInfo
             {
+                FullName = baseOrder.FullName,
+                PhoneNumber = baseOrder.PhoneNumber,
                 City = baseOrder.City,
                 PostalAddress = baseOrder.PostalAddress,
                 Street = baseOrder.Street,
-                HouseNumber = baseOrder.HouseNumber,
-//                ApartmentNumber = baseOrder.ApartmentNumber,
-                PhoneNumber = baseOrder.PhoneNumber,
-                FullName = baseOrder.FullName
+                HouseNumber = baseOrder.HouseNumber
             };
         }
     }

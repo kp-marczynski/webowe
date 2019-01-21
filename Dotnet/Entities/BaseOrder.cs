@@ -1,39 +1,68 @@
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Shop.BusinessObjects;
+using Shop.BusinessObjects.Enums;
 
 namespace Shop.Entities
 {
     [Table("orders")]
     public class BaseOrder
     {
-        public string FullName { get; set; }
-        public string PhoneNumber { get; set; }
-        public int OrderId { get; set; }
-        public int UserId { get; set; }
-        public string City { get; set; }
-        public string PostalAddress { get; set; }
-        public string Street { get; set; }
-        public string HouseNumber { get; set; }
-//        public string ApartmentNumber { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-        public static BaseOrder createBaseOrder(User user, ShipmentInfo shipmentInfo)
+        [Required] [Column("user_id")] public int UserId { get; set; }
+        [Required] [Column("full_name")] public string FullName { get; set; }
+        [Required] [Column("phone_number")] public string PhoneNumber { get; set; }
+        [Required] [Column("city")] public string City { get; set; }
+        [Required] [Column("postal_address")] public string PostalAddress { get; set; }
+        [Required] [Column("street")] public string Street { get; set; }
+        [Required] [Column("house_number")] public string HouseNumber { get; set; }
+
+        [Required] [Column("order_status")] public string OrderStatus { get; set; }
+
+//        [Column(TypeName = "Date")] public DateTime ReportDate { get; set; }
+        [Column("order_date")] public DateTime OrderDate { get; set; } = DateTime.Now;
+
+        public static BaseOrder createBaseOrder(User user, ShipmentInfo shipmentInfo,
+            OrderProcessingState orderProcessingState, int? orderId, DateTime? orderDate)
         {
+            if (orderId == null)
+            {
+                return new BaseOrder
+                {
+                    UserId = user.Id,
+                    City = shipmentInfo.City,
+                    PostalAddress = shipmentInfo.PostalAddress,
+                    Street = shipmentInfo.Street,
+                    HouseNumber = shipmentInfo.HouseNumber,
+                    PhoneNumber = shipmentInfo.PhoneNumber,
+                    FullName = shipmentInfo.FullName,
+                    OrderStatus = orderProcessingState.ToString(),
+                    OrderDate = orderDate ?? DateTime.Now
+                };
+            }
+
             return new BaseOrder
             {
+                Id = (int) orderId,
                 UserId = user.Id,
                 City = shipmentInfo.City,
                 PostalAddress = shipmentInfo.PostalAddress,
                 Street = shipmentInfo.Street,
                 HouseNumber = shipmentInfo.HouseNumber,
-//                ApartmentNumber = shipmentInfo.ApartmentNumber,
                 PhoneNumber = shipmentInfo.PhoneNumber,
-                FullName = shipmentInfo.FullName
+                FullName = shipmentInfo.FullName,
+                OrderStatus = orderProcessingState.ToString()
             };
         }
 
         public static BaseOrder createBaseOrder(CompleteOrder completeOrder)
         {
-            return createBaseOrder(completeOrder.user, completeOrder.shipmentInfo);
+            return createBaseOrder(completeOrder.user, completeOrder.shipmentInfo, completeOrder.OrderProcessingState,
+                completeOrder.orderId, completeOrder.OrderDate);
         }
     }
 }

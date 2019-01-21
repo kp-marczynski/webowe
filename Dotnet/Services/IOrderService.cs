@@ -1,4 +1,5 @@
 using Shop.BusinessObjects;
+using Shop.BusinessObjects.Enums;
 
 namespace Shop.Services
 {
@@ -9,5 +10,8 @@ namespace Shop.Services
 
         void SaveShipmentInfoInSession(ShipmentInfo shipmentInfo);
         ShipmentInfo GetShipmentInfoFromSession();
+//        CompleteOrder GetCurrentCompleteOrder();
+
+        CompleteOrder SaveCurrentOrderInDb();
     }
 }

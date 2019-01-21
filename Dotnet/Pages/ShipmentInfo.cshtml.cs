@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
+using Shop.BusinessObjects.Enums;
 using Shop.Pages.Shared;
 using Shop.Services;
 

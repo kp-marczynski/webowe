@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
+using Shop.BusinessObjects.Enums;
 using Shop.Pages.Shared;
 using Shop.Services;
 
@@ -9,7 +10,7 @@ namespace Shop.Pages
 {
     public class BasketModel : LayoutModel
     {
-        [BindProperty] public BasketSet BasketSet { get; set; } = new BasketSet();
+        [BindProperty] public OrderCollection OrderCollection { get; set; } = new OrderCollection();
 
         private IBasketService _basketService;
         private IOrderService _orderService;
@@ -37,7 +38,7 @@ namespace Shop.Pages
             }
 
             initializeLayout();
-            BasketSet = _basketService.GetItemsInBasket();
+            OrderCollection = _basketService.GetItemsInBasket();
             return Page();
         }
 
@@ -58,11 +59,11 @@ namespace Shop.Pages
             }
 
             Console.WriteLine("Hello from postasync");
-            foreach (var item in BasketSet.BasketPositions)
+            foreach (var item in OrderCollection.BasketPositions)
             {
                 Console.WriteLine(item.Event.Name+": "+item.Quantity);
             }
-            _basketService.SaveBasketInCookie(BasketSet);
+            _basketService.SaveBasketInCookie(OrderCollection);
             _orderService.SetCurrentOrderState(OrderState.Shipment);
             return RedirectToPage("ShipmentInfo");
         }

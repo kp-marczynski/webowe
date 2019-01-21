@@ -1,4 +1,4 @@
-namespace Shop.BusinessObjects
+namespace Shop.BusinessObjects.Enums
 {
     public enum OrderState
     {

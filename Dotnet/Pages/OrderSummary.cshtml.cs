@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
+using Shop.BusinessObjects.Enums;
 using Shop.Pages.Shared;
 using Shop.Services;
 
@@ -10,7 +11,7 @@ namespace Shop.Pages
     public class OrderSummaryModel : LayoutModel
     {
         [BindProperty] public ShipmentInfo ShipmentInfo { get; set; }
-        [BindProperty] public BasketSet BasketSet { get; set; }
+        [BindProperty] public OrderCollection OrderCollection { get; set; }
         private IOrderService _orderService;
         private IBasketService _basketService;
         public List<float> price;
@@ -37,7 +38,7 @@ namespace Shop.Pages
                     return RedirectToPage("Basket");
             }
 
-            BasketSet = _basketService.GetOrderItems();
+            OrderCollection = _basketService.GetOrderItems();
             ShipmentInfo = _orderService.GetShipmentInfoFromSession() ?? new ShipmentInfo();
 
             initializeLayout();
@@ -53,6 +54,7 @@ namespace Shop.Pages
                 return Page();
             }
 
+            _orderService.SaveCurrentOrderInDb();
             _basketService.RemoveOrderedItemsFromCookie();
 
             return RedirectToPage("Orders");

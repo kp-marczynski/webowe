@@ -38,37 +38,37 @@
             </div>
             <h2>Zamawiane bilety:</h2>
             <ul>
-                @for (var i = 0; i < Model.BasketSet.BasketPositions.Count; ++i)
+                @for (var i = 0; i < Model.OrderCollection.BasketPositions.Count; ++i)
                 {
                     <li class="add-event-form-text-area">
-                        <input asp-for="BasketSet.BasketPositions[i].Event.Id" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].Event.Name" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].Event.Price" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].Event.Place" type="hidden"/>
-                        @* <input asp-for="BasketSet.BasketPositions[i].Event.Date" type="hidden"/> *@
-                        <input asp-for="BasketSet.BasketPositions[i].Event.ShortInfo" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].Event.ImageUrl" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
-                        @* <input asp-for="BasketSet.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
-                        <input asp-for="BasketSet.BasketPositions[i].Event.AgeRange" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
-                        <input asp-for="BasketSet.BasketPositions[i].Quantity" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.Id" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.Name" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.Price" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.Place" type="hidden"/>
+                        @* <input asp-for="OrderCollection.BasketPositions[i].Event.Date" type="hidden"/> *@
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.ShortInfo" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.ImageUrl" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
+                        @* <input asp-for="OrderCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.AgeRange" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
+                        <input asp-for="OrderCollection.BasketPositions[i].Quantity" type="hidden"/>
 
                         <div class="column">
                             <span>
-                                <strong>@Model.BasketSet.BasketPositions[i].Event.Name</strong>
+                                <strong>@Model.OrderCollection.BasketPositions[i].Event.Name</strong>
                                 <br/>
-                                @Model.BasketSet.BasketPositions[i].Event.Place
+                                @Model.OrderCollection.BasketPositions[i].Event.Place
                             </span>
                         </div>
                         <div class="column">
-                            @Model.BasketSet.BasketPositions[i].Quantity * @string.Format("{0:N2}", Model.BasketSet.BasketPositions[i].Event.Price) PLN
+                            @Model.OrderCollection.BasketPositions[i].Quantity * @string.Format("{0:N2}", Model.OrderCollection.BasketPositions[i].Event.Price) PLN
                         </div>
                         <div class="column-price">
                             @* <span> *@
                             @{
-                                Model.price.Add(Model.BasketSet.BasketPositions[i].Event.Price * Model.BasketSet.BasketPositions[i].Quantity);
+                                Model.price.Add(Model.OrderCollection.BasketPositions[i].Event.Price * Model.OrderCollection.BasketPositions[i].Quantity);
                             }
                         @string.Format("{0:N2}", Model.price[i]) PLN
                             @* </span> *@

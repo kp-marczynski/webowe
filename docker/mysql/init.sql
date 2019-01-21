@@ -30,27 +30,28 @@ CREATE TABLE IF NOT EXISTS events
 CREATE TABLE IF NOT EXISTS orders
 (
   id                BIGINT        PRIMARY KEY AUTO_INCREMENT,
-  user_id           BIGINT        NOT NULL UNIQUE,
+  user_id           BIGINT        NOT NULL,
+  full_name         VARCHAR(255)  NOT NULL,
+  phone_number      VARCHAR(255)  NULL,
   city              VARCHAR(255)  NOT NULL,
   postal_address    VARCHAR(255)  NOT NULL,
   street            VARCHAR(255)  NOT NULL,
   house_number      INTEGER       NOT NULL ,
-  apartment_number  INTEGER       NULL,
-  phone_number      VARCHAR(255)  NULL,
-  CONSTRAINT orders_to_users FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
-);
+  order_status      VARCHAR(255)  NOT NULL,
+  order_date        DATETIME      DEFAULT CURRENT_TIMESTAMP
+  );
 
 CREATE TABLE IF NOT EXISTS orders_events
 (
+  id                BIGINT        PRIMARY KEY AUTO_INCREMENT,
   order_id          BIGINT        NOT NULL,
   event_id          BIGINT        NOT NULL,
   event_name        VARCHAR(255)  NOT NULL,
   event_price       REAL          NOT NULL,
   event_place       VARCHAR(255)  NOT NULL,
   quantity          INTEGER       NOT NULL,
-  CONSTRAINT orders_events_to_orders FOREIGN KEY (order_id) REFERENCES orders (id),
-  CONSTRAINT orders_events_to_events FOREIGN KEY (event_id) REFERENCES events (id),
-  PRIMARY KEY (order_id, event_id)
+  UNIQUE (order_id, event_id),
+  CONSTRAINT orders_events_to_orders FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE
 );
 
 -- CREATE TABLE IF NOT EXISTS orders
