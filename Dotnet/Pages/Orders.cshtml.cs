@@ -10,13 +10,16 @@ namespace Shop.Pages
     {
         public List<CompleteOrder> OrdersList { get; set; }
 
-        public OrdersModel(ILayoutService layoutService) : base(layoutService)
+        private IOrderService _orderService;
+        public OrdersModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {
+            _orderService = orderService;
         }
 
         public void OnGet()
         {
             initializeLayout();
+            OrdersList = _orderService.getCurrentUserOrders();
         }
     }
 }

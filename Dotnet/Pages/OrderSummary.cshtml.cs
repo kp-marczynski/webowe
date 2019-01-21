@@ -11,7 +11,7 @@ namespace Shop.Pages
     public class OrderSummaryModel : LayoutModel
     {
         [BindProperty] public ShipmentInfo ShipmentInfo { get; set; }
-        [BindProperty] public OrderCollection OrderCollection { get; set; }
+        [BindProperty] public CartCollection CartCollection { get; set; }
         private IOrderService _orderService;
         private IBasketService _basketService;
         public List<float> price;
@@ -38,7 +38,7 @@ namespace Shop.Pages
                     return RedirectToPage("Basket");
             }
 
-            OrderCollection = _basketService.GetOrderItems();
+            CartCollection = _basketService.GetOrderItems();
             ShipmentInfo = _orderService.GetShipmentInfoFromSession() ?? new ShipmentInfo();
 
             initializeLayout();

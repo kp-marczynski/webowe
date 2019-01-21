@@ -5,9 +5,9 @@ using Shop.Entities;
 
 namespace Shop.BusinessObjects
 {
-    public class OrderCollection
+    public class CartCollection
     {
-        public List<OrderPosition> BasketPositions { get; set; } = new List<OrderPosition>();
+        public List<CartPosition> BasketPositions { get; set; } = new List<CartPosition>();
 
         public int GetBasketCount()
         {
@@ -30,7 +30,7 @@ namespace Shop.BusinessObjects
             bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == EventId);
             if (doesContainEvent)
             {
-                OrderPosition bp = BasketPositions.First(item => item.Event.Id == EventId);
+                CartPosition bp = BasketPositions.First(item => item.Event.Id == EventId);
                 if (bp.Quantity > Quantity)
                 {
                     bp.Quantity -= Quantity;
@@ -54,7 +54,7 @@ namespace Shop.BusinessObjects
                 return false;
             }
 
-            OrderPosition bp = BasketPositions.First(item => item.Event.Id == EventId);
+            CartPosition bp = BasketPositions.First(item => item.Event.Id == EventId);
             bp.Quantity = quantity;
             return true;
         }
@@ -64,11 +64,11 @@ namespace Shop.BusinessObjects
             bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == Event.Id);
             if (!doesContainEvent)
             {
-                BasketPositions.Add(OrderPosition.Create(Event, quantity));
+                BasketPositions.Add(CartPosition.Create(Event, quantity));
             }
             else
             {
-                OrderPosition bp = BasketPositions.First(item => item.Event.Id == Event.Id);
+                CartPosition bp = BasketPositions.First(item => item.Event.Id == Event.Id);
                 bp.Quantity += quantity;
 //                Console.WriteLine(bp.Event.Name +": " +bp.Quantity);
             }
@@ -88,9 +88,9 @@ namespace Shop.BusinessObjects
             return result;
         }
 
-        public OrderCollection GetBasketWithCheckedPositions()
+        public CartCollection GetBasketWithCheckedPositions()
         {
-            var result = new OrderCollection();
+            var result = new CartCollection();
             foreach (var basketPosition in BasketPositions)
             {
                 if (basketPosition.isChecked && basketPosition.Quantity > 0)

@@ -12,49 +12,49 @@
         <form method="post">
             <div asp-validation-summary="All"></div>
             <ul>
-                @for (var i = 0; i < Model.OrderCollection.BasketPositions.Count; ++i)
+                @for (var i = 0; i < Model.CartCollection.BasketPositions.Count; ++i)
                 {
                     <li class="add-event-form-text-area">
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.Id" type="hidden"/>
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.Name" type="hidden"/>
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.Price" type="hidden"/>
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.Place" type="hidden"/>
-                        @* <input asp-for="OrderCollection.BasketPositions[i].Event.Date" type="hidden"/> *@
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.ShortInfo" type="hidden"/>
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.ImageUrl" type="hidden"/>
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
-                        @* <input asp-for="OrderCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.AgeRange" type="hidden"/>
-                        <input asp-for="OrderCollection.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
-                        <input asp-for="OrderCollection.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Id" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Name" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Price" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Place" type="hidden"/>
+                        @* <input asp-for="CartCollection.BasketPositions[i].Event.Date" type="hidden"/> *@
+                        <input asp-for="CartCollection.BasketPositions[i].Event.ShortInfo" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.ImageUrl" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
+                        @* <input asp-for="CartCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
+                        <input asp-for="CartCollection.BasketPositions[i].Event.AgeRange" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
 
                         <div class="column">
                             <label class="checkbox-wrapper">
-                                <input asp-for="OrderCollection.BasketPositions[i].isChecked">
+                                <input asp-for="CartCollection.BasketPositions[i].isChecked">
                                 <span>
-                                    <strong>@Model.OrderCollection.BasketPositions[i].Event.Name</strong>
+                                    <strong>@Model.CartCollection.BasketPositions[i].Event.Name</strong>
                                     <br/>
-                                    @Model.OrderCollection.BasketPositions[i].Event.Place
+                                    @Model.CartCollection.BasketPositions[i].Event.Place
                                 </span>
                             </label>
                         </div>
                         <div class="column">
-                            @* <input asp-for="OrderCollection.BasketPositions[i].Quantity"> *@
+                            @* <input asp-for="CartCollection.BasketPositions[i].Quantity"> *@
                             <div class="add-event-row-wrapper">
                                 <label class="add-event-input-label" for="event-tickets">
-                                    Liczba biletów: (max. @Model.OrderCollection.BasketPositions[i].Event.NumberOfAvailableTickets)
+                                    Liczba biletów: (max. @Model.CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets)
                                 </label>
 
                                 <div class="add-event-img-input-wrapper">
                                     <i class="material-icons add-event-input-img">aspect_ratio</i>
-                                    <input asp-for="OrderCollection.BasketPositions[i].Quantity" class="add-event-form-input" min="0" max="@Model.OrderCollection.BasketPositions[i].Event.NumberOfAvailableTickets">
+                                    <input asp-for="CartCollection.BasketPositions[i].Quantity" class="add-event-form-input" min="0" max="@Model.CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets">
                                 </div>
                             </div>
-                            <span asp-validation-for="@Model.OrderCollection.BasketPositions[i].Quantity"></span>
+                            <span asp-validation-for="@Model.CartCollection.BasketPositions[i].Quantity"></span>
                         </div>
                         <div class="column-price">
                             <span>
-                                * @string.Format("{0:N2}", Model.OrderCollection.BasketPositions[i].Event.Price) PLN
+                                * @string.Format("{0:N2}", Model.CartCollection.BasketPositions[i].Event.Price) PLN
                             </span>
                         </div>
                     </li>

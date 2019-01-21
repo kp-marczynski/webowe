@@ -4,9 +4,9 @@ namespace Shop.Services
 {
     public interface IBasketService
     {
-        OrderCollection GetItemsInBasket();
-        void SaveBasketInCookie(OrderCollection orderCollection);
+        CartCollection GetItemsInBasket();
+        void SaveBasketInCookie(CartCollection cartCollection);
         void RemoveOrderedItemsFromCookie();
-        OrderCollection GetOrderItems();
+        CartCollection GetOrderItems();
     }
 }

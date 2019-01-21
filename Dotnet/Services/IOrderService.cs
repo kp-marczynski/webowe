@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Shop.BusinessObjects;
 using Shop.BusinessObjects.Enums;
 
@@ -13,5 +14,6 @@ namespace Shop.Services
 //        CompleteOrder GetCurrentCompleteOrder();
 
         CompleteOrder SaveCurrentOrderInDb();
+        List<CompleteOrder> getCurrentUserOrders();
     }
 }

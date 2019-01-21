@@ -89,7 +89,14 @@ namespace Shop.Services.Impl
             _shopDbContext.Update(baseOrder);
             _shopDbContext.SaveChanges();
 
-            return currentOrder; //todo
+            return currentOrder;
+        }
+
+        public List<CompleteOrder> getCurrentUserOrders()
+        {
+            var currentUser = _userService.GetCurrentUser();
+            var baseOrders = _shopDbContext.baseOrders.Where(x => x.UserId == currentUser.Id).ToList();
+            return null;
         }
 
         private bool verifyOrder(List<OrderEvent> orderEvents)

@@ -10,7 +10,7 @@ namespace Shop.Pages
 {
     public class BasketModel : LayoutModel
     {
-        [BindProperty] public OrderCollection OrderCollection { get; set; } = new OrderCollection();
+        [BindProperty] public CartCollection CartCollection { get; set; } = new CartCollection();
 
         private IBasketService _basketService;
         private IOrderService _orderService;
@@ -38,7 +38,7 @@ namespace Shop.Pages
             }
 
             initializeLayout();
-            OrderCollection = _basketService.GetItemsInBasket();
+            CartCollection = _basketService.GetItemsInBasket();
             return Page();
         }
 
@@ -59,11 +59,11 @@ namespace Shop.Pages
             }
 
             Console.WriteLine("Hello from postasync");
-            foreach (var item in OrderCollection.BasketPositions)
+            foreach (var item in CartCollection.BasketPositions)
             {
                 Console.WriteLine(item.Event.Name+": "+item.Quantity);
             }
-            _basketService.SaveBasketInCookie(OrderCollection);
+            _basketService.SaveBasketInCookie(CartCollection);
             _orderService.SetCurrentOrderState(OrderState.Shipment);
             return RedirectToPage("ShipmentInfo");
         }

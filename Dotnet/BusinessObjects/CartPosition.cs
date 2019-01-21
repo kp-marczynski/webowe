@@ -3,15 +3,15 @@ using Shop.Entities;
 
 namespace Shop.BusinessObjects
 {
-    public class OrderPosition
+    public class CartPosition
     {
-        public OrderPosition()
+        public CartPosition()
         {
             this.Event = new Event();
             this.Quantity = 0;
         }
 //        
-//        public OrderPosition(Event Event, int Quantity)
+//        public CartPosition(Event Event, int Quantity)
 //        {
 //            this.Event = Event;
 //            this.Quantity = Quantity;
@@ -24,9 +24,9 @@ namespace Shop.BusinessObjects
 //        private static int availableTickets = 10;
         [Required] public bool isChecked { get; set; } = true;
 
-        public static OrderPosition Create(Event Event, int Quantity)
+        public static CartPosition Create(Event Event, int Quantity)
         {
-            var basketPosition = new OrderPosition();
+            var basketPosition = new CartPosition();
             basketPosition.Event = Event;
             basketPosition.Quantity = Quantity;
             return basketPosition;
