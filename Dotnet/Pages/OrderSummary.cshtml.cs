@@ -14,7 +14,7 @@ namespace Shop.Pages
         [BindProperty] public CartCollection CartCollection { get; set; }
         private IOrderService _orderService;
         private IBasketService _basketService;
-        public List<float> price;
+        public List<double> price;
 
         public OrderSummaryModel(ILayoutService layoutService, IOrderService orderService, IBasketService basketService)
             : base(layoutService)

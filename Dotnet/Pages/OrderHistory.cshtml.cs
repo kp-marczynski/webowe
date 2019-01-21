@@ -6,12 +6,12 @@ using Shop.Services;
 namespace Shop.Pages
 
 {
-    public class OrdersModel : LayoutModel
+    public class OrderHistoryModel : LayoutModel
     {
-        public List<CompleteOrder> OrdersList { get; set; }
+        public List<OrderPosition> OrdersList { get; set; }
 
         private IOrderService _orderService;
-        public OrdersModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
+        public OrderHistoryModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {
             _orderService = orderService;
         }

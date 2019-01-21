@@ -33,12 +33,15 @@ CREATE TABLE IF NOT EXISTS orders
   user_id           BIGINT        NOT NULL,
   full_name         VARCHAR(255)  NOT NULL,
   phone_number      VARCHAR(255)  NULL,
+  email             VARCHAR(255)  NOT NULL,
   city              VARCHAR(255)  NOT NULL,
   postal_address    VARCHAR(255)  NOT NULL,
   street            VARCHAR(255)  NOT NULL,
   house_number      INTEGER       NOT NULL ,
   order_status      VARCHAR(255)  NOT NULL,
-  order_date        DATETIME      DEFAULT CURRENT_TIMESTAMP
+  order_date        DATETIME      DEFAULT CURRENT_TIMESTAMP,
+  shipping_cost     REAL          NOT NULL,
+  total_price       REAL          NOT NULL
   );
 
 CREATE TABLE IF NOT EXISTS orders_events
@@ -53,15 +56,3 @@ CREATE TABLE IF NOT EXISTS orders_events
   UNIQUE (order_id, event_id),
   CONSTRAINT orders_events_to_orders FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE
 );
-
--- CREATE TABLE IF NOT EXISTS orders
--- (
---   user_id           BIGINT        NOT NULL UNIQUE,
---   city              VARCHAR(255)  NOT NULL,
---   postal_address    VARCHAR(255)  NOT NULL,
---   street            VARCHAR(255)  NOT NULL,
---   house_number      INTEGER       NOT NULL ,
---   apartment_number  INTEGER       NULL,
---   phone_number      VARCHAR(255)  NULL,
---   CONSTRAINT aorders_to_users FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
--- );

@@ -14,7 +14,7 @@ namespace Shop.Entities
         [Required, Column("order_id")] public int OrderId { get; set; }
         [Required, Column("event_id")] public int EventId { get; set; }
         [Required] [Column("event_name")] public string EventName { get; set; }
-        [Required] [Column("event_price")] public float EventPrice { get; set; }
+        [Required] [Column("event_price")] public double EventPrice { get; set; }
         [Required] [Column("event_place")] public string EventPlace { get; set; }
         [Required] [Column("quantity")] public int Quantity { get; set; }
 

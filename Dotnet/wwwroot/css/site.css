@@ -128,3 +128,15 @@ form li, .flex-wrapper {
     padding-top: 0.25rem;
     margin-top: 0.25rem;
 }
+
+.orders-card {
+    display: block;
+    position: static;
+    transform: none;
+    margin: auto auto 3rem;
+}
+
+.page-title {
+    position: static;
+    top: 0;
+}

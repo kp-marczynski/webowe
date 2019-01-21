@@ -92,11 +92,18 @@ namespace Shop.Services.Impl
             return currentOrder;
         }
 
-        public List<CompleteOrder> getCurrentUserOrders()
+        public List<OrderPosition> getCurrentUserOrders()
         {
+            var result = new List<OrderPosition>();
             var currentUser = _userService.GetCurrentUser();
             var baseOrders = _shopDbContext.baseOrders.Where(x => x.UserId == currentUser.Id).ToList();
-            return null;
+            foreach (var baseOrder in baseOrders)
+            {
+                var events = _shopDbContext.OrderEvents.Where(x => x.OrderId == baseOrder.Id).ToList();
+                result.Add(new OrderPosition(baseOrder, events));
+            }
+
+            return result;
         }
 
         private bool verifyOrder(List<OrderEvent> orderEvents)
@@ -106,7 +113,7 @@ namespace Shop.Services.Impl
                 var eventId = orderEvent.EventId;
                 var ev = _shopDbContext.events.Find(eventId);
                 if (ev == null) return false;
-                
+
                 List<int> wrongOrdersIds = _shopDbContext.baseOrders.Where(z =>
                         z.OrderStatus == OrderProcessingState.NotVerified.ToString()
                         || z.OrderStatus == OrderProcessingState.VerificationFailed.ToString())
@@ -123,7 +130,7 @@ namespace Shop.Services.Impl
                     !wrongOrdersIds.Contains(x.OrderId)
                 ).Sum(y => y.Quantity);
 //                Console.WriteLine("Sold tickets: " + soldTickets);
-                
+
                 if (soldTickets + orderEvent.Quantity > ev.NumberOfAvailableTickets) return false;
             }
 

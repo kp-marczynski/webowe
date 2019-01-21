@@ -14,6 +14,6 @@ namespace Shop.Services
 //        CompleteOrder GetCurrentCompleteOrder();
 
         CompleteOrder SaveCurrentOrderInDb();
-        List<CompleteOrder> getCurrentUserOrders();
+        List<OrderPosition> getCurrentUserOrders();
     }
 }
