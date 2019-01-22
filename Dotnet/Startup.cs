@@ -47,6 +47,7 @@ namespace Shop
             });
 
             services.ConfigureMySqlContext(Configuration);
+            
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IBasketService, BasketService>();
             services.AddSingleton<IOrderService, OrderService>();

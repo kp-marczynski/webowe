@@ -14,7 +14,7 @@ namespace Shop.Repositories.Impl
 
         public Event FindById(int eventId)
         {
-            return _shopDbContext.events.Find(eventId);
+            return ShopDbContext.getInstance().events.Find(eventId);
         }
     }
 }
