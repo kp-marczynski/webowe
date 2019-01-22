@@ -19,8 +19,6 @@ namespace Shop.Repositories.Impl
         {
             using (var shopDbContext = ShopDbContext.getInstance())
             {
-
-
                 shopDbContext.OrderEvents.AddRange(orderEvents);
                 shopDbContext.SaveChanges();
             }

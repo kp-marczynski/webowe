@@ -1,10 +1,9 @@
-using System;
 using System.Linq;
 using Shop.Entities;
 
 namespace Shop.Repositories.Impl
 {
-    public class UserRepository: IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly ShopDbContext _shopDbContext;
 

@@ -1,9 +1,8 @@
-using System.Linq;
 using Shop.Entities;
 
 namespace Shop.Repositories.Impl
 {
-    public class EventRepository: IEventRepository
+    public class EventRepository : IEventRepository
     {
         private readonly ShopDbContext _shopDbContext;
 
