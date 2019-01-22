@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS orders_events
   event_id          BIGINT        NOT NULL,
   event_name        VARCHAR(255)  NOT NULL,
   event_price       REAL          NOT NULL,
+  event_date        DATETIME      NOT NULL,
   event_place       VARCHAR(255)  NOT NULL,
   quantity          INTEGER       NOT NULL,
   UNIQUE (order_id, event_id),
