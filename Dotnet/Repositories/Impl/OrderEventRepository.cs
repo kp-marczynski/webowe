@@ -17,7 +17,7 @@ namespace Shop.Repositories.Impl
 
         public void SaveAll(List<OrderEvent> orderEvents)
         {
-            using (var shopDbContext = ShopDbContext.getInstance())
+            using (var shopDbContext = ShopDbContext.GetInstance())
             {
                 shopDbContext.OrderEvents.AddRange(orderEvents);
                 shopDbContext.SaveChanges();
@@ -26,13 +26,13 @@ namespace Shop.Repositories.Impl
 
         public List<OrderEvent> FindByOrderId(int orderId)
         {
-            return ShopDbContext.getInstance().OrderEvents.Where(x => x.OrderId == orderId).ToList();
+            return ShopDbContext.GetInstance().OrderEvents.Where(x => x.OrderId == orderId).ToList();
         }
 
         public int CountSoldTickets(int eventId)
         {
             var wrongOrdersIds = _baseOrderRepository.FindWrongOrdersIds();
-            return ShopDbContext.getInstance().OrderEvents.Where(x =>
+            return ShopDbContext.GetInstance().OrderEvents.Where(x =>
                 x.EventId == eventId &&
                 !wrongOrdersIds.Contains(x.OrderId)
             ).Sum(y => y.Quantity);

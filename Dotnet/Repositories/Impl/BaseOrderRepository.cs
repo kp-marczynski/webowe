@@ -16,12 +16,12 @@ namespace Shop.Repositories.Impl
 
         public List<BaseOrder> FindAllByUserId(int userId)
         {
-            return ShopDbContext.getInstance().baseOrders.Where(x => x.UserId == userId).ToList();
+            return ShopDbContext.GetInstance().BaseOrders.Where(x => x.UserId == userId).ToList();
         }
 
         public List<int> FindWrongOrdersIds()
         {
-            return ShopDbContext.getInstance().baseOrders.Where(z =>
+            return ShopDbContext.GetInstance().BaseOrders.Where(z =>
                     z.OrderStatus == OrderProcessingState.NotVerified.ToString()
                     || z.OrderStatus == OrderProcessingState.VerificationFailed.ToString())
                 .ToList().Select(x => x.Id).ToList();
@@ -29,9 +29,9 @@ namespace Shop.Repositories.Impl
 
         public BaseOrder SaveAndFlush(BaseOrder baseOrder)
         {
-            using (var shopDbContext = ShopDbContext.getInstance())
+            using (var shopDbContext = ShopDbContext.GetInstance())
             {
-                shopDbContext.baseOrders.Add(baseOrder);
+                shopDbContext.BaseOrders.Add(baseOrder);
                 shopDbContext.SaveChanges();
                 return baseOrder;
             }
@@ -39,9 +39,9 @@ namespace Shop.Repositories.Impl
 
         public BaseOrder Update(BaseOrder baseOrder)
         {
-            using (var shopDbContext = ShopDbContext.getInstance())
+            using (var shopDbContext = ShopDbContext.GetInstance())
             {
-                shopDbContext.baseOrders.Update(baseOrder);
+                shopDbContext.BaseOrders.Update(baseOrder);
                 shopDbContext.SaveChanges();
                 return baseOrder;
             }

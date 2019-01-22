@@ -13,7 +13,7 @@ namespace Shop.Repositories.Impl
 
         public Event FindById(int eventId)
         {
-            return ShopDbContext.getInstance().events.Find(eventId);
+            return ShopDbContext.GetInstance().Events.Find(eventId);
         }
     }
 }

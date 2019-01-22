@@ -11,15 +11,15 @@ namespace Shop
             _dbContextOptions = options;
         }
 
-        public DbSet<User> users { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        public DbSet<Event> events { get; set; }
+        public DbSet<Event> Events { get; set; }
 
-        public DbSet<BaseOrder> baseOrders { get; set; }
+        public DbSet<BaseOrder> BaseOrders { get; set; }
 
         public DbSet<OrderEvent> OrderEvents { get; set; }
 
-        public static ShopDbContext getInstance()
+        public static ShopDbContext GetInstance()
         {
             return new ShopDbContext(_dbContextOptions);
         }

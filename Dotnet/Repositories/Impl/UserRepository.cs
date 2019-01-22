@@ -15,7 +15,7 @@ namespace Shop.Repositories.Impl
         public User FindByToken(string token)
         {
 //            return _shopDbContext.users.Find(token);
-            var temp = ShopDbContext.getInstance().users.Where(x => x.Token == token).ToList();
+            var temp = ShopDbContext.GetInstance().Users.Where(x => x.Token == token).ToList();
             if (temp.Count == 1)
             {
                 return temp[0];
