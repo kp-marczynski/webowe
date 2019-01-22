@@ -1,12 +1,14 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Shop.Pages.Shared;
+using Shop.Services;
 
-namespace Sklep.Pages
+namespace Shop.Pages
 {
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : LayoutModel
     {
-        public ErrorModel(MuzykaDbContext muzykaDbContext, string requestId) : base(muzykaDbContext)
+        public ErrorModel(string requestId, ILayoutService layoutService) : base(layoutService)
         {
             RequestId = requestId;
         }
@@ -15,9 +17,9 @@ namespace Sklep.Pages
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-        new public void OnGet()
+        public void OnGet()
         {
-            base.OnGet();
+            InitializeLayout();
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }

@@ -50,9 +50,9 @@ if ($eventsInCart > 0) {
                 <a href="/events">Wydarzenia</a>
             </li>
             <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"' ?>>
+                <a href=<?php echo $_ENV['SHOP_URL_FRONT'] ?>>
                 <span class="cart-items"
                       id="cart-items" <?php echo isset($eventsInCartToDisplay) ? "" : "style='display: none'" ?>><?php echo $eventsInCartToDisplay ?></span>
-                <a href=<?php echo $_ENV['SHOP_URL_FRONT'] ?>>
                     Koszyk</a>
             </li>
         </ul>

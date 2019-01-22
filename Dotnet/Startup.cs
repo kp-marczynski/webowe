@@ -1,11 +1,17 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Shop.Repositories;
+using Shop.Repositories.Impl;
+using Shop.Services;
+using Shop.Services.Impl;
 
-namespace Sklep
+namespace Shop
 {
     public class Startup
     {
@@ -22,12 +28,36 @@ namespace Sklep
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.Cookie.HttpOnly = true;
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddRazorPagesOptions(options =>
+            {
+//                options.Conventions.AddPageRoute("/Basket", "");
+            });
+
             services.ConfigureMySqlContext(Configuration);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IBasketService, BasketService>();
+            services.AddSingleton<IOrderService, OrderService>();
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<ILayoutService, LayoutService>();
+
+            services.AddSingleton<IBaseOrderRepository, BaseOrderRepository>();
+            services.AddSingleton<IEventRepository, EventRepository>();
+            services.AddSingleton<IOrderEventRepository, OrderEventRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +69,7 @@ namespace Sklep
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+//                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -47,7 +77,7 @@ namespace Sklep
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc();
         }
     }

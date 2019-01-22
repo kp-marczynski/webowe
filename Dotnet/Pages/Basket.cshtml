@@ -1,0 +1,77 @@
+﻿@page
+@model BasketModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="add-event-form">
+    @if (Model.ItemsInCartCount != 0.ToString())
+    {
+        <h2 class="add-event-title">Koszyk</h2>
+        <span id="distinct-event-count" style="display: none;">@Model.CartCollection.BasketPositions.Count</span>
+        <form method="post" id="cart-form">
+            <ul>
+                @for (var i = 0; i < Model.CartCollection.BasketPositions.Count; ++i)
+                {
+                    <li class="add-event-form-text-area">
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Id" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Name" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Price" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Place" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Date" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.ShortInfo" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.ImageUrl" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.AgeRange" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
+                        <input asp-for="CartCollection.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
+
+                        <div class="column">
+                            <label class="checkbox-wrapper" id="checkbox-wrapper_@i">
+                                <input asp-for="CartCollection.BasketPositions[i].IsChecked">
+                                <span>
+                                    <strong>@Model.CartCollection.BasketPositions[i].Event.Name</strong>
+                                    <br/>
+                                    @Model.CartCollection.BasketPositions[i].Event.Place
+                                    <br/>
+                                    @Model.CartCollection.BasketPositions[i].Event.Date
+                                </span>
+                            </label>
+                        </div>
+                        <div class="column">
+                            @* <input asp-for="CartCollection.BasketPositions[i].Quantity"> *@
+                            <div class="add-event-row-wrapper">
+                                <label class="add-event-input-label" for="event-tickets">
+                                    Liczba dostępnych biletów: (max. <span id="CurrentlyAvailableTickets_@i">@Model.CartCollection.BasketPositions[i].CurrentlyAvailableTickets</span>)
+                                </label>
+
+                                <div class="add-event-img-input-wrapper">
+                                    <i class="material-icons add-event-input-img">aspect_ratio</i>
+                                    <input asp-for="CartCollection.BasketPositions[i].Quantity" class="add-event-form-input" min="0" max="@Model.CartCollection.BasketPositions[i].CurrentlyAvailableTickets">
+                                </div>
+                            </div>
+                            <span asp-validation-for="@Model.CartCollection.BasketPositions[i].Quantity"></span>
+                        </div>
+                        <div class="column-price">
+                            <span class="vertical-price">
+                                * @string.Format("{0:N2}", Model.CartCollection.BasketPositions[i].Event.Price) PLN
+                            </span>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div id="validation-summary-valid error" asp-validation-summary="All">
+                <span id="validation-summary-valid-error" class="add-event-input-error"></span>
+            </div>
+            <div class="add-event-buttons-wrapper">
+                <button type="submit" class="add-event-form-button" id="add-event-form-button" disabled>Zamów!</button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <h2>Koszyk jest pusty :(</h2>
+    }
+</div>
+<script src="~/js/cart-validation.js" asp-append-version="true"></script>

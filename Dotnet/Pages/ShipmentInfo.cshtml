@@ -1,0 +1,91 @@
+@page
+@using Shop.BusinessObjects
+@model ShipmentInfoModel
+
+@{
+    ViewData["Title"] = "ShipmentInfo";
+}
+
+
+<div class="add-event-form">
+    @if (Model.ItemsInCartCount != 0.ToString())
+    {
+        <h2 class="add-event-title">Dane Dostawy</h2>
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+
+            <fieldset class="add-event-form-text-area">
+                <legend>Dane Osobowe:</legend>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Imię i Nazwisko
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">phone</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.FullName" autocomplete="name" />
+                    </div>
+                </div>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Numer Telefonu
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">person</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="tel" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="add-event-form-text-area">
+                <legend>Adres wysyłki:</legend>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Miasto
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">location_city</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality" />
+                    </div>
+                </div>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Kod Pocztowy
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">local_post_office</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code" />
+                    </div>
+                </div>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Ulica
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">location_on</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1" />
+                    </div>
+                </div>
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-place">
+                        Numer Domu
+                    </label>
+
+                    <div class="add-event-img-input-wrapper">
+                        <i class="material-icons add-event-input-img">home</i>
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.HouseNumber" autocomplete="shipping address-line2"/>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="add-event-buttons-wrapper">
+                <button id="add-event-form-button" type="submit" class="add-event-form-button" disabled>Zamów!</button>
+                <button type="submit" class="add-event-form-button btn-info" asp-page-handler="back">Cofnij do koszyka</button>
+            </div>
+        </form>
+    }
+
+</div>
+<script src="~/js/shipmentinfo-validation.js" asp-append-version="true"></script>

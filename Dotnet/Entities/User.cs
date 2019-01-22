@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Sklep
+namespace Shop.Entities
 {
     [Table("users")]
     public class User
@@ -12,7 +11,7 @@ namespace Sklep
         [Required] [StringLength(50)] public string Email { get; set; }
         [Required] [StringLength(50)] public string Password { get; set; }
         [Required] [StringLength(50)] public string Role { get; set; }
-//        [Required] [StringLength(50)] public string LastLoginDate { get; set; }
+//        [Column("last_login_date")][Required] [StringLength(50)] public string LastLoginDate { get; set; }
         [StringLength(50)] public string Token { get; set; }
     }
 }

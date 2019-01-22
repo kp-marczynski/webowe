@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Sklep</title>
+    <title>@ViewData["Title"] - Shop</title>
 
     <link href="@Model.PhpAddress/res/styles/index.css" rel="stylesheet"/>
     <link href="@Model.PhpAddress/res/styles/utils.css" rel="stylesheet"/>
@@ -16,6 +16,7 @@
     <link rel="icon" href="@Model.PhpAddress/res/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
 <header>
@@ -41,15 +42,18 @@
                     <a href="@Model.PhpAddress/events">Wydarzenia</a>
                 </li>
                 <li class="menu-item">
-                    @if (Model.ItemsInCartCount != null && Model.ItemsInCartCount != 0)
+                    <a asp-page="/Basket">
+                    @if (Model.ShowCartCount)
                     {
                         <span class="cart-items" id="cart-items">
                             <code>@Model.ItemsInCartCount</code>
                         </span>
                     }
-                    <a href="http://localhost:8081">
                         Koszyk
                     </a>
+                </li>
+                <li class="menu-item">
+                    <a asp-area="" asp-page="/OrderHistory">Zamówienia</a>
                 </li>
             }
         </ul>
@@ -68,9 +72,9 @@
             }
             else
             {
-                <script>
-                    window.location.href = "@Model.PhpAddress/auth/login";
-                </script>
+@*                 <script> *@
+@*                     window.location.href = "@Model.PhpAddress/auth/login"; *@
+@*                 </script> *@
                 <li class='menu-item'>
                     <a href='@Model.PhpAddress/auth/register'>Rejestracja</a>
                 </li>
@@ -82,24 +86,22 @@
     </nav>
 
 </header>
-<div class="container under-nav">
-    <partial name="_CookieConsentPartial"/>
-    <main role="main" class="pb-3">
+@* <div class="container under-nav"> *@
+    @* <partial name="_CookieConsentPartial"/> *@
+    <main role="main" class="under-nav">
         @RenderBody()
     </main>
-</div>
+@* </div> *@
 
 @* <footer class="border-top footer text-muted"> *@
 @*     <div class="container"> *@
-@*         &copy; 2019 - Sklep - <a asp-area="" asp-page="/Privacy">Privacy</a> *@
+@*         &copy; 2019 - Shop - <a asp-area="" asp-page="/Privacy">Privacy</a> *@
 @*     </div> *@
 @* </footer> *@
 <script src="~/js/site.js" asp-append-version="true"></script>
 
 <script src="@Model.PhpAddress/res/scripts/dialogs.js"></script>
-<script src="@Model.PhpAddress/res/scripts/index.js"></script>
 <script src="@Model.PhpAddress/res/scripts/events.js"></script>
-<script src="@Model.PhpAddress/res/scripts/add-event.js"></script>
 
 <script>
     var theme = '@Model.Theme';
