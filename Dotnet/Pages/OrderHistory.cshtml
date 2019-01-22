@@ -11,7 +11,7 @@
         <div class="order-summary-container">
             Kod identyfikujący zamówienia: <strong>@orderPosition.BaseOrder.Id</strong>
             <br/>
-            Status: <strong>@orderPosition.BaseOrder.OrderStatus</strong>
+            Status: <strong>@orderPosition.GetOrderStatus()</strong>
             <br/>
             Data zamówienia: <strong>@orderPosition.BaseOrder.OrderDate</strong>
         </div>

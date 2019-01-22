@@ -73,11 +73,11 @@ namespace Shop.Services.Impl
             _orderEventRepository.SaveAll(orderEventList);
             if (VerifyOrder(orderEventList))
             {
-                baseOrder.OrderStatus = OrderProcessingState.Verified.ToString();
+                baseOrder.OrderStatus = OrderProcessingStatus.Verified.ToString();
             }
             else
             {
-                baseOrder.OrderStatus = OrderProcessingState.VerificationFailed.ToString();
+                baseOrder.OrderStatus = OrderProcessingStatus.VerificationFailed.ToString();
             }
 
             baseOrder = _baseOrderRepository.Update(baseOrder);

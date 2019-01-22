@@ -10,7 +10,7 @@ namespace Shop.BusinessObjects
         public User User { get; set; }
         public ShipmentInfo ShipmentInfo { get; set; }
         public CartCollection Events { get; set; }
-        public OrderProcessingState OrderProcessingState { get; set; }
+        public OrderProcessingStatus OrderProcessingStatus { get; set; }
         public DateTime? OrderDate { get; set; }
         public double ShippingCost { get; set; } = 15.5;
         public double TotalPrice()
@@ -30,7 +30,7 @@ namespace Shop.BusinessObjects
             User = user;
             ShipmentInfo = shipmentInfo;
             Events = cartCollection;
-            OrderProcessingState = OrderProcessingState.NotVerified;
+            OrderProcessingStatus = OrderProcessingStatus.NotVerified;
         }
     }
 }

@@ -22,8 +22,8 @@ namespace Shop.Repositories.Impl
         public List<int> FindWrongOrdersIds()
         {
             return ShopDbContext.GetInstance().BaseOrders.Where(z =>
-                    z.OrderStatus == OrderProcessingState.NotVerified.ToString()
-                    || z.OrderStatus == OrderProcessingState.VerificationFailed.ToString())
+                    z.OrderStatus == OrderProcessingStatus.NotVerified.ToString()
+                    || z.OrderStatus == OrderProcessingStatus.VerificationFailed.ToString())
                 .ToList().Select(x => x.Id).ToList();
         }
 

@@ -1,6 +1,6 @@
 namespace Shop.BusinessObjects.Enums
 {
-    public enum OrderProcessingState
+    public enum OrderProcessingStatus
     {
         VerificationFailed,
         NotVerified,
@@ -8,6 +8,7 @@ namespace Shop.BusinessObjects.Enums
         PaymentAccepted,
         InRealization,
         InShipping,
-        Delivered
+        Delivered,
+        UnknownError
     }
 }
