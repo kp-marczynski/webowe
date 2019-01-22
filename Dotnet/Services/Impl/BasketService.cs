@@ -12,13 +12,16 @@ namespace Shop.Services.Impl
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IEventRepository _eventRepository;
+        private readonly IOrderEventRepository _orderEventRepository;
         private static readonly string ItemsInCartCookieName = "items-in-cart";
         private static readonly string EventsInOrderCookieName = "order-items";
 
-        public BasketService(IHttpContextAccessor httpContextAccessor, IEventRepository eventRepository)
+        public BasketService(IHttpContextAccessor httpContextAccessor, IEventRepository eventRepository,
+            IOrderEventRepository orderEventRepository)
         {
             _httpContextAccessor = httpContextAccessor;
             _eventRepository = eventRepository;
+            _orderEventRepository = orderEventRepository;
         }
 
         public CartCollection GetItemsInBasket()
@@ -95,6 +98,12 @@ namespace Shop.Services.Impl
                         }
                     }
                 }
+            }
+
+            foreach (var cartPosition in basketSet.BasketPositions)
+            {
+                cartPosition.CurrentlyAvailableTickets = cartPosition.Event.NumberOfAvailableTickets -
+                                                         _orderEventRepository.CountSoldTickets(cartPosition.Event.Id);
             }
 
             return basketSet;

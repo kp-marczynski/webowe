@@ -43,7 +43,7 @@ namespace Shop
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddRazorPagesOptions(options =>
             {
-                options.Conventions.AddPageRoute("/Basket", "");
+//                options.Conventions.AddPageRoute("/Basket", "");
             });
 
             services.ConfigureMySqlContext(Configuration);
@@ -69,7 +69,7 @@ namespace Shop
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+//                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }

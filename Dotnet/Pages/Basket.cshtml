@@ -1,5 +1,4 @@
 ﻿@page
-@using Shop.BusinessObjects
 @model BasketModel
 @{
     ViewData["Title"] = "Home page";
@@ -9,8 +8,8 @@
     @if (Model.ItemsInCartCount != 0.ToString())
     {
         <h2 class="add-event-title">Koszyk</h2>
-        <form method="post">
-            <div asp-validation-summary="All"></div>
+        <span id="distinct-event-count" style="display: none;">@Model.CartCollection.BasketPositions.Count</span>
+        <form method="post" id="cart-form">
             <ul>
                 @for (var i = 0; i < Model.CartCollection.BasketPositions.Count; ++i)
                 {
@@ -29,7 +28,7 @@
                         <input asp-for="CartCollection.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
 
                         <div class="column">
-                            <label class="checkbox-wrapper">
+                            <label class="checkbox-wrapper" id="checkbox-wrapper_@i">
                                 <input asp-for="CartCollection.BasketPositions[i].IsChecked">
                                 <span>
                                     <strong>@Model.CartCollection.BasketPositions[i].Event.Name</strong>
@@ -42,12 +41,12 @@
                             @* <input asp-for="CartCollection.BasketPositions[i].Quantity"> *@
                             <div class="add-event-row-wrapper">
                                 <label class="add-event-input-label" for="event-tickets">
-                                    Liczba biletów: (max. @Model.CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets)
+                                    Liczba dostępnych biletów: (max. <span id="CurrentlyAvailableTickets_@i">@Model.CartCollection.BasketPositions[i].CurrentlyAvailableTickets</span>)
                                 </label>
 
                                 <div class="add-event-img-input-wrapper">
                                     <i class="material-icons add-event-input-img">aspect_ratio</i>
-                                    <input asp-for="CartCollection.BasketPositions[i].Quantity" class="add-event-form-input" min="0" max="@Model.CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets">
+                                    <input asp-for="CartCollection.BasketPositions[i].Quantity" class="add-event-form-input" min="0" max="@Model.CartCollection.BasketPositions[i].CurrentlyAvailableTickets">
                                 </div>
                             </div>
                             <span asp-validation-for="@Model.CartCollection.BasketPositions[i].Quantity"></span>
@@ -60,8 +59,11 @@
                     </li>
                 }
             </ul>
+            <div id="validation-summary-valid error" asp-validation-summary="All">
+                <span id="validation-summary-valid-error" class="add-event-input-error"></span>
+            </div>
             <div class="add-event-buttons-wrapper">
-                <button type="submit" class="add-event-form-button">Zamów!</button>
+                <button type="submit" class="add-event-form-button" id="add-event-form-button" disabled>Zamów!</button>
             </div>
         </form>
     }
@@ -70,3 +72,4 @@
         <h2>Koszyk jest pusty :(</h2>
     }
 </div>
+<script src="~/js/cart-validation.js" asp-append-version="true"></script>

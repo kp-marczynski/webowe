@@ -42,7 +42,7 @@
                     <a href="@Model.PhpAddress/events">Wydarzenia</a>
                 </li>
                 <li class="menu-item">
-                    <a href="http://localhost:8081">
+                    <a asp-page="/Basket">
                     @if (Model.ShowCartCount)
                     {
                         <span class="cart-items" id="cart-items">
@@ -99,7 +99,6 @@
 @*     </div> *@
 @* </footer> *@
 <script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/js/shipmentinfo-validation.js" asp-append-version="true"></script>
 
 <script src="@Model.PhpAddress/res/scripts/dialogs.js"></script>
 <script src="@Model.PhpAddress/res/scripts/events.js"></script>
