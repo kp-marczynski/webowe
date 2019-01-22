@@ -33,18 +33,18 @@ namespace Shop.Services.Impl
             _orderEventRepository = orderEventRepository;
         }
 
-        public OrderState? CurrentOrderState()
-        {
-            if (!string.IsNullOrEmpty(_httpContextAccessor.HttpContext.Session.GetString(orderStateKey)))
-                return (OrderState) Enum.Parse(typeof(OrderState),
-                    _httpContextAccessor.HttpContext.Session.GetString(orderStateKey));
-            return null;
-        }
-
-        public void SetCurrentOrderState(OrderState state)
-        {
-            _httpContextAccessor.HttpContext.Session.SetString(orderStateKey, state.ToString());
-        }
+//        public OrderState? CurrentOrderState()
+//        {
+//            if (!string.IsNullOrEmpty(_httpContextAccessor.HttpContext.Session.GetString(orderStateKey)))
+//                return (OrderState) Enum.Parse(typeof(OrderState),
+//                    _httpContextAccessor.HttpContext.Session.GetString(orderStateKey));
+//            return null;
+//        }
+//
+//        public void SetCurrentOrderState(OrderState state)
+//        {
+//            _httpContextAccessor.HttpContext.Session.SetString(orderStateKey, state.ToString());
+//        }
 
         public void SaveShipmentInfoInSession(ShipmentInfo shipmentInfo)
         {

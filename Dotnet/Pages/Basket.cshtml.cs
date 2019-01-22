@@ -24,19 +24,6 @@ namespace Shop.Pages
 
         public IActionResult OnGet()
         {
-            switch (_orderService.CurrentOrderState())
-            {
-                case OrderState.Basket:
-                    break;
-                case OrderState.Shipment:
-                    return RedirectToPage("ShipmentInfo");
-                case OrderState.Summary:
-                    return RedirectToPage("OrderSummary");
-                default:
-                    _orderService.SetCurrentOrderState(OrderState.Basket);
-                    return RedirectToPage("Basket");
-            }
-
             InitializeLayout();
             CartCollection = _basketService.GetItemsInBasket();
             return Page();
@@ -53,7 +40,6 @@ namespace Shop.Pages
             }
 
             _basketService.SaveBasketInCookie(CartCollection);
-            _orderService.SetCurrentOrderState(OrderState.Shipment);
             return RedirectToPage("ShipmentInfo");
         }
     }

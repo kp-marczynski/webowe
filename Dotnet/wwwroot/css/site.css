@@ -63,18 +63,19 @@
 
 .column {
     flex: 3;
+    display: flex;
 }
 
 .column-price {
     flex: 1;
     text-align: right;
+    display: flex;
     /*padding-top: 2rem;*/
 }
 
-.column-price span {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
+.vertical-price{
+    margin: auto;
+    text-align: center;
 }
 
 form {
@@ -139,4 +140,15 @@ form li, .flex-wrapper {
 .page-title {
     position: static;
     top: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem
+}
+
+.ticket-container {
+    display: flex;
+}
+
+.order-summary-container {
+    margin-bottom: 2rem;
+    text-align: center;
 }

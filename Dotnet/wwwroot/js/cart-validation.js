@@ -38,6 +38,8 @@
     var shipment_inputs = [];
 
     const addEventButton = document.getElementById('add-event-form-button');
+    addEventButton.disabled = false;
+
     const distinctEventsCount = parseInt(document.getElementById('distinct-event-count').innerText);
     for (var i = 0; i < distinctEventsCount; ++i) {
         const iter = i;

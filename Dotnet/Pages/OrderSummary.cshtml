@@ -23,14 +23,18 @@
                 <input asp-for="ShipmentInfo.Street" type="hidden"/>
                 <input asp-for="ShipmentInfo.HouseNumber" type="hidden"/>
                 <div class="column">
-                    <div>@Model.ShipmentInfo.FullName</div>
-                    <div>@Model.ShipmentInfo.PhoneNumber</div>
-                    <div>@Model.CurrentUserEmail</div>
+                    @Model.ShipmentInfo.FullName
+                    <br/>
+                    @Model.ShipmentInfo.PhoneNumber
+                    <br/>
+                    @Model.CurrentUserEmail
                 </div>
                 <div class="column">
-                    <div>@Model.ShipmentInfo.City</div>
-                    <div>@Model.ShipmentInfo.PostalAddress</div>
-                    <div>@Model.ShipmentInfo.Street @Model.ShipmentInfo.HouseNumber</div>
+                    @Model.ShipmentInfo.City
+                    <br/>
+                    @Model.ShipmentInfo.PostalAddress
+                    <br/>
+                    @Model.ShipmentInfo.Street @Model.ShipmentInfo.HouseNumber
                 </div>
             </div>
             <h2>Zamawiane bilety:</h2>
@@ -42,11 +46,11 @@
                         <input asp-for="CartCollection.BasketPositions[i].Event.Name" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.Price" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.Place" type="hidden"/>
-                        @* <input asp-for="CartCollection.BasketPositions[i].Event.Date" type="hidden"/> *@
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Date" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.ShortInfo" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.ImageUrl" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
-                        @* <input asp-for="CartCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
+                        <input asp-for="CartCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.AgeRange" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
@@ -57,18 +61,22 @@
                                 <strong>@Model.CartCollection.BasketPositions[i].Event.Name</strong>
                                 <br/>
                                 @Model.CartCollection.BasketPositions[i].Event.Place
+                                <br/>
+                                @Model.CartCollection.BasketPositions[i].Event.Date
                             </span>
                         </div>
                         <div class="column">
+                            <span class="vertical-price">
                             @Model.CartCollection.BasketPositions[i].Quantity * @string.Format("{0:N2}", Model.CartCollection.BasketPositions[i].Event.Price) PLN
+                            </span>
                         </div>
                         <div class="column-price">
-                            @* <span> *@
+                            <span class="vertical-price">
                             @{
                                 Model.Price.Add(Model.CartCollection.BasketPositions[i].Event.Price * Model.CartCollection.BasketPositions[i].Quantity);
                             }
                         @string.Format("{0:N2}", Model.Price[i]) PLN
-                            @* </span> *@
+                            </span>
                         </div>
                     </li>
                 }

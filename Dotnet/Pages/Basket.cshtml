@@ -18,11 +18,11 @@
                         <input asp-for="CartCollection.BasketPositions[i].Event.Name" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.Price" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.Place" type="hidden"/>
-                        @* <input asp-for="CartCollection.BasketPositions[i].Event.Date" type="hidden"/> *@
+                        <input asp-for="CartCollection.BasketPositions[i].Event.Date" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.ShortInfo" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.ImageUrl" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.NumberOfAvailableTickets" type="hidden"/>
-                        @* <input asp-for="CartCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/> *@
+                        <input asp-for="CartCollection.BasketPositions[i].Event.CreatedBy" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.AgeRange" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].Event.AdditionalInfo" type="hidden"/>
                         <input asp-for="CartCollection.BasketPositions[i].CurrentlyAvailableTickets" type="hidden"/>
@@ -34,6 +34,8 @@
                                     <strong>@Model.CartCollection.BasketPositions[i].Event.Name</strong>
                                     <br/>
                                     @Model.CartCollection.BasketPositions[i].Event.Place
+                                    <br/>
+                                    @Model.CartCollection.BasketPositions[i].Event.Date
                                 </span>
                             </label>
                         </div>
@@ -52,7 +54,7 @@
                             <span asp-validation-for="@Model.CartCollection.BasketPositions[i].Quantity"></span>
                         </div>
                         <div class="column-price">
-                            <span>
+                            <span class="vertical-price">
                                 * @string.Format("{0:N2}", Model.CartCollection.BasketPositions[i].Event.Price) PLN
                             </span>
                         </div>

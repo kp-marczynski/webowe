@@ -25,19 +25,6 @@ namespace Shop.Pages
 
         public IActionResult OnGet()
         {
-            switch (_orderService.CurrentOrderState())
-            {
-                case OrderState.Basket:
-                    return RedirectToPage("Basket");
-                case OrderState.Shipment:
-                    return RedirectToPage("ShipmentInfo");
-                case OrderState.Summary:
-                    break;
-                default:
-                    _orderService.SetCurrentOrderState(OrderState.Basket);
-                    return RedirectToPage("Basket");
-            }
-
             CartCollection = _basketService.GetOrderItems();
             ShipmentInfo = _orderService.GetShipmentInfoFromSession() ?? new ShipmentInfo();
 
