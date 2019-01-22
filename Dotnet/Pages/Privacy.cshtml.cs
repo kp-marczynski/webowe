@@ -11,7 +11,7 @@ namespace Shop.Pages
 
         public void OnGet()
         {
-            initializeLayout();
+            InitializeLayout();
         }
     }
 }

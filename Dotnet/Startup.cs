@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Shop.Repositories;
+using Shop.Repositories.Impl;
 using Shop.Services;
 using Shop.Services.Impl;
 
@@ -29,7 +31,7 @@ namespace Shop
                 options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
             services.AddDistributedMemoryCache();
 
             services.AddSession(options =>
@@ -38,18 +40,23 @@ namespace Shop
                 options.IdleTimeout = TimeSpan.FromMinutes(1);
                 options.Cookie.HttpOnly = true;
             });
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddRazorPagesOptions(options =>
             {
                 options.Conventions.AddPageRoute("/Basket", "");
             });
-            
+
             services.ConfigureMySqlContext(Configuration);
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IBasketService, BasketService>();
             services.AddSingleton<IOrderService, OrderService>();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<ILayoutService, LayoutService>();
+
+            services.AddSingleton<IBaseOrderRepository, BaseOrderRepository>();
+            services.AddSingleton<IEventRepository, EventRepository>();
+            services.AddSingleton<IOrderEventRepository, OrderEventRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
@@ -12,7 +11,7 @@ namespace Shop.Pages
     public class ShipmentInfoModel : LayoutModel
     {
 //        public List<string> PaymentMethodsList = new List<string>{"gotówką", "przelewem"};
-        private IOrderService _orderService;
+        private readonly IOrderService _orderService;
         public ShipmentInfoModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {
             _orderService = orderService;
@@ -36,7 +35,7 @@ namespace Shop.Pages
                     return RedirectToPage("Basket");
             }
 
-            initializeLayout();
+            InitializeLayout();
             return Page();
         }
 
@@ -45,7 +44,7 @@ namespace Shop.Pages
             if (!ModelState.IsValid)
             {
                 Console.WriteLine("Model is not valid");
-                initializeLayout();
+                InitializeLayout();
                 return Page();
             }
 

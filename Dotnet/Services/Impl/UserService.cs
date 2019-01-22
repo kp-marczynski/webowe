@@ -1,19 +1,19 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Shop.Entities;
-using System.Linq;
+using Shop.Repositories;
 
 namespace Shop.Services.Impl
 {
     public class UserService : IUserService
     {
         private readonly IHttpContextAccessor _httpContext;
-        private readonly ShopDbContext _shopDbContext;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IHttpContextAccessor httpContext, ShopDbContext shopDbContext)
+        public UserService(IHttpContextAccessor httpContext,
+            IUserRepository userRepository)
         {
             _httpContext = httpContext;
-            _shopDbContext = shopDbContext;
+            _userRepository = userRepository;
         }
 
         public User GetCurrentUser()
@@ -21,11 +21,7 @@ namespace Shop.Services.Impl
             var userToken = _httpContext.HttpContext.Request.Cookies["token"];
             if (!string.IsNullOrEmpty(userToken))
             {
-                List<User> users = _shopDbContext.users.Where(x => x.Token == userToken).ToList();
-                if (users.Count == 1)
-                {
-                    return users[0];
-                }
+                return _userRepository.FindByToken(userToken);
             }
 
             return null;

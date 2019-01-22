@@ -7,28 +7,21 @@ namespace Shop.BusinessObjects
     {
         public CartPosition()
         {
-            this.Event = new Event();
-            this.Quantity = 0;
+            Event = new Event();
+            Quantity = 0;
         }
-//        
-//        public CartPosition(Event Event, int Quantity)
-//        {
-//            this.Event = Event;
-//            this.Quantity = Quantity;
-//        }
+
 
         [Required] public Event Event { get; set; }
         [Required] public int Quantity { get; set; }
 
         public int CurrentlyAvailableTickets { get; set; }
-//        private static int availableTickets = 10;
-        [Required] public bool isChecked { get; set; } = true;
 
-        public static CartPosition Create(Event Event, int Quantity)
+        [Required] public bool IsChecked { get; set; } = true;
+
+        public static CartPosition Create(Event ev, int quantity)
         {
-            var basketPosition = new CartPosition();
-            basketPosition.Event = Event;
-            basketPosition.Quantity = Quantity;
+            var basketPosition = new CartPosition {Event = ev, Quantity = quantity};
             return basketPosition;
         }
     }

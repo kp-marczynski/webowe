@@ -3,13 +3,10 @@
 
 @{
     ViewData["Title"] = "Podsumowanie zamówienia";
-    Model.price = new List<double>();
+    Model.Price = new List<double>();
     var shiping = 15.5;
 }
 
-@* @Model.ShipmentInfo.FullName *@
-@* <br/> *@
-@* @Model.ShipmentInfo.City *@
 <div class="add-event-form">
     <h2 class="add-event-title">Podsumowanie zamówienia</h2>
     @if (Model.ItemsInCartCount != 0.ToString())
@@ -68,9 +65,9 @@
                         <div class="column-price">
                             @* <span> *@
                             @{
-                                Model.price.Add(Model.CartCollection.BasketPositions[i].Event.Price * Model.CartCollection.BasketPositions[i].Quantity);
+                                Model.Price.Add(Model.CartCollection.BasketPositions[i].Event.Price * Model.CartCollection.BasketPositions[i].Quantity);
                             }
-                        @string.Format("{0:N2}", Model.price[i]) PLN
+                        @string.Format("{0:N2}", Model.Price[i]) PLN
                             @* </span> *@
                         </div>
                     </li>
@@ -81,7 +78,7 @@
                     Koszt dostawy: <span class="price-wrapper">@string.Format("{0:N2}", shiping) PLN</span>
                 </div>
                 @{
-                    var sum = Model.price.Sum() + shiping;
+                    var sum = Model.Price.Sum() + shiping;
                 }
                 <div>
                     Całkowity koszt: <span class="price-wrapper total-price-wrapper">@string.Format("{0:N2}", sum) PLN</span>

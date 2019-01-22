@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Shop.Entities;
 
@@ -8,7 +7,6 @@ namespace Shop
     {
         public ShopDbContext(DbContextOptions options) : base(options)
         {
-//            Database. = sql => Debug.Write(sql);
         }
 
         public DbSet<User> users { get; set; }

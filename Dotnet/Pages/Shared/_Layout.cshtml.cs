@@ -17,16 +17,15 @@ namespace Shop.Pages.Shared
         public string ItemsInCartCount { get; set; }
         public readonly string PhpAddress = "http://localhost:8080";
         public string CurrentUserEmail { get; set; }
-        
+
         public bool ShowUserToken => !string.IsNullOrEmpty(CurrentUserEmail);
         public bool ShowCartCount => ItemsInCartCount != "0";
 
-        public void initializeLayout()
+        public void InitializeLayout()
         {
             CurrentUserEmail = _layoutService.GetCurrentUserEmail();
             Theme = _layoutService.GetTheme();
             ItemsInCartCount = _layoutService.GetItemsInBasketCount().ToString();
-            Console.WriteLine("Layout initialized");
         }
     }
 }

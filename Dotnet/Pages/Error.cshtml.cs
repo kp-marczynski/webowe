@@ -19,7 +19,7 @@ namespace Shop.Pages
 
         public void OnGet()
         {
-            initializeLayout();
+            InitializeLayout();
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
         }
     }

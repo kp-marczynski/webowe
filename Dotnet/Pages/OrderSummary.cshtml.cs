@@ -12,9 +12,9 @@ namespace Shop.Pages
     {
         [BindProperty] public ShipmentInfo ShipmentInfo { get; set; }
         [BindProperty] public CartCollection CartCollection { get; set; }
-        private IOrderService _orderService;
-        private IBasketService _basketService;
-        public List<double> price;
+        private readonly IOrderService _orderService;
+        private readonly IBasketService _basketService;
+        public List<double> Price;
 
         public OrderSummaryModel(ILayoutService layoutService, IOrderService orderService, IBasketService basketService)
             : base(layoutService)
@@ -41,7 +41,7 @@ namespace Shop.Pages
             CartCollection = _basketService.GetOrderItems();
             ShipmentInfo = _orderService.GetShipmentInfoFromSession() ?? new ShipmentInfo();
 
-            initializeLayout();
+            InitializeLayout();
 
             return Page();
         }
@@ -50,14 +50,14 @@ namespace Shop.Pages
         {
             if (!ModelState.IsValid)
             {
-                initializeLayout();
+                InitializeLayout();
                 return Page();
             }
 
             _orderService.SaveCurrentOrderInDb();
             _basketService.RemoveOrderedItemsFromCookie();
 
-            return RedirectToPage("Orders");
+            return RedirectToPage("OrderHistory");
 //            return RedirectToPage("OrderSummary", "SingleOrder", ShipmentInfo);
         }
 

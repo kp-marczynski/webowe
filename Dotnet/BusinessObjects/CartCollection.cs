@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Shop.Entities;
@@ -20,20 +19,20 @@ namespace Shop.BusinessObjects
             return count;
         }
 
-        public void addToBasket(Event Event)
+        public void AddToBasket(Event Event)
         {
-            addFewToBasket(Event, 1);
+            AddFewToBasket(Event, 1);
         }
 
-        public bool removeFromBasket(int EventId, int Quantity)
+        public bool RemoveFromBasket(int eventId, int quantity)
         {
-            bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == EventId);
+            bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == eventId);
             if (doesContainEvent)
             {
-                CartPosition bp = BasketPositions.First(item => item.Event.Id == EventId);
-                if (bp.Quantity > Quantity)
+                CartPosition bp = BasketPositions.First(item => item.Event.Id == eventId);
+                if (bp.Quantity > quantity)
                 {
-                    bp.Quantity -= Quantity;
+                    bp.Quantity -= quantity;
                 }
                 else
                 {
@@ -46,20 +45,20 @@ namespace Shop.BusinessObjects
             return false;
         }
 
-        public bool setQuantity(int EventId, int quantity)
+        public bool SetQuantity(int eventId, int quantity)
         {
-            bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == EventId);
+            bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == eventId);
             if (!doesContainEvent)
             {
                 return false;
             }
 
-            CartPosition bp = BasketPositions.First(item => item.Event.Id == EventId);
+            CartPosition bp = BasketPositions.First(item => item.Event.Id == eventId);
             bp.Quantity = quantity;
             return true;
         }
 
-        public void addFewToBasket(Event Event, int quantity)
+        public void AddFewToBasket(Event Event, int quantity)
         {
             bool doesContainEvent = BasketPositions.Any(item => item.Event.Id == Event.Id);
             if (!doesContainEvent)
@@ -70,7 +69,6 @@ namespace Shop.BusinessObjects
             {
                 CartPosition bp = BasketPositions.First(item => item.Event.Id == Event.Id);
                 bp.Quantity += quantity;
-//                Console.WriteLine(bp.Event.Name +": " +bp.Quantity);
             }
         }
 
@@ -93,7 +91,7 @@ namespace Shop.BusinessObjects
             var result = new CartCollection();
             foreach (var basketPosition in BasketPositions)
             {
-                if (basketPosition.isChecked && basketPosition.Quantity > 0)
+                if (basketPosition.IsChecked && basketPosition.Quantity > 0)
                 {
                     result.BasketPositions.Add(basketPosition);
                 }

@@ -26,7 +26,7 @@ namespace Shop.Entities
         [Required] [Column("shipping_cost")] public double ShippingCost { get; set; }
         [Column("order_date")] public DateTime OrderDate { get; set; } = DateTime.Now;
 
-        public static BaseOrder createBaseOrder(User user, ShipmentInfo shipmentInfo,
+        public static BaseOrder CreateBaseOrder(User user, ShipmentInfo shipmentInfo,
             OrderProcessingState orderProcessingState, int? orderId, DateTime? orderDate, double shipping, double total)
         {
             if (orderId == null)
@@ -61,14 +61,16 @@ namespace Shop.Entities
                 FullName = shipmentInfo.FullName,
                 OrderStatus = orderProcessingState.ToString(),
                 ShippingCost = shipping,
+                OrderDate = orderDate ?? DateTime.Now,
                 TotalPrice = total
             };
         }
 
-        public static BaseOrder createBaseOrder(CompleteOrder completeOrder)
+        public static BaseOrder CreateBaseOrder(CompleteOrder completeOrder)
         {
-            return createBaseOrder(completeOrder.user, completeOrder.shipmentInfo, completeOrder.OrderProcessingState,
-                completeOrder.orderId, completeOrder.OrderDate, completeOrder.ShippingCost, completeOrder.TotalPrice());
+
+            return CreateBaseOrder(completeOrder.User, completeOrder.ShipmentInfo, completeOrder.OrderProcessingState,
+                completeOrder.OrderId, completeOrder.OrderDate, completeOrder.ShippingCost, completeOrder.TotalPrice());
         }
     }
 }

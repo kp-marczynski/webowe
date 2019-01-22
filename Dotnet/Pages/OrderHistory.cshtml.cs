@@ -10,7 +10,7 @@ namespace Shop.Pages
     {
         public List<OrderPosition> OrdersList { get; set; }
 
-        private IOrderService _orderService;
+        private readonly IOrderService _orderService;
         public OrderHistoryModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {
             _orderService = orderService;
@@ -18,7 +18,7 @@ namespace Shop.Pages
 
         public void OnGet()
         {
-            initializeLayout();
+            InitializeLayout();
             OrdersList = _orderService.getCurrentUserOrders();
         }
     }

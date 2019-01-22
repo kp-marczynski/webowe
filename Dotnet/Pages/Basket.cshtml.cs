@@ -12,8 +12,8 @@ namespace Shop.Pages
     {
         [BindProperty] public CartCollection CartCollection { get; set; } = new CartCollection();
 
-        private IBasketService _basketService;
-        private IOrderService _orderService;
+        private readonly IBasketService _basketService;
+        private readonly IOrderService _orderService;
 
         public BasketModel(ILayoutService layoutService, IBasketService basketService, IOrderService orderService) :
             base(layoutService)
@@ -37,32 +37,21 @@ namespace Shop.Pages
                     return RedirectToPage("Basket");
             }
 
-            initializeLayout();
+            InitializeLayout();
             CartCollection = _basketService.GetItemsInBasket();
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Console.WriteLine("Modelstate:");
-            foreach (var item in ModelState)
-            {
-                Console.WriteLine(item.ToString());
-            }
-
             if (!ModelState.IsValid)
             {
                 Console.WriteLine("Model is not valid");
-                initializeLayout();
+                InitializeLayout();
                 ItemsInCartCount = "?";
                 return Page();
             }
 
-            Console.WriteLine("Hello from postasync");
-            foreach (var item in CartCollection.BasketPositions)
-            {
-                Console.WriteLine(item.Event.Name+": "+item.Quantity);
-            }
             _basketService.SaveBasketInCookie(CartCollection);
             _orderService.SetCurrentOrderState(OrderState.Shipment);
             return RedirectToPage("ShipmentInfo");

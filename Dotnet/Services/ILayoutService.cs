@@ -1,6 +1,3 @@
-using Shop.BusinessObjects;
-using Shop.Entities;
-
 namespace Shop.Services
 {
     public interface ILayoutService

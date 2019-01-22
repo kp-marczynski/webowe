@@ -16,6 +16,7 @@ namespace Shop.Entities
         [Required] [Column("event_name")] public string EventName { get; set; }
         [Required] [Column("event_price")] public double EventPrice { get; set; }
         [Required] [Column("event_place")] public string EventPlace { get; set; }
+        //todo event date
         [Required] [Column("quantity")] public int Quantity { get; set; }
 
 
@@ -34,12 +35,12 @@ namespace Shop.Entities
 
         public static List<OrderEvent> createOrderEventList(CompleteOrder completeOrder)
         {
-            if (completeOrder.orderId == null)
+            if (completeOrder.OrderId == null)
                 return null;
             var result = new List<OrderEvent>();
-            foreach (var basketPosition in completeOrder.events.BasketPositions)
+            foreach (var basketPosition in completeOrder.Events.BasketPositions)
             {
-                result.Add(createOrderEvent(basketPosition.Event,basketPosition.Quantity,(int) completeOrder.orderId));
+                result.Add(createOrderEvent(basketPosition.Event,basketPosition.Quantity,(int) completeOrder.OrderId));
             }
 
             return result;
