@@ -10,6 +10,7 @@ RUN dotnet restore
 
 # Copy everything else and build
 COPY ./Dotnet/ ./
+#COPY ./shared/ ./wwwroot/shared
 
 RUN dotnet publish -c Release -o out Shop.csproj
 

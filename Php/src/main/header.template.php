@@ -22,7 +22,7 @@ if ($eventsInCart > 0) {
     <link href="/res/styles/landing.css" rel="stylesheet"/>
     <link href="/res/styles/user.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/res/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/shared/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
     <title>Muzyka4zycie</title>
