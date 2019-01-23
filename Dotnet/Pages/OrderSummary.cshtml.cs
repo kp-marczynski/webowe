@@ -27,17 +27,16 @@ namespace Shop.Pages
             CartCollection = _basketService.GetOrderItems();
             ShipmentInfo = _orderService.GetShipmentInfoFromSession() ?? new ShipmentInfo();
 
-            InitializeLayout();
-
-            return Page();
+            var initResult = InitializeLayout();
+            return initResult is RedirectResult ? initResult : Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                InitializeLayout();
-                return Page();
+                var initResult = InitializeLayout();
+                return initResult is RedirectResult ? initResult : Page();
             }
 
             _orderService.SaveCurrentOrderInDb(CartCollection, ShipmentInfo);

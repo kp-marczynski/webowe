@@ -1,4 +1,4 @@
-using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shop.Services;
 
@@ -21,11 +21,17 @@ namespace Shop.Pages.Shared
         public bool ShowUserToken => !string.IsNullOrEmpty(CurrentUserEmail);
         public bool ShowCartCount => ItemsInCartCount != "0";
 
-        public void InitializeLayout()
+        public IActionResult InitializeLayout()
         {
             CurrentUserEmail = _layoutService.GetCurrentUserEmail();
+            if (string.IsNullOrEmpty(CurrentUserEmail))
+            {
+                return Redirect(PhpAddress + "/auth/login");
+            }
+
             Theme = _layoutService.GetTheme();
             ItemsInCartCount = _layoutService.GetItemsInBasketCount().ToString();
+            return Page();
         }
     }
 }

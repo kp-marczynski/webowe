@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
-using Shop.BusinessObjects.Enums;
 using Shop.Pages.Shared;
 using Shop.Services;
 
@@ -24,7 +23,13 @@ namespace Shop.Pages
 
         public IActionResult OnGet()
         {
-            InitializeLayout();
+            var p = Page();
+            var initResult = InitializeLayout();
+            if (initResult is RedirectResult)
+            {
+                return initResult;
+            }
+
             CartCollection = _basketService.GetItemsInBasket();
             return Page();
         }
@@ -34,7 +39,12 @@ namespace Shop.Pages
             if (!ModelState.IsValid)
             {
                 Console.WriteLine("Model is not valid");
-                InitializeLayout();
+                var initResult = InitializeLayout();
+                if (initResult is RedirectResult)
+                {
+                    return initResult;
+                }
+
                 ItemsInCartCount = "?";
                 return Page();
             }

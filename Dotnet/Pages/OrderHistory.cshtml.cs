@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
 using Shop.Pages.Shared;
 using Shop.Services;
@@ -11,15 +12,22 @@ namespace Shop.Pages
         public List<OrderPosition> OrdersList { get; set; }
 
         private readonly IOrderService _orderService;
+
         public OrderHistoryModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {
             _orderService = orderService;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            InitializeLayout();
+            var initResult = InitializeLayout();
+            if (initResult is RedirectResult)
+            {
+                return initResult;
+            }
+
             OrdersList = _orderService.getCurrentUserOrders();
+            return Page();
         }
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
-using Shop.BusinessObjects.Enums;
 using Shop.Pages.Shared;
 using Shop.Services;
 
@@ -12,6 +11,7 @@ namespace Shop.Pages
     {
 //        public List<string> PaymentMethodsList = new List<string>{"gotówką", "przelewem"};
         private readonly IOrderService _orderService;
+
         public ShipmentInfoModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
         {
             _orderService = orderService;
@@ -22,8 +22,8 @@ namespace Shop.Pages
         public IActionResult OnGet()
         {
             ShipmentInfo = _orderService.GetShipmentInfoFromSession();
-            InitializeLayout();
-            return Page();
+            var initResult = InitializeLayout();
+            return initResult is RedirectResult ? initResult : Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -31,8 +31,8 @@ namespace Shop.Pages
             if (!ModelState.IsValid)
             {
                 Console.WriteLine("Model is not valid");
-                InitializeLayout();
-                return Page();
+                var initResult = InitializeLayout();
+                return initResult is RedirectResult ? initResult : Page();
             }
 
             _orderService.SaveShipmentInfoInSession(ShipmentInfo);
