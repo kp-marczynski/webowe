@@ -15,7 +15,7 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 <head>
     <link href="/shared/styles/index.css" rel="stylesheet"/>
     <link href="/res/styles/auth.css" rel="stylesheet"/>
-    <link rel="icon" href="/res/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/shared/images/favicon.ico" type="image/x-icon"/>
     <title><?php echo $PAGE_TITLE ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
