@@ -90,7 +90,7 @@ namespace Shop.Services.Impl
             return currentOrder;
         }
 
-        public List<OrderPosition> getCurrentUserOrders()
+        public List<OrderPosition> GetCurrentUserOrders()
         {
             var result = new List<OrderPosition>();
             var currentUser = _userService.GetCurrentUser();
@@ -102,6 +102,11 @@ namespace Shop.Services.Impl
             }
 
             return result;
+        }
+
+        public int CountSoldTickets(int eventId)
+        {
+            return _orderEventRepository.CountSoldTickets(eventId);
         }
 
         private bool VerifyOrder(List<OrderEvent> orderEvents)

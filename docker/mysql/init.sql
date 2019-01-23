@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS orders
   order_status      VARCHAR(255)  NOT NULL,
   order_date        DATETIME      DEFAULT CURRENT_TIMESTAMP,
   shipping_cost     REAL          NOT NULL,
+  shipping_method   VARCHAR(255)  NOT NULL,
   total_price       REAL          NOT NULL
   );
 

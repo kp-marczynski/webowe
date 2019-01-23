@@ -66,6 +66,11 @@
     display: flex;
 }
 
+.column-details {
+    flex: 3;
+    display: block;
+}
+
 .column-price {
     flex: 1;
     text-align: right;
@@ -146,6 +151,7 @@ form li, .flex-wrapper {
 
 .ticket-container {
     display: flex;
+    width: 100%;
 }
 
 .order-summary-container {
@@ -156,4 +162,22 @@ form li, .flex-wrapper {
 .radio-wrapper label {
     display: block;
     margin-bottom: 0.5rem;
+}
+
+.add-event-row-wrapper-section {
+    margin-bottom: 0;
+}
+
+i.add-shopping-cart {
+    color: var(--primary-color);
+    padding: .8rem;
+    border-radius: 50%;
+    transition: all .2s ease-in-out;
+    font-size: 3rem;
+}
+
+i.add-shopping-cart:hover {
+    background: var(--dialog-button-hover-background);
+    transform: scale(.9);
+    cursor: pointer;
 }

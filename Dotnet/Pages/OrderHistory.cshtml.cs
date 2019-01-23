@@ -26,7 +26,7 @@ namespace Shop.Pages
                 return initResult;
             }
 
-            OrdersList = _orderService.getCurrentUserOrders();
+            OrdersList = _orderService.GetCurrentUserOrders();
             return Page();
         }
     }

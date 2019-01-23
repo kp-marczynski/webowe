@@ -7,7 +7,7 @@
 <div class="add-event-form">
     @if (@Model.Event != null)
     {
-@*         <h2 class="add-event-title">Dodaj nowe wydarzenie</h2> *@
+        <h2 class="add-event-title">@Model.Event.Name</h2>
 
         <div class="add-event-image-wrapper">
             <h5 class="add-event-image-title">Zdjęcie</h5>
@@ -16,37 +16,7 @@
                  onerror="alert('Nie można załadować zdjęcia')"
                  src="@Model.Event.GetImageUrlOrPlacholder()">
 
-            <section class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-description">
-                    Dodatkowe informacje o wydarzeniu
-                </label>
-
-                <p class="add-event-form-input">@Model.Event.AdditionalInfo</p>
-            </section>
-            <section class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-description">
-                    Przedział wiekowy
-                </label>
-
-                <label class="add-event-form-input">@Model.Event.AgeRange</label>
-            </section>
-
-        </div>
-
-        <div class="add-event-all-inputs">
-
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-name">
-                    Nazwa wydarzenia
-                </label>
-
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">star</i>
-                    <p class="add-event-form-input">@Model.Event.Name</p>
-                </div>
-            </div>
-
-            <div class="add-event-row-wrapper">
+            <section class="add-event-row-wrapper add-event-row-wrapper-section">
                 <label class="add-event-input-label" for="event-date">
                     Data wydarzenia
                 </label>
@@ -55,20 +25,9 @@
                     <i class="material-icons add-event-input-img">date_range</i>
                     <p class="add-event-form-input">@Model.Event.Date</p>
                 </div>
-            </div>
+            </section>
 
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-price">
-                    Cena
-                </label>
-
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">attach_money</i>
-                    <p class="add-event-form-input">@Model.Event.Price</p>
-                </div>
-            </div>
-
-            <div class="add-event-row-wrapper">
+            <section class="add-event-row-wrapper add-event-row-wrapper-section">
                 <label class="add-event-input-label" for="event-place">
                     Miasto
                 </label>
@@ -77,16 +36,56 @@
                     <i class="material-icons add-event-input-img">location_city</i>
                     <p class="add-event-form-input">@Model.Event.Place</p>
                 </div>
-            </div>
-
-            <div class="add-event-row-wrapper">
-                <label class="add-event-input-label" for="event-tickets">
-                    Liczba dostępnych biletów
+            </section>
+            <section class="add-event-row-wrapper add-event-row-wrapper-section">
+                <label class="add-event-input-label" for="event-description">
+                    Przedział wiekowy
                 </label>
 
-                <div class="add-event-img-input-wrapper">
-                    <i class="material-icons add-event-input-img">aspect_ratio</i>
-                    <p class="add-event-form-input">@Model.Event.NumberOfAvailableTickets</p>
+                <label class="add-event-form-input">@Model.Event.AgeRange</label>
+            </section>
+        </div>
+
+        <div class="add-event-all-inputs">
+
+            @* <div class="add-event-row-wrapper"> *@
+            @*     <label class="add-event-input-label" for="event-name"> *@
+            @*         Nazwa wydarzenia *@
+            @*     </label> *@
+            @* *@
+            @*     <div class="add-event-img-input-wrapper"> *@
+            @*         <i class="material-icons add-event-input-img">star</i> *@
+            @*         <p class="add-event-form-input">@Model.Event.Name</p> *@
+            @*     </div> *@
+            @* </div> *@
+
+            <div class="ticket-container">
+                <div class="column-details">
+                    <div class="add-event-row-wrapper">
+                        <label class="add-event-input-label" for="event-tickets">
+                            Liczba dostępnych biletów
+                        </label>
+
+                        <div class="add-event-img-input-wrapper">
+                            <i class="material-icons add-event-input-img">aspect_ratio</i>
+                            <p class="add-event-form-input">@Model.Event.NumberOfAvailableTickets</p>
+                        </div>
+                    </div>
+                    <div class="add-event-row-wrapper">
+                        <label class="add-event-input-label" for="event-price">
+                            Cena
+                        </label>
+
+                        <div class="add-event-img-input-wrapper">
+                            <i class="material-icons add-event-input-img">attach_money</i>
+                            <p class="add-event-form-input">@Model.Event.Price</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-price">
+                    <span class="vertical-price">
+                        <i class="material-icons add-shopping-cart" onclick="addToCart(@Model.Event.Id)">add_shopping_cart</i>
+                    </span>
                 </div>
             </div>
 
@@ -97,6 +96,18 @@
 
                 <p class="add-event-form-input">@Model.Event.Description</p>
             </div>
+
+            @if (!string.IsNullOrEmpty(Model.Event.AdditionalInfo))
+            {
+                <div class="add-event-row-wrapper">
+                    <label class="add-event-input-label" for="event-description">
+                        Dodatkowe informacje o wydarzeniu
+                    </label>
+
+                    <p class="add-event-form-input">@Model.Event.AdditionalInfo</p>
+                </div>
+            }
+
         </div>
     }
     else
@@ -104,3 +115,37 @@
         <h2>Nie znaleziono wydarzenia :(</h2>
     }
 </div>
+<script>
+    function addToCart(eventId) {
+        var itemsInCart = JSON.parse(getCookie());
+        itemsInCart.push(eventId);
+        setCookie(JSON.stringify(itemsInCart));
+        document.getElementById("cart-items").innerText = itemsInCart.length;
+    }
+
+    function getCookie() {
+        var cname = "items-in-cart";
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cvalue) {
+        var cname = "items-in-cart";
+        var exdays = 1;
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+    }
+</script>

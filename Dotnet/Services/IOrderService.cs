@@ -14,6 +14,8 @@ namespace Shop.Services
 //        CompleteOrder GetCurrentCompleteOrder();
 
         CompleteOrder SaveCurrentOrderInDb(CartCollection cartCollection, ShipmentInfo shipmentInfo);
-        List<OrderPosition> getCurrentUserOrders();
+        List<OrderPosition> GetCurrentUserOrders();
+
+        int CountSoldTickets(int eventId);
     }
 }
