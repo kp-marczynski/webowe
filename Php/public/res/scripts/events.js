@@ -1,4 +1,7 @@
-async function addToCard(eventId) {
+async function addToCard(domEvent, eventId) {
+    domEvent.preventDefault();
+    domEvent.stopPropagation();
+
     const formData = new FormData();
     formData.append('eventId', eventId);
 
@@ -12,4 +15,10 @@ async function addToCard(eventId) {
     const items = parseInt(itemsCountDom.innerText || 0, 10);
     itemsCountDom.style.display = 'flex';
     itemsCountDom.innerText = items + 1;
+
+    return false;
+}
+
+function goToEvent(eventId) {
+    window.location.href = "http://localhost:8081/events/" + eventId;
 }
