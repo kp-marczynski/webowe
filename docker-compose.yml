@@ -23,8 +23,8 @@ services:
       dockerfile: docker/php/Dockerfile
     ports:
       - 8080:80
-    volumes:
-      - ./Php:/srv/app
+#    volumes:
+#      - ./Php:/srv/app
     depends_on:
       - mysql
     environment:
