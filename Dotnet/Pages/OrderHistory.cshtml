@@ -4,7 +4,7 @@
     ViewData["Title"] = "Privacy Policy";
 }
 <h2 class="add-event-title page-title">Historia zamówień</h2>
-@foreach (var orderPosition in Model.OrdersList)
+@foreach (var orderPosition in Model.OrdersList.OrderByDescending(x=>x.BaseOrder.OrderDate))
 {
     <div class="add-event-form orders-card">
         <div>
