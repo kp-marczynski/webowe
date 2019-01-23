@@ -70,6 +70,12 @@
         inp.dom.addEventListener('keyup', () => validateForm(inp));
     });
 
+    function validateAll(){
+        inputsToValidate.forEach((inp)=>validateForm(inp));
+    }
+
+    addEventButton.addEventListener('mouseover',()=>validateAll());
+
     Array.from(document.querySelectorAll('input[type=checkbox]'))
         .forEach(i => {
             i.addEventListener('focus', () => {

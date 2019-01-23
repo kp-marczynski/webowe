@@ -116,6 +116,12 @@
         // inp.dom.addEventListener('keyup', enableOrDisableButton)
     });
 
+    function validateAll(){
+        inputsToValidate.forEach((inp)=>validateForm(inp));
+    }
+
+    addEventButton.addEventListener('mouseover',()=>validateAll());
+
     // Array.from(document.querySelectorAll('input[type=checkbox]'))
     //     .forEach(i => {
     //         i.addEventListener('focus', () => {
