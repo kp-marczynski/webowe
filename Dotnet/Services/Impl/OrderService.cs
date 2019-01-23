@@ -60,9 +60,9 @@ namespace Shop.Services.Impl
             return null;
         }
 
-        public CompleteOrder SaveCurrentOrderInDb()
+        public CompleteOrder SaveCurrentOrderInDb(CartCollection cartCollection, ShipmentInfo shipmentInfo)
         {
-            var currentOrder = GetCurrentCompleteOrder();
+            var currentOrder = GetCurrentCompleteOrder(cartCollection, shipmentInfo);
             var baseOrder = BaseOrder.CreateBaseOrder(currentOrder);
 
             baseOrder = _baseOrderRepository.SaveAndFlush(baseOrder);
@@ -120,6 +120,13 @@ namespace Shop.Services.Impl
             var basket = _basketService.GetItemsInBasket();
             var currentUser = _userService.GetCurrentUser();
             return new CompleteOrder(currentUser, shipmentInfo, basket);
+        }
+        private CompleteOrder GetCurrentCompleteOrder(CartCollection cartCollection, ShipmentInfo shipmentInfo)
+        {
+//            var shipmentInfo = GetShipmentInfoFromSession();
+//            var basket = _basketService.GetItemsInBasket();
+            var currentUser = _userService.GetCurrentUser();
+            return new CompleteOrder(currentUser, shipmentInfo, cartCollection);
         }
     }
 }

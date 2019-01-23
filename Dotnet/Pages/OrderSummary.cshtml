@@ -1,4 +1,4 @@
-@page
+@page "/cart/order-summary"
 @model OrderSummaryModel
 
 @{
@@ -38,6 +38,7 @@
                 </div>
             </div>
             <h2>Zamawiane bilety:</h2>
+            <input asp-for="CartCollection.CurrentTime" type="hidden"/>
             <ul>
                 @for (var i = 0; i < Model.CartCollection.BasketPositions.Count; ++i)
                 {
@@ -62,20 +63,20 @@
                                 <br/>
                                 @Model.CartCollection.BasketPositions[i].Event.Place
                                 <br/>
-                                @Model.CartCollection.BasketPositions[i].Event.Date
+                                @Model.CartCollection.BasketPositions[i].Event.Date.ToString("dd.MM.yyyy HH:mm")
                             </span>
                         </div>
                         <div class="column">
                             <span class="vertical-price">
-                            @Model.CartCollection.BasketPositions[i].Quantity * @string.Format("{0:N2}", Model.CartCollection.BasketPositions[i].Event.Price) PLN
+                                @Model.CartCollection.BasketPositions[i].Quantity * @string.Format("{0:N2}", Model.CartCollection.BasketPositions[i].Event.Price) PLN
                             </span>
                         </div>
                         <div class="column-price">
                             <span class="vertical-price">
-                            @{
-                                Model.Price.Add(Model.CartCollection.BasketPositions[i].Event.Price * Model.CartCollection.BasketPositions[i].Quantity);
-                            }
-                        @string.Format("{0:N2}", Model.Price[i]) PLN
+                                @{
+                                    Model.Price.Add(Model.CartCollection.BasketPositions[i].Event.Price * Model.CartCollection.BasketPositions[i].Quantity);
+                                }
+                                @string.Format("{0:N2}", Model.Price[i]) PLN
                             </span>
                         </div>
                     </li>
@@ -104,3 +105,8 @@
         <h2>Koszyk jest pusty :(</h2>
     }
 </div>
+<script>
+    var date = new Date();
+    date.setHours(date.getHours() - (date.getTimezoneOffset() / 60));
+    document.getElementById('CartCollection_CurrentTime').value = date.toJSON();
+</script>

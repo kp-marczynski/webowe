@@ -1,8 +1,4 @@
 (function () {
-    if (!window.location.href.includes("ShipmentInfo")) {
-        console.log('sciezka nie zawiera ShipmentInfo');
-        return;
-    }
     const shipment_inputs = [
         {
             id: 'ShipmentInfo_FullName',
@@ -37,6 +33,7 @@
     ];
 
     const addEventButton = document.getElementById('add-event-form-button');
+    addEventButton.disabled = false;
     const inputsToValidate = shipment_inputs.map((inp) => ({...inp, dom: document.getElementById(inp.id)}));
 
 
@@ -46,7 +43,7 @@
         const shouldDisplayError = inp.isError(value);
         const {parentNode} = inputDom;
 
-        if (shouldDisplayError) {
+        if (shouldDisplayError && !parentNode.querySelector('span')) {
             parentNode.classList.add('error');
 
             const errorSpan = document.createElement('span');
@@ -61,6 +58,7 @@
                 parentNode.classList.remove('error');
             }
         }
+        enableOrDisableButton();
     }
 
     function enableOrDisableButton() {
@@ -69,7 +67,7 @@
 
     inputsToValidate.forEach((inp) => {
         inp.dom.addEventListener('blur', () => validateForm(inp));
-        inp.dom.addEventListener('keyup', enableOrDisableButton)
+        inp.dom.addEventListener('keyup', () => validateForm(inp));
     });
 
     Array.from(document.querySelectorAll('input[type=checkbox]'))

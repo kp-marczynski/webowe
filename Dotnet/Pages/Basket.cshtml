@@ -1,7 +1,7 @@
-﻿@page
+﻿@page "/cart"
 @model BasketModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Koszyk";
 }
 
 <div class="add-event-form">
@@ -35,7 +35,7 @@
                                     <br/>
                                     @Model.CartCollection.BasketPositions[i].Event.Place
                                     <br/>
-                                    @Model.CartCollection.BasketPositions[i].Event.Date
+                                    @Model.CartCollection.BasketPositions[i].Event.Date.ToString("dd.MM.yyyy HH:mm")
                                 </span>
                             </label>
                         </div>

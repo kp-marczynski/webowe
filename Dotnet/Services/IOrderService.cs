@@ -13,7 +13,7 @@ namespace Shop.Services
         ShipmentInfo GetShipmentInfoFromSession();
 //        CompleteOrder GetCurrentCompleteOrder();
 
-        CompleteOrder SaveCurrentOrderInDb();
+        CompleteOrder SaveCurrentOrderInDb(CartCollection cartCollection, ShipmentInfo shipmentInfo);
         List<OrderPosition> getCurrentUserOrders();
     }
 }

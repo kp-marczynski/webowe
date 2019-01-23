@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
-using Shop.BusinessObjects.Enums;
 using Shop.Pages.Shared;
 using Shop.Services;
 
@@ -41,7 +40,7 @@ namespace Shop.Pages
                 return Page();
             }
 
-            _orderService.SaveCurrentOrderInDb();
+            _orderService.SaveCurrentOrderInDb(CartCollection, ShipmentInfo);
             _basketService.RemoveOrderedItemsFromCookie();
 
             return RedirectToPage("OrderHistory");

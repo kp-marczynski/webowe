@@ -1,40 +1,4 @@
 (function () {
-    if (!window.location.href.includes("Basket")) {
-        return;
-    }
-    // const shipment_inputs = [
-    //     {
-    //         id: 'ShipmentInfo_FullName',
-    //         errorMessage: 'Imie i nazwisko są wymagane',
-    //         isError: (val) => !val
-    //     },
-    //     {
-    //         id: 'ShipmentInfo_PhoneNumber',
-    //         errorMessage: 'Numer telefonu jest wymagany',
-    //         isError: (val) => !val
-    //     },
-    //     {
-    //         id: 'ShipmentInfo_City',
-    //         errorMessage: 'Miasto jest wymagane',
-    //         isError: (val) => !val
-    //     },
-    //     {
-    //         id: 'ShipmentInfo_PostalAddress',
-    //         errorMessage: 'Kod pocztowy jest wymagany',
-    //         isError: (val) => !val
-    //     },
-    //     {
-    //         id: 'ShipmentInfo_Street',
-    //         errorMessage: 'Nazwa ulicy jest wymagana',
-    //         isError: (val) => !val
-    //     },
-    //     {
-    //         id: 'ShipmentInfo_HouseNumber',
-    //         errorMessage: 'Numer domu jest wymagany',
-    //         isError: (val) => !val
-    //     }
-    // ];
-
     var shipment_inputs = [];
 
     const addEventButton = document.getElementById('add-event-form-button');

@@ -11,7 +11,7 @@ namespace Shop.BusinessObjects
         public ShipmentInfo ShipmentInfo { get; set; }
         public CartCollection Events { get; set; }
         public OrderProcessingStatus OrderProcessingStatus { get; set; }
-        public DateTime? OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
         public double ShippingCost { get; set; } = 15.5;
         public double TotalPrice()
         {
@@ -31,6 +31,7 @@ namespace Shop.BusinessObjects
             ShipmentInfo = shipmentInfo;
             Events = cartCollection;
             OrderProcessingStatus = OrderProcessingStatus.NotVerified;
+            OrderDate = cartCollection.CurrentTime;
         }
     }
 }

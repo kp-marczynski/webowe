@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Shop</title>
-
-    <link href="~/css/index.css" rel="stylesheet"/>
-    <link href="~/css/utils.css" rel="stylesheet"/>
-    <link href="~/css/header.css" rel="stylesheet"/>
+    @* <title>@ViewData["Title"] - Shop</title> *@
+    <title>Muzyka4zycie</title>
+    <link href="~/shared/styles/index.css" rel="stylesheet"/>
+    <link href="~/shared/styles/utils.css" rel="stylesheet"/>
+    <link href="~/shared/styles/header.css" rel="stylesheet"/>
     @* <link href="~/css/events.css" rel="stylesheet"/> *@
-    <link href="~/css/add-event.css" rel="stylesheet"/>
+    <link href="~/shared/styles/add-event.css" rel="stylesheet"/>
     @* <link href="~/css/landing.css" rel="stylesheet"/> *@
     @* <link href="~/css/user.css" rel="stylesheet"/> *@
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="~/shared/images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 <body>
 <header>
@@ -32,7 +32,7 @@
         <ul class="left-menu">
             <li class="menu-item">
                 <a href="@Model.PhpAddress" class="logo">
-                    <img src="~/images/logo.svg"/>
+                    <img src="~/shared/images/logo.svg"/>
                     <p>Muzyka4zycie</p>
                 </a>
             </li>
@@ -43,12 +43,12 @@
                 </li>
                 <li class="menu-item">
                     <a asp-page="/Basket">
-                    @if (Model.ShowCartCount)
-                    {
-                        <span class="cart-items" id="cart-items">
-                            <code>@Model.ItemsInCartCount</code>
-                        </span>
-                    }
+                        @if (Model.ShowCartCount)
+                        {
+                            <span class="cart-items" id="cart-items">
+                                <code>@Model.ItemsInCartCount</code>
+                            </span>
+                        }
                         Koszyk
                     </a>
                 </li>
@@ -87,10 +87,10 @@
 
 </header>
 @* <div class="container under-nav"> *@
-    @* <partial name="_CookieConsentPartial"/> *@
-    <main role="main" class="under-nav">
-        @RenderBody()
-    </main>
+@* <partial name="_CookieConsentPartial"/> *@
+<main role="main" class="under-nav">
+    @RenderBody()
+</main>
 @* </div> *@
 
 @* <footer class="border-top footer text-muted"> *@
@@ -99,15 +99,16 @@
 @*     </div> *@
 @* </footer> *@
 <script src="~/js/site.js" asp-append-version="true"></script>
-<script src="~/js/index.js"></script>
-<script src="~/js/dialogs.js"></script>
+<script src="~/shared/scripts/index.js"></script>
+<script src="~/shared/scripts/dialogs.js"></script>
 
 <script>
     var theme = '@Model.Theme';
 
     switch (theme) {
         // defaults from css
-    case 'LIGHT_THEME': {
+    case 'LIGHT_THEME':
+    {
         document.documentElement.style.setProperty('--muted-text-color', '#6c757d');
         document.documentElement.style.setProperty('--not-black-color', '#424242');
         document.documentElement.style.setProperty('--card-background', '#ffffff');
@@ -128,7 +129,8 @@
         document.documentElement.style.setProperty('--font-family', '\'Roboto\', sans-serif');
         break;
     }
-    case 'DARK_THEME': {
+    case 'DARK_THEME':
+    {
         document.documentElement.style.setProperty('--muted-text-color', '#eeeeee');
         document.documentElement.style.setProperty('--not-black-color', '#f2f2f2');
         document.documentElement.style.setProperty('--card-background', '#303030');
@@ -149,7 +151,8 @@
         document.documentElement.style.setProperty('--font-family', '\'Roboto\', sans-serif');
         break;
     }
-    case 'BLUE_THEME': {
+    case 'BLUE_THEME':
+    {
         document.documentElement.style.setProperty('--primary-color', '#303F9F');
         document.documentElement.style.setProperty('--secondary-color', '#C2185B');
         document.documentElement.style.setProperty('--font-family', '"Comic Sans MS", fantasy');

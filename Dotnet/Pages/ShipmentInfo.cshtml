@@ -1,9 +1,8 @@
-@page
-@using Shop.BusinessObjects
+@page "/cart/shipment-info"
 @model ShipmentInfoModel
 
 @{
-    ViewData["Title"] = "ShipmentInfo";
+    ViewData["Title"] = "Dane Dostawy";
 }
 
 
@@ -23,7 +22,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">phone</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.FullName" autocomplete="name" />
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.FullName" autocomplete="name"/>
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -33,7 +32,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">person</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="tel" />
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PhoneNumber" autocomplete="tel"/>
                     </div>
                 </div>
             </fieldset>
@@ -46,7 +45,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">location_city</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality" />
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.City" autocomplete="shipping locality"/>
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -56,7 +55,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">local_post_office</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code" />
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.PostalAddress" autocomplete="shipping postal-code"/>
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">
@@ -66,7 +65,7 @@
 
                     <div class="add-event-img-input-wrapper">
                         <i class="material-icons add-event-input-img">location_on</i>
-                        <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1" />
+                        <input class="add-event-form-input" asp-for="ShipmentInfo.Street" autocomplete="shipping address-line1"/>
                     </div>
                 </div>
                 <div class="add-event-row-wrapper">

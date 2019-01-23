@@ -4,10 +4,10 @@
     ?>
     window.BACKEND_URL = <?php echo "'$protocol{$_SERVER['HTTP_HOST']}'"?>;
 </script>
-<script src="/res/scripts/dialogs.js"></script>
-<script src="/res/scripts/index.js"></script>
+<script src="/shared/scripts/dialogs.js"></script>
+<script src="/shared/scripts/index.js"></script>
 <script src="/res/scripts/events.js"></script>
-<script src="/res/scripts/add-event.js"></script>
+<script src="/shared/scripts/add-event.js"></script>
 
 <script>
     let theme = <?php echo "'" . $_COOKIE['theme'] . "'" ?> || 'LIGHT_THEME';

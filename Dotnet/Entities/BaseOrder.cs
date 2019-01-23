@@ -27,7 +27,7 @@ namespace Shop.Entities
         [Column("order_date")] public DateTime OrderDate { get; set; } = DateTime.Now;
 
         public static BaseOrder CreateBaseOrder(User user, ShipmentInfo shipmentInfo,
-            OrderProcessingStatus orderProcessingStatus, int? orderId, DateTime? orderDate, double shipping, double total)
+            OrderProcessingStatus orderProcessingStatus, int? orderId, DateTime orderDate, double shipping, double total)
         {
             if (orderId == null)
             {
@@ -42,7 +42,7 @@ namespace Shop.Entities
                     Email = user.Email,
                     FullName = shipmentInfo.FullName,
                     OrderStatus = orderProcessingStatus.ToString(),
-                    OrderDate = orderDate ?? DateTime.Now,
+                    OrderDate = orderDate,
                     ShippingCost = shipping,
                     TotalPrice = total
                 };
@@ -61,7 +61,7 @@ namespace Shop.Entities
                 FullName = shipmentInfo.FullName,
                 OrderStatus = orderProcessingStatus.ToString(),
                 ShippingCost = shipping,
-                OrderDate = orderDate ?? DateTime.Now,
+                OrderDate = orderDate,
                 TotalPrice = total
             };
         }

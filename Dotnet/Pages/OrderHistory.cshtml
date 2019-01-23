@@ -1,7 +1,7 @@
-@page
+@page "/order-history"
 @model OrderHistoryModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Historia Zamówień";
 }
 <h2 class="add-event-title page-title">Historia zamówień</h2>
 @foreach (var orderPosition in Model.OrdersList.OrderByDescending(x=>x.BaseOrder.OrderDate))
@@ -13,7 +13,7 @@
             <br/>
             Status: <strong>@orderPosition.GetOrderStatus()</strong>
             <br/>
-            Data zamówienia: <strong>@orderPosition.BaseOrder.OrderDate</strong>
+            Data zamówienia: <strong>@orderPosition.BaseOrder.OrderDate.ToString("dd.MM.yyyy HH:mm")</strong>
         </div>
         <h2>Dane do dostawy:</h2>
         <div class="add-event-form-text-area flex-wrapper info-area">
@@ -44,7 +44,7 @@
                             <br/>
                             @orderPosition.OrderEvents[i].EventPlace
                             <br/>
-                            @orderPosition.OrderEvents[i].EventDate
+                            @orderPosition.OrderEvents[i].EventDate.ToString("dd.MM.yyyy HH:mm")
                         </span>
                     </div>
                     <div class="column">

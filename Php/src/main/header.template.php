@@ -14,11 +14,11 @@ if ($eventsInCart > 0) {
 
 <html lang="pl">
 <head>
-    <link href="/res/styles/index.css" rel="stylesheet"/>
-    <link href="/res/styles/utils.css" rel="stylesheet"/>
-    <link href="/res/styles/header.css" rel="stylesheet"/>
+    <link href="/shared/styles/index.css" rel="stylesheet"/>
+    <link href="/shared/styles/utils.css" rel="stylesheet"/>
+    <link href="/shared/styles/header.css" rel="stylesheet"/>
     <link href="/res/styles/events.css" rel="stylesheet"/>
-    <link href="/res/styles/add-event.css" rel="stylesheet"/>
+    <link href="/shared/styles/add-event.css" rel="stylesheet"/>
     <link href="/res/styles/landing.css" rel="stylesheet"/>
     <link href="/res/styles/user.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,7 +42,7 @@ if ($eventsInCart > 0) {
         <ul class="left-menu">
             <li class="menu-item">
                 <a href="/" class="logo">
-                    <img src="/res/images/logo.svg"/>
+                    <img src="/shared/images/logo.svg"/>
                     <p>Muzyka4zycie</p>
                 </a>
             </li>
@@ -54,6 +54,10 @@ if ($eventsInCart > 0) {
                 <span class="cart-items"
                       id="cart-items" <?php echo isset($eventsInCartToDisplay) ? "" : "style='display: none'" ?>><?php echo $eventsInCartToDisplay ?></span>
                     Koszyk</a>
+            </li>
+            <li class="menu-item" <?php echo isset($user) ? '' : 'style="visibility: hidden"' ?>>
+                <a href=<?php echo $_ENV['SHOP_URL_FRONT']."/order-history" ?>>
+                    Zamówienia</a>
             </li>
         </ul>
 

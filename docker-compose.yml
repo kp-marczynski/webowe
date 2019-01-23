@@ -23,8 +23,9 @@ services:
       dockerfile: docker/php/Dockerfile
     ports:
       - 8080:80
-#    volumes:
-#      - ./Php:/srv/app
+    volumes:
+      - ./Php:/srv/app
+      - ./shared:/srv/app/public/shared
     depends_on:
       - mysql
     environment:
@@ -41,5 +42,7 @@ services:
       dockerfile: docker/dotnet/Dockerfile
     ports:
       - 8081:80
+    volumes:
+      - ./shared:/app/wwwroot/shared
     depends_on:
       - mysql

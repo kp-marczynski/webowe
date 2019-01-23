@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Shop.Entities;
@@ -7,6 +8,7 @@ namespace Shop.BusinessObjects
     public class CartCollection
     {
         public List<CartPosition> BasketPositions { get; set; } = new List<CartPosition>();
+        public DateTime CurrentTime { get; set; }
 
         public int GetBasketCount()
         {
