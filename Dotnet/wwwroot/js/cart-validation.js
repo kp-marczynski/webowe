@@ -73,8 +73,10 @@
             } else {
                 const errorSpan = parentNode.querySelector('span');
                 if (errorSpan) {
-                    parentNode.removeChild(errorSpan);
-                    parentNode.classList.remove('error');
+                    if (errorSpan.innerText == inp.errorMessage && !shouldDisplayError) {
+                        parentNode.removeChild(errorSpan);
+                        parentNode.classList.remove('error');
+                    }
                 }
             }
         }
@@ -116,11 +118,11 @@
         // inp.dom.addEventListener('keyup', enableOrDisableButton)
     });
 
-    function validateAll(){
-        inputsToValidate.forEach((inp)=>validateForm(inp));
+    function validateAll() {
+        inputsToValidate.forEach((inp) => validateForm(inp));
     }
 
-    addEventButton.addEventListener('mouseover',()=>validateAll());
+    addEventButton.addEventListener('mouseover', () => validateAll());
 
     // Array.from(document.querySelectorAll('input[type=checkbox]'))
     //     .forEach(i => {
