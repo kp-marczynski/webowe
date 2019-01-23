@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Entities;
 using Shop.Pages.Shared;
@@ -8,6 +9,8 @@ namespace Shop.Pages
     public class EventDetailsModel : LayoutModel
     {
         public Event Event { get; set; }
+
+        public List<string> AdditionalInfo { get; set; } = new List<string>();
 
         private readonly IEventService _eventService;
         private readonly IOrderService _orderService;
@@ -33,10 +36,32 @@ namespace Shop.Pages
                 Event.NumberOfAvailableTickets =
                     Event.NumberOfAvailableTickets - _orderService.CountSoldTickets(eventId);
                 Event.AgeRange = Event.AgeRange == "ALL" ? "Impreza dozwolona dla wszystkich" : "Tylko dla dorosłych";
+                AdditionalInfo = new List<string>();
+                if (!string.IsNullOrEmpty(Event.AdditionalInfo))
+                {
+                    if (Event.AdditionalInfo.Contains("DOGS"))
+                    {
+                        AdditionalInfo.Add("Można przyjść ze zwierzętami");
+                    }
+
+                    if (Event.AdditionalInfo.Contains("DANGER"))
+                    {
+                        AdditionalInfo.Add("Impreza o podwyższonym ryzyku");
+                    }
+
+                    if (Event.AdditionalInfo.Contains("VIP"))
+                    {
+                        AdditionalInfo.Add("Wydzielona strefa dla VIPów");
+                    }
+
+                    if (Event.AdditionalInfo.Contains("ALCOHOL"))
+                    {
+                        AdditionalInfo.Add("Możliwy zakup alkoholu");
+                    }
+                }
             }
 
             return Page();
         }
-        
     }
 }
