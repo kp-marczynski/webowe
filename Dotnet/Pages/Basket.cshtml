@@ -57,6 +57,7 @@
                             <span class="vertical-price">
                                 * @string.Format("{0:N2}", Model.CartCollection.BasketPositions[i].Event.Price) PLN
                             </span>
+                            <i class="material-icons cancel-icon vertical-price" onclick="removeFromBasket(@Model.CartCollection.BasketPositions[i].Event.Id)">cancel</i>
                         </div>
                     </li>
                 }
@@ -74,4 +75,48 @@
         <h2>Koszyk jest pusty :(</h2>
     }
 </div>
-<script src="~/js/cart-validation.js" asp-append-version="true"></script>
+<script src="~/js/cart-validation.js" asp-append-version="true">
+</script>
+<script>
+    function removeFromBasket(eventId) {
+        var result = [];
+        for (var i = 0; i < @Model.CartCollection.BasketPositions.Count; ++i) {
+            var eventIdFromInput = document.getElementById('CartCollection_BasketPositions_' + i + '__Event_Id').value;
+            if (eventIdFromInput != eventId) {
+                var quantity = document.getElementById('CartCollection_BasketPositions_' + i + '__Quantity').value;
+                for (var j = 0; j < quantity; ++j) {
+                    result.push(eventIdFromInput);
+                }
+            }
+
+        }
+        setCookie(JSON.stringify(result));
+        window.location.href = '/cart';
+    }
+
+    function getCookie() {
+        var cname = "items-in-cart";
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cvalue) {
+        var cname = "items-in-cart";
+        var exdays = 1;
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+    }
+</script>

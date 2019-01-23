@@ -72,7 +72,7 @@
 }
 
 .column-price {
-    flex: 1;
+    flex: 2;
     text-align: right;
     display: flex;
     /*padding-top: 2rem;*/
@@ -80,7 +80,8 @@
 
 .vertical-price {
     margin: auto;
-    text-align: center;
+    text-align: right;
+    width: 100%
 }
 
 form {
@@ -180,4 +181,9 @@ i.add-shopping-cart:hover {
     background: var(--dialog-button-hover-background);
     transform: scale(.9);
     cursor: pointer;
+}
+
+.cancel-icon {
+    cursor: pointer;
+    color: var(--error-color);
 }
