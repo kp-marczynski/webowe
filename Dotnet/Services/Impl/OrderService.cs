@@ -62,6 +62,11 @@ namespace Shop.Services.Impl
 
         public CompleteOrder SaveCurrentOrderInDb(CartCollection cartCollection, ShipmentInfo shipmentInfo)
         {
+            if (shipmentInfo.ShipmentOption == null)
+            {
+                Console.WriteLine("empty shipment option");
+            }
+            
             var currentOrder = GetCurrentCompleteOrder(cartCollection, shipmentInfo);
             var baseOrder = BaseOrder.CreateBaseOrder(currentOrder);
 

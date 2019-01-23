@@ -79,6 +79,18 @@
                     </div>
                 </div>
             </fieldset>
+            <fieldset class="add-event-form-text-area">
+                <legend>Sposób dostawy:</legend>
+                 <div class="radio-wrapper">
+                     @for (int i = 0; i < Model.ShipmentOptions.Count; ++i)
+                     {
+                         <input type="radio" asp-for="@Model.ShipmentMethod" value="@Model.ShipmentOptions[i].ShipmentMethod" checked id="ShipmentInfo_PaymentMethod_@i"/>
+                         <label for="ShipmentInfo_PaymentMethod_@i" class="radio-label">@Model.ShipmentOptions[i].ShipmentMethod : @string.Format("{0:N2}", @Model.ShipmentOptions[i].ShipmentPrice) PLN</label>
+                     }
+                 </div>
+
+
+            </fieldset>
             <div class="add-event-buttons-wrapper">
                 <button id="add-event-form-button" type="submit" class="add-event-form-button" disabled>Zamów!</button>
                 <button type="submit" class="add-event-form-button btn-info" asp-page-handler="back">Cofnij do koszyka</button>

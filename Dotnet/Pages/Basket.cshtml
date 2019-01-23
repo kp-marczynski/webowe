@@ -31,7 +31,7 @@
                             <label class="checkbox-wrapper" id="checkbox-wrapper_@i">
                                 <input asp-for="CartCollection.BasketPositions[i].IsChecked">
                                 <span>
-                                    <strong>@Model.CartCollection.BasketPositions[i].Event.Name</strong>
+                                    <strong onclick="window.location.href = '/events/@Model.CartCollection.BasketPositions[i].Event.Id'">@Model.CartCollection.BasketPositions[i].Event.Name</strong>
                                     <br/>
                                     @Model.CartCollection.BasketPositions[i].Event.Place
                                     <br/>

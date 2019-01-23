@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Podsumowanie zamówienia";
     Model.Price = new List<double>();
-    var shiping = 15.5;
+//    var shiping = 15.5;
 }
 
 <div class="add-event-form">
@@ -22,6 +22,8 @@
                 <input asp-for="ShipmentInfo.PostalAddress" type="hidden"/>
                 <input asp-for="ShipmentInfo.Street" type="hidden"/>
                 <input asp-for="ShipmentInfo.HouseNumber" type="hidden"/>
+                <input asp-for="ShipmentInfo.ShipmentOption.ShipmentMethod" type="hidden"/>
+                <input asp-for="ShipmentInfo.ShipmentOption.ShipmentPrice" type="hidden"/>
                 <div class="column">
                     @Model.ShipmentInfo.FullName
                     <br/>
@@ -36,6 +38,13 @@
                     <br/>
                     @Model.ShipmentInfo.Street @Model.ShipmentInfo.HouseNumber
                 </div>
+                @* <div class="column"> *@
+                @*     Sposób dostawy: *@
+                @*     <br/> *@
+                @*     @Model.ShipmentInfo.ShipmentOption.ShipmentMethod *@
+                @*     <br/> *@
+                @*     @string.Format("{0:N2}", Model.ShipmentInfo.ShipmentOption.ShipmentPrice) PLN *@
+                @* </div> *@
             </div>
             <h2>Zamawiane bilety:</h2>
             <input asp-for="CartCollection.CurrentTime" type="hidden"/>
@@ -84,10 +93,10 @@
             </ul>
             <div class="summary-total-cost">
                 <div>
-                    Koszt dostawy: <span class="price-wrapper">@string.Format("{0:N2}", shiping) PLN</span>
+                    @Model.ShipmentInfo.ShipmentOption.ShipmentMethod: <span class="price-wrapper">@string.Format("{0:N2}", Model.ShipmentInfo.ShipmentOption.ShipmentPrice) PLN</span>
                 </div>
                 @{
-                    var sum = Model.Price.Sum() + shiping;
+                    var sum = Model.Price.Sum() + Model.ShipmentInfo.ShipmentOption.ShipmentPrice;
                 }
                 <div>
                     Całkowity koszt: <span class="price-wrapper total-price-wrapper">@string.Format("{0:N2}", sum) PLN</span>

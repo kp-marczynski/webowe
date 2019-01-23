@@ -24,10 +24,12 @@ namespace Shop.Entities
         [Required] [Column("order_status")] public string OrderStatus { get; set; }
         [Required] [Column("total_price")] public double TotalPrice { get; set; }
         [Required] [Column("shipping_cost")] public double ShippingCost { get; set; }
-        [Column("order_date")] public DateTime OrderDate { get; set; } = DateTime.Now;
-
+        [Required] [Column("shipping_method")] public string ShipingMethod { get; set; }
+        [Required] [Column("order_date")] public DateTime OrderDate { get; set; }
+        
         public static BaseOrder CreateBaseOrder(User user, ShipmentInfo shipmentInfo,
-            OrderProcessingStatus orderProcessingStatus, int? orderId, DateTime orderDate, double shipping, double total)
+            OrderProcessingStatus orderProcessingStatus, int? orderId, DateTime orderDate,
+            double total)
         {
             if (orderId == null)
             {
@@ -43,8 +45,9 @@ namespace Shop.Entities
                     FullName = shipmentInfo.FullName,
                     OrderStatus = orderProcessingStatus.ToString(),
                     OrderDate = orderDate,
-                    ShippingCost = shipping,
-                    TotalPrice = total
+                    ShippingCost = shipmentInfo.ShipmentOption.ShipmentPrice,
+                    TotalPrice = total,
+                    ShipingMethod = shipmentInfo.ShipmentOption.ShipmentMethod
                 };
             }
 
@@ -60,17 +63,17 @@ namespace Shop.Entities
                 Email = user.Email,
                 FullName = shipmentInfo.FullName,
                 OrderStatus = orderProcessingStatus.ToString(),
-                ShippingCost = shipping,
+                ShippingCost = shipmentInfo.ShipmentOption.ShipmentPrice,
                 OrderDate = orderDate,
-                TotalPrice = total
+                TotalPrice = total,
+                ShipingMethod = shipmentInfo.ShipmentOption.ShipmentMethod
             };
         }
 
         public static BaseOrder CreateBaseOrder(CompleteOrder completeOrder)
         {
-
             return CreateBaseOrder(completeOrder.User, completeOrder.ShipmentInfo, completeOrder.OrderProcessingStatus,
-                completeOrder.OrderId, completeOrder.OrderDate, completeOrder.ShippingCost, completeOrder.TotalPrice());
+                completeOrder.OrderId, completeOrder.OrderDate, completeOrder.TotalPrice());
         }
     }
 }

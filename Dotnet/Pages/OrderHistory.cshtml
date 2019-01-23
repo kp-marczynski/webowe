@@ -64,7 +64,7 @@
             </ul>
             <div class="summary-total-cost">
                 <div>
-                    Koszt dostawy: <span class="price-wrapper">@string.Format("{0:N2}", orderPosition.BaseOrder.ShippingCost) PLN</span>
+                    @orderPosition.BaseOrder.ShipingMethod: <span class="price-wrapper">@string.Format("{0:N2}", orderPosition.BaseOrder.ShippingCost) PLN</span>
                 </div>
                 <div>
                     Całkowity koszt: <span class="price-wrapper total-price-wrapper">@string.Format("{0:N2}", orderPosition.BaseOrder.TotalPrice) PLN</span>

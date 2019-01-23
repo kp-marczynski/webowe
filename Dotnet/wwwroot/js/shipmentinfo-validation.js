@@ -84,6 +84,6 @@
             i.addEventListener('blur', () => {
                 i.style.opacity = '0';
             })
-        })
+        });
 
 })();

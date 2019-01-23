@@ -8,9 +8,17 @@ namespace Shop.BusinessObjects
         [Required] public string FullName { get; set; }
         [Required] public string PhoneNumber { get; set; }
         [Required] public string City { get; set; }
-        [Required] public string PostalAddress { get; set; }
+
+        [Required]
+        [RegularExpression(@"^\d{2}-\d{3}$")]
+        public string PostalAddress { get; set; }
+
         [Required] public string Street { get; set; }
         [Required] public string HouseNumber { get; set; }
+        
+        public string PaymentMethod { get; set; }
+        
+        public ShipmentOption ShipmentOption { get; set; }
 
         public static ShipmentInfo CreateShipmentInfo(BaseOrder baseOrder)
         {

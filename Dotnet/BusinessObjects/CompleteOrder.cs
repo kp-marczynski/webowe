@@ -12,10 +12,10 @@ namespace Shop.BusinessObjects
         public CartCollection Events { get; set; }
         public OrderProcessingStatus OrderProcessingStatus { get; set; }
         public DateTime OrderDate { get; set; }
-        public double ShippingCost { get; set; } = 15.5;
+//        public double ShippingCost { get; set; } = ShipmentInfo.;
         public double TotalPrice()
         {
-            var result = ShippingCost;
+            var result = ShipmentInfo.ShipmentOption.ShipmentPrice;
             foreach (var ev in Events.BasketPositions)
             {
                 result += ev.Quantity * ev.Event.Price;

@@ -73,7 +73,7 @@
     /*padding-top: 2rem;*/
 }
 
-.vertical-price{
+.vertical-price {
     margin: auto;
     text-align: center;
 }
@@ -151,4 +151,9 @@ form li, .flex-wrapper {
 .order-summary-container {
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.radio-wrapper label {
+    display: block;
+    margin-bottom: 0.5rem;
 }

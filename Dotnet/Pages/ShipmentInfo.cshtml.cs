@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.BusinessObjects;
@@ -9,7 +11,19 @@ namespace Shop.Pages
 {
     public class ShipmentInfoModel : LayoutModel
     {
-//        public List<string> PaymentMethodsList = new List<string>{"gotówką", "przelewem"};
+//        public Dictionary<string, double> ShipmentMethod = new Dictionary<string, double>
+//        {
+//            {"Kurier", 15.5},
+//            {"List Polecony", 7.0},
+//            {"Odbiór Osobisty po przedpłacie", 0.0}
+//        };
+        public readonly List<ShipmentOption> ShipmentOptions = new List<ShipmentOption>
+        {
+            new ShipmentOption("Kurier", 15.5),
+            new ShipmentOption("List Polecony", 7.0),
+            new ShipmentOption("Odbiór Osobisty po przedpłacie", 0.0)
+        };
+
         private readonly IOrderService _orderService;
 
         public ShipmentInfoModel(ILayoutService layoutService, IOrderService orderService) : base(layoutService)
@@ -18,6 +32,7 @@ namespace Shop.Pages
         }
 
         [BindProperty] public ShipmentInfo ShipmentInfo { get; set; }
+        [BindProperty] public string ShipmentMethod { get; set; }
 
         public IActionResult OnGet()
         {
@@ -33,6 +48,12 @@ namespace Shop.Pages
                 Console.WriteLine("Model is not valid");
                 var initResult = InitializeLayout();
                 return initResult is RedirectResult ? initResult : Page();
+            }
+
+            var shipmentOptions = ShipmentOptions.Where(x => x.ShipmentMethod == ShipmentMethod).ToList();
+            if (shipmentOptions.Count == 1)
+            {
+                ShipmentInfo.ShipmentOption = shipmentOptions[0];
             }
 
             _orderService.SaveShipmentInfoInSession(ShipmentInfo);
