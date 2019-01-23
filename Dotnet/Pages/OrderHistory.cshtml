@@ -4,73 +4,72 @@
     ViewData["Title"] = "Historia Zamówień";
 }
 <h2 class="add-event-title page-title">Historia zamówień</h2>
-@foreach (var orderPosition in Model.OrdersList.OrderByDescending(x=>x.BaseOrder.OrderDate))
+@foreach (var orderPosition in Model.OrdersList.OrderByDescending(x => x.BaseOrder.OrderDate))
 {
     <div class="add-event-form orders-card">
         <div>
-        <div class="order-summary-container">
-            Kod identyfikujący zamówienia: <strong>@orderPosition.BaseOrder.Id</strong>
-            <br/>
-            Status: <strong>@orderPosition.GetOrderStatus()</strong>
-            <br/>
-            Data zamówienia: <strong>@orderPosition.BaseOrder.OrderDate.ToString("dd.MM.yyyy HH:mm")</strong>
-        </div>
-        <h2>Dane do dostawy:</h2>
-        <div class="add-event-form-text-area flex-wrapper info-area">
-            <div class="column">
-                @orderPosition.BaseOrder.FullName
+            <div class="order-summary-container">
+                Kod identyfikujący zamówienia: <strong>@orderPosition.BaseOrder.Id</strong>
                 <br/>
-                @orderPosition.BaseOrder.PhoneNumber
+                Status: <strong>@orderPosition.GetOrderStatus()</strong>
                 <br/>
-                @Model.CurrentUserEmail
+                Data zamówienia: <strong>@orderPosition.BaseOrder.OrderDate.ToString("dd.MM.yyyy HH:mm")</strong>
             </div>
-            <div class="column">
-                @orderPosition.BaseOrder.City
-                <br/>
-                @orderPosition.BaseOrder.PostalAddress
-                <br/>
-                @orderPosition.BaseOrder.Street @orderPosition.BaseOrder.HouseNumber
+            <h2>Dane do dostawy:</h2>
+            <div class="add-event-form-text-area flex-wrapper info-area">
+                <div class="column">
+                    @orderPosition.BaseOrder.FullName
+                    <br/>
+                    @orderPosition.BaseOrder.PhoneNumber
+                    <br/>
+                    @Model.CurrentUserEmail
+                </div>
+                <div class="column">
+                    @orderPosition.BaseOrder.City
+                    <br/>
+                    @orderPosition.BaseOrder.PostalAddress
+                    <br/>
+                    @orderPosition.BaseOrder.Street @orderPosition.BaseOrder.HouseNumber
+                </div>
             </div>
-        </div>
-        <h2>Zamawiane bilety:</h2>
-        <ul>
-            @for (var i = 0; i < orderPosition.OrderEvents.Count; ++i)
-            {
-                <li class="add-event-form-text-area ticket-container">
-
-                    <div class="column">
-                        <span>
-                            <strong>@orderPosition.OrderEvents[i].EventName</strong>
-                            <br/>
-                            @orderPosition.OrderEvents[i].EventPlace
-                            <br/>
-                            @orderPosition.OrderEvents[i].EventDate.ToString("dd.MM.yyyy HH:mm")
-                        </span>
-                    </div>
-                    <div class="column">
-                        <span class="vertical-price">
-                            @orderPosition.OrderEvents[i].Quantity * @string.Format("{0:N2}", orderPosition.OrderEvents[i].EventPrice) PLN
-                        </span>
-                    </div>
-                    <div class="column-price">
-                        <span class="vertical-price">
-                            @{
-                                var price = orderPosition.OrderEvents[i].EventPrice * orderPosition.OrderEvents[i].Quantity;
-                            }
-                            @string.Format("{0:N2}", price) PLN
-                        </span>
-                    </div>
-                </li>
-            }
-        </ul>
-        <div class="summary-total-cost">
-            <div>
-                Koszt dostawy: <span class="price-wrapper">@string.Format("{0:N2}", orderPosition.BaseOrder.ShippingCost) PLN</span>
+            <h2>Zamawiane bilety:</h2>
+            <ul>
+                @for (var i = 0; i < orderPosition.OrderEvents.Count; ++i)
+                {
+                    <li class="add-event-form-text-area ticket-container" onclick="window.location.href = '/events/@orderPosition.OrderEvents[i].EventId'" style="cursor: pointer;">
+                        <div class="column">
+                            <span>
+                                <strong>@orderPosition.OrderEvents[i].EventName</strong>
+                                <br/>
+                                @orderPosition.OrderEvents[i].EventPlace
+                                <br/>
+                                @orderPosition.OrderEvents[i].EventDate.ToString("dd.MM.yyyy HH:mm")
+                            </span>
+                        </div>
+                        <div class="column">
+                            <span class="vertical-price">
+                                @orderPosition.OrderEvents[i].Quantity * @string.Format("{0:N2}", orderPosition.OrderEvents[i].EventPrice) PLN
+                            </span>
+                        </div>
+                        <div class="column-price">
+                            <span class="vertical-price">
+                                @{
+                                    var price = orderPosition.OrderEvents[i].EventPrice * orderPosition.OrderEvents[i].Quantity;
+                                }
+                                @string.Format("{0:N2}", price) PLN
+                            </span>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div class="summary-total-cost">
+                <div>
+                    Koszt dostawy: <span class="price-wrapper">@string.Format("{0:N2}", orderPosition.BaseOrder.ShippingCost) PLN</span>
+                </div>
+                <div>
+                    Całkowity koszt: <span class="price-wrapper total-price-wrapper">@string.Format("{0:N2}", orderPosition.BaseOrder.TotalPrice) PLN</span>
+                </div>
             </div>
-            <div>
-                Całkowity koszt: <span class="price-wrapper total-price-wrapper">@string.Format("{0:N2}", orderPosition.BaseOrder.TotalPrice) PLN</span>
-            </div>
-        </div>
         </div>
     </div>
 }

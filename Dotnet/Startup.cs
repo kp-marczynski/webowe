@@ -53,6 +53,7 @@ namespace Shop
             services.AddSingleton<IOrderService, OrderService>();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<ILayoutService, LayoutService>();
+            services.AddSingleton<IEventService, EventService>();
 
             services.AddSingleton<IBaseOrderRepository, BaseOrderRepository>();
             services.AddSingleton<IEventRepository, EventRepository>();

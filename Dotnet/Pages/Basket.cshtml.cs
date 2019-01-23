@@ -23,7 +23,6 @@ namespace Shop.Pages
 
         public IActionResult OnGet()
         {
-            var p = Page();
             var initResult = InitializeLayout();
             if (initResult is RedirectResult)
             {

@@ -1,0 +1,106 @@
+@page "/events/{eventId:int}"
+@model EventDetailsModel
+@{
+    ViewData["Title"] = "Szczegóły wydarzenia" + @RouteData.Values["eventId"];
+}
+
+<div class="add-event-form">
+    @if (@Model.Event != null)
+    {
+@*         <h2 class="add-event-title">Dodaj nowe wydarzenie</h2> *@
+
+        <div class="add-event-image-wrapper">
+            <h5 class="add-event-image-title">Zdjęcie</h5>
+            <img class="add-event-image"
+                 id="add-event-image"
+                 onerror="alert('Nie można załadować zdjęcia')"
+                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRstR8KPbn-GsQMNSlujHU-GR_uXAoURfPYPCJWDRXQoKmBMwSL">
+
+            <section class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-description">
+                    Dodatkowe informacje o wydarzeniu
+                </label>
+
+                <p class="add-event-form-input">@Model.Event.AdditionalInfo</p>
+            </section>
+            <section class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-description">
+                    Przedział wiekowy
+                </label>
+
+                <label class="add-event-form-input">@Model.Event.AgeRange</label>
+            </section>
+
+        </div>
+
+        <div class="add-event-all-inputs">
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-name">
+                    Nazwa wydarzenia
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">star</i>
+                    <p class="add-event-form-input">@Model.Event.Name</p>
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-date">
+                    Data wydarzenia
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">date_range</i>
+                    <p class="add-event-form-input">@Model.Event.Date</p>
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-price">
+                    Cena
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">attach_money</i>
+                    <p class="add-event-form-input">@Model.Event.Price</p>
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-place">
+                    Miasto
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">location_city</i>
+                    <p class="add-event-form-input">@Model.Event.Place</p>
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-tickets">
+                    Liczba dostępnych biletów
+                </label>
+
+                <div class="add-event-img-input-wrapper">
+                    <i class="material-icons add-event-input-img">aspect_ratio</i>
+                    <p class="add-event-form-input">@Model.Event.NumberOfAvailableTickets</p>
+                </div>
+            </div>
+
+            <div class="add-event-row-wrapper">
+                <label class="add-event-input-label" for="event-description">
+                    Opis wydarzenia
+                </label>
+
+                <p class="add-event-form-input">@Model.Event.ShortInfo</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h2>Nie znaleziono wydarzenia :(</h2>
+    }
+</div>
