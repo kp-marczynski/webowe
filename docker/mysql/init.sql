@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS orders
   city              VARCHAR(255)  NOT NULL,
   postal_address    VARCHAR(255)  NOT NULL,
   street            VARCHAR(255)  NOT NULL,
-  house_number      INTEGER       NOT NULL ,
+  house_number      VARCHAR(255)  NOT NULL,
   order_status      VARCHAR(255)  NOT NULL,
   order_date        DATETIME      DEFAULT CURRENT_TIMESTAMP,
   shipping_cost     REAL          NOT NULL,
