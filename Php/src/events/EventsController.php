@@ -183,6 +183,6 @@ class EventsController
     }
 
     private function createImageUrl($imageUrl){
-        return empty($imageUrl) ? "/res/images/placeholder.png" : $imageUrl;
+        return empty($imageUrl) ? "/shared/images/placeholder.png" : $imageUrl;
     }
 }

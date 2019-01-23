@@ -15,6 +15,7 @@ namespace Shop.Entities
 
         [Column("date")] public DateTime Date { get; set; }
         [Column("short_info")] public string ShortInfo { get; set; }
+        [Column("description")] public string Description { get; set; }
         [Column("image_url")] public string ImageUrl { get; set; }
 
         [Column("number_of_available_tickets")]
@@ -31,5 +32,10 @@ namespace Shop.Entities
         [Column("additional_info")]
         [StringLength(255)]
         public string AdditionalInfo { get; set; }
+
+        public string GetImageUrlOrPlacholder()
+        {
+            return string.IsNullOrEmpty(ImageUrl) ? "~/shared/images/placeholder.png" : ImageUrl;
+        }
     }
 }

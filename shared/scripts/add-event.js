@@ -47,7 +47,7 @@ function getTomorrowDate() {
     const addEventButton = document.getElementById('add-event-form-button');
 
     imageUrlInput.addEventListener('keyup', () => {
-        imageDom.src = imageUrlInput.value || '/res/images/placeholder.png';
+        imageDom.src = imageUrlInput.value || '/shared/images/placeholder.png';
     });
 
     if (!document.getElementById('event-date').value.length) {

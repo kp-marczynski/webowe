@@ -14,7 +14,7 @@
             <img class="add-event-image"
                  id="add-event-image"
                  onerror="alert('Nie można załadować zdjęcia')"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRstR8KPbn-GsQMNSlujHU-GR_uXAoURfPYPCJWDRXQoKmBMwSL">
+                 src="@Model.Event.GetImageUrlOrPlacholder()">
 
             <section class="add-event-row-wrapper">
                 <label class="add-event-input-label" for="event-description">
@@ -95,7 +95,7 @@
                     Opis wydarzenia
                 </label>
 
-                <p class="add-event-form-input">@Model.Event.ShortInfo</p>
+                <p class="add-event-form-input">@Model.Event.Description</p>
             </div>
         </div>
     }

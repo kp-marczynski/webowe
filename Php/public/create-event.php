@@ -56,7 +56,7 @@ include_once dirname($_SERVER["DOCUMENT_ROOT"]) . '/src/main/header.template.php
             <img class="add-event-image"
                  id="add-event-image"
                  onerror="alert('Nie można załadować zdjęcia')"
-                 src=<?php echo isset($event) && $event->hasImageToDisplay() ? $event->imageUrl : '/res/images/placeholder.png' ?>
+                 src=<?php echo isset($event) && $event->hasImageToDisplay() ? $event->imageUrl : '/shared/images/placeholder.png' ?>
             >
 
             <div class="add-event-row-wrapper">

@@ -68,7 +68,7 @@ class Event
     }
 
     public function hasImageToDisplay() {
-        return !empty($this->imageUrl) && $this->imageUrl != '/res/images/placeholder.png';
+        return !empty($this->imageUrl) && $this->imageUrl != '/shared/images/placeholder.png';
     }
 
     public function hasAdditionalInfo($info) {
