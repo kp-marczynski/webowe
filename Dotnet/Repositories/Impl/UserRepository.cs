@@ -16,12 +16,7 @@ namespace Shop.Repositories.Impl
         {
 //            return _shopDbContext.users.Find(token);
             var temp = ShopDbContext.GetInstance().Users.Where(x => x.Token == token).ToList();
-            if (temp.Count == 1)
-            {
-                return temp[0];
-            }
-
-            return null;
+            return temp.Count == 1 ? temp[0] : null;
         }
     }
 }
