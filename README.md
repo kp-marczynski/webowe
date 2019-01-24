@@ -1,5 +1,7 @@
 # Sklep muzyczny _Muzyka4zycie_
 
+Projekt wykonany w ramach realizacji kursu "Programowanie Systemów Webowych" na Politechnice Wrocławskiej.
+
 ## Wymagania
 1) Docker
 
@@ -38,17 +40,17 @@ docker-compose down
 * Przeglądanie logów:
 
 ```bash
-docker logs music_shop_mysql
+docker logs muzyka4zycie_mysql
 ```
 
 * Wejście do środka kontenera (np. żeby wykonać sqlki)
 
 ```bash
-docker exec -it music_shop_mysql bash
+docker exec -it muzyka4zycie_mysql bash
 # root@{id}:/# mysql -u {MYSQL_USER} -p
 # Enter password: {MYSQL_PASSWORD}
 
-mysql> USE muzyka4;
+mysql> USE muzyka4zycie;
 mysql> SELECT * FROM users;
 
 ```
