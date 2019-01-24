@@ -19,7 +19,7 @@ namespace Shop.Pages.Shared
         public string CurrentUserEmail { get; set; }
 
         public bool ShowUserToken => !string.IsNullOrEmpty(CurrentUserEmail);
-        public bool ShowCartCount => ItemsInCartCount != "0";
+        public bool ShowCartCount => ItemsInCartCount != "0" && ItemsInCartCount != "?";
 
         public IActionResult InitializeLayout()
         {

@@ -24,6 +24,7 @@ namespace Shop.Pages
         public IActionResult OnGet()
         {
             var initResult = InitializeLayout();
+            ItemsInCartCount = "?";
             if (initResult is RedirectResult)
             {
                 return initResult;
