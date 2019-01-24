@@ -17,8 +17,8 @@
         },
         {
             id: 'ShipmentInfo_PostalAddress',
-            errorMessage: 'Kod pocztowy jest wymagany',
-            isError: (val) => !val
+            errorMessage: 'Kod pocztowy jest wymagany i musi być w formacie 00-000',
+            isError: (val) => !val || !/^[0-9]{2}-[0-9]{3}?$/g.test(val)
         },
         {
             id: 'ShipmentInfo_Street',

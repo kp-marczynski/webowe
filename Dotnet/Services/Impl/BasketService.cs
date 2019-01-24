@@ -39,7 +39,7 @@ namespace Shop.Services.Impl
             _httpContextAccessor.HttpContext.Response.Cookies.Delete(cookieName);
             var itemsInCart = JsonConvert.SerializeObject(cartCollection.GetEventsIdList());
             CookieOptions option = new CookieOptions();
-            option.Expires = DateTime.Now.AddMilliseconds(60 * 60 * 24 * 30);
+            option.Expires = DateTime.Now.AddDays(30);
             _httpContextAccessor.HttpContext.Response.Cookies.Append(cookieName, itemsInCart, option);
         }
 
@@ -73,7 +73,7 @@ namespace Shop.Services.Impl
 
                 var itemsInCart = JsonConvert.SerializeObject(result);
                 CookieOptions option = new CookieOptions();
-                option.Expires = DateTime.Now.AddMilliseconds(60 * 60 * 24 * 30);
+                option.Expires = DateTime.Now.AddDays(30);
                 _httpContextAccessor.HttpContext.Response.Cookies.Append(ItemsInCartCookieName, itemsInCart, option);
                 _httpContextAccessor.HttpContext.Response.Cookies.Delete(EventsInOrderCookieName);
             }
