@@ -1,3 +1,29 @@
+// function getCookie() {
+//     var cname = "items-in-cart";
+//     var name = cname + "=";
+//     var decodedCookie = decodeURIComponent(document.cookie);
+//     var ca = decodedCookie.split(';');
+//     for (var i = 0; i < ca.length; i++) {
+//         var c = ca[i];
+//         while (c.charAt(0) == ' ') {
+//             c = c.substring(1);
+//         }
+//         if (c.indexOf(name) == 0) {
+//             return c.substring(name.length, c.length);
+//         }
+//     }
+//     return "";
+// }
+
+function setCookie(cvalue) {
+    var cname = "items-in-cart";
+    var exdays = 1;
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+}
+
 (function () {
     var shipment_inputs = [];
 
@@ -82,6 +108,18 @@
         }
         if (validateNumberOfTicketsInForm()) {
             enableOrDisableButton();
+            if (!addEventButton.disabled) {
+                var result = [];
+                for (var i = 0; i < distinctEventsCount; ++i) {
+                    var eventIdFromInput = document.getElementById('CartCollection_BasketPositions_' + i + '__Event_Id').value;
+                    var quantity = document.getElementById('CartCollection_BasketPositions_' + i + '__Quantity').value;
+                    for (var j = 0; j < quantity; ++j) {
+                        result.push(eventIdFromInput);
+                    }
+                }
+                setCookie(JSON.stringify(result));
+                document.getElementById('cart-items').innerText = result.length.toString();
+            }
         } else {
             addEventButton.disabled = true;
         }
